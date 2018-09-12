@@ -1,33 +1,23 @@
 {
-  "name": "projweb",
+  "name": "node-restapi",
   "version": "1.0.0",
-  "description": "ProjWeb Gestao de Projetos OnLine",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon src/app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "s"
+  "author": {
+    "name": "Adam",
+    "email": "jstutorials1@gmail.com",
+    "url": "http://www.js-tutorials.com/"
   },
-  "keywords": [
-    "Projetos",
-    "Negocios",
-    "Planejamento",
-    "Escopo",
-    "Estrategia"
-  ],
-  "author": "Juliano Pinheiro - Edson Bizzi",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
-    "express": "^4.16.3",
-    "express-myconnection": "^1.0.4",
-    "morgan": "^1.9.0",
-    "mysql": "^2.16.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4"
+    "body-parser": "^1.16.1",
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "mysql": "^2.13.0",
+    "req-flash": "0.0.3"
   }
 }
