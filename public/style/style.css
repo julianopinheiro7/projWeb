@@ -1,9 +1,9 @@
-.img-35 {
-    width: 35rem;
+.img-33 {
+    width: 33rem;
 }
 
-.height-5 {
-    margin-top: 5rem;
+.height-10 {
+    margin-top: 10rem;
 }
 
 .height-6 {
@@ -16,6 +16,11 @@
 
 .width-100 {
     width: 100%;
+}
+
+.erro {
+    border-bottom: 1px solid;
+    border-color: red;
 }
 
 @font-face {
