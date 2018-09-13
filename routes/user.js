@@ -14,7 +14,7 @@ exports.signup = function(req, res){
 
       var query = db.query(sql, function(err, result) {
 
-         message = "Succesfully! Your account has been created.";
+         message = "Parabéns! Sua conta foi criada com sucesso.";
          res.render('signup.ejs',{message: message});
       });
 
@@ -42,7 +42,7 @@ exports.login = function(req, res){
             res.redirect('/home/dashboard');
          }
          else{
-            message = 'Wrong Credentials.';
+            message = 'Credenciais Inválidas.';
             res.render('index.ejs',{message: message});
          }
                  

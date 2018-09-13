@@ -1,0 +1,28 @@
+.img-35 {
+    width: 35rem;
+}
+
+.height-5 {
+    margin-top: 5rem;
+}
+
+.height-6 {
+    margin-top: 6rem;
+}
+
+.btn-light {
+    background-color: #eee !important;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+@font-face {
+    font-family: roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+body {
+    font-family: roboto !important;
+}
