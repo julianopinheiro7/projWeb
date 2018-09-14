@@ -6,6 +6,10 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path');
+
+const morgan = require('morgan');
+
+
 //var methodOverride = require('method-override');
 var session = require('express-session');
 var app = express();
@@ -29,6 +33,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(morgan('dev'));
 app.use(session({
               secret: 'keyboard cat',
               resave: false,
