@@ -12,7 +12,6 @@ exports.signup = function (req, res) {
         var fname = post.first_name;
         var lname = post.last_name;
         var mob = post.mob_no;
-
        
         if (post.first_name == '' || post.last_name == '' || post.mob_no == '' || post.user_name == '' || post.password == '' ) {
             
@@ -112,4 +111,53 @@ exports.editprofile = function (req, res) {
     db.query(sql, function (err, results) {
         res.render('edit_profile.ejs', { data: results });
     });
+};
+//--------------------------------- render view novos projetos
+exports.novoProjeto = function (req, res, next) {
+
+    message = '';
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
+
+    db.query(sql, function (err, results) {
+        res.render('novoProjeto.ejs', { user: user });
+    });
+};
+//--------------------------------- render view cadastra projetos
+exports.cadastrarProjeto = function (req, res) {
+    message = '';
+    var sess = req.session;
+
+    if (req.method == "POST") {
+
+        var post = req.body;
+        var nome = post.nome;
+        var dtInicio = post.data_inicio;
+        var horas = post.horas_previstas;
+        var st = post.status;
+       
+        if (post.nome == '' || post.data_inicio == '' || post.horas_previstas == '' || post.status == '') {
+            
+            message = "Para cadastrar seu projeto, você deve preencher todos os campos!";
+            res.render('novoProjeto', { message: message });
+        }
+
+        var sql = "INSERT INTO `projeto`(`nome`,`data_inicio`,`horas_previstas`,`status`) VALUES ('" + nome + "','" + dtInicio + "','" + horas + "','" + st + "')";
+
+        //var query = 
+        db.query(sql, function (err, result) {
+            message = "Projeto cadastrado com sucesso!";
+            res.render('novoProjeto.ejs', { message: message });
+        });
+
+    } else {
+        res.render('novoProjeto');        
+    }
 };

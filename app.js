@@ -9,7 +9,6 @@ var express = require('express')
 
 const morgan = require('morgan');
 
-
 //var methodOverride = require('method-override');
 var session = require('express-session');
 var app = express();
@@ -34,12 +33,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
+
 app.use(session({
-              secret: 'keyboard cat',
-              resave: false,
-              saveUninitialized: true,
-              cookie: { maxAge: 60000 }
-            }))
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+    //,cookie: { maxAge: 160000 }
+  }))
  
 // development only
  
@@ -50,6 +50,9 @@ app.get('/login', routes.index);//call for login page
 app.post('/login', user.login);//call for login post
 app.get('/home/dashboard', user.dashboard);//call for dashboard page after login
 app.get('/home/logout', user.logout);//call for logout
-app.get('/home/profile',user.profile);//to render users profile
+app.get('/home/profile', user.profile);//to render users profile
+app.get('/novoProjeto', user.novoProjeto);
+app.post('/cadastrarProjeto', user.cadastrarProjeto);
+
 //Middleware
 app.listen(8080)

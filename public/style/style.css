@@ -15,7 +15,12 @@
 }
 
 .btn-light {
-    background-color: #eee !important;
+    background-color: #e0e0e0 !important;
+    outline: none;
+}
+
+.btn-light:hover {
+    background-color: rgb(206, 205, 205) !important;
 }
 
 .width-100 {
@@ -38,6 +43,10 @@
 
 body {
     font-family: roboto !important;
+}
+
+.navbar {
+    margin-bottom: 0 !important;
 }
 
 .navbar-light {
@@ -71,3 +80,47 @@ body {
 .card-title {
     margin-bottom: .75rem;
 }
+
+.divOptions {    
+    margin: 0.2rem;
+    height: 100%;
+}
+
+.btn-menuLateral {
+    text-align: center;
+    font-size: 11px;            
+    margin-top: 2rem;
+    color: #656565;    
+}
+
+.btnLateral {
+    color: #656565;
+    text-decoration: none !important;
+}
+
+.btnLateral:hover {
+    color: #00bcd4;
+}
+
+.tituloPainel {
+    color: #2ec3c8 !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+.select {
+    height: 33px;
+    border-radius: 4px;
+    width: 50%;
+    border: 1px solid #ccc;
+}
+
+/*---------------------------------------*/
+
+#divMenuLateral {
+    position: fixed;
+    width: 6rem;
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+
