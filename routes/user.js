@@ -11,15 +11,15 @@ exports.signup = function (req, res) {
         var pass = post.password;
         var fname = post.first_name;
         var lname = post.last_name;
-        var mob = post.mob_no;
+        var email = post.email;
        
-        if (post.first_name == '' || post.last_name == '' || post.mob_no == '' || post.user_name == '' || post.password == '' ) {
+        if (post.first_name == '' || post.last_name == '' || post.email == '' || post.user_name == '' || post.password == '' ) {
             
             message = "Para criar sua conta, você deve preencher todos os campos!";
             res.render('signup.ejs', { message: message });
         }
 
-        var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+        var sql = "INSERT INTO `users`(`first_name`,`last_name`,`email`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + email + "','" + name + "','" + pass + "')";
 
         //var query = 
         db.query(sql, function (err, result) {
@@ -135,61 +135,3 @@ exports.novoProjeto = function (req, res, next) {
         res.render('novoProjeto.ejs', { user: user, message: msg });
     });
 };
-//--------------------------------- render view cadastra projetos
-/*
-module.exports = function (application) {
-     let message = '';    
-    var sess = req.session;
-
-    if (req.method == "POST") {
-
-        var post = req.body;
-        var nome = post.nome;
-        var dtInicio = post.data_inicio;
-        var horas = post.horas_previstas;
-        var st = post.status;
-       
-        /* if (post.nome == '' || post.data_inicio == '' || post.horas_previstas == '' || post.status == '') {
-            
-            message = "Para cadastrar seu projeto, você deve preencher todos os campos!";
-            res.render('novoProjeto', { message: message });
-        } */
-
-        //var sql = "INSERT INTO `projeto`(`nome`,`data_inicio`,`horas_previstas`,`status`) VALUES ('" + nome + "','" + dtInicio + "','" + horas + "','" + st + "')";
-
-        /*var query = 
-        db.query(sql, function (err, result) {
-            message = "Projeto cadastrado com sucesso!";
-            res.render('novoProjeto.ejs', { message: message });
-
-            if (err != null) {
-                res.redirect('/cadastraProjeto?msg=F');
-            }
-            else {
-                res.redirect('/cadastraProjeto?msg=T');
-            }
-
-        });
-
-        
-
-    } else {
-        res.render('novoProjeto');        
-    } */
-
-    /* let projeto = req.body;    
-    const connection = application.connection.connect();    
-    const projetoModel = new application.app.models.ProjetoDAO(connection);
-
-    if (projeto.idProjeto == '') {
-        projetoModel.postProjeto(projeto, (err, result) => {
-            if (err != null) {
-                res.redirect('/cadastraBovino?msg=F');
-            }
-            else {
-                res.redirect('/cadastraBovino?msg=T');
-            }
-        });
-    } 
-
-};*/

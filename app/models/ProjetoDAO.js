@@ -3,8 +3,9 @@ function ProjetoDAO(connection) {
 }
 
 ProjetoDAO.prototype.postProjeto = function(projeto, callback){
-    console.log('Estrutura do callback', projeto);
-    this._connection.query('insert into projeto set ?', projeto, callback);
+    console.log('Estrutura do projeto', projeto);
+    
+    this._connection.query('insert into projeto set ?', projeto, callback);       
 }
 
 ProjetoDAO.prototype.getProjeto = function(id, callback){

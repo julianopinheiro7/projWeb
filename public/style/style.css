@@ -1,5 +1,9 @@
-.img-33 {
-    width: 33rem;
+.img-29 {
+    width: 29rem;
+}
+
+.img-26 {
+    width: 26rem;
 }
 
 .img-17 {
@@ -12,6 +16,14 @@
 
 .height-6 {
     margin-top: 6rem;
+}
+
+.height-4 {
+    margin-top: 4rem;
+}
+
+.height-2 {
+    margin-top: 2rem;
 }
 
 .btn-light {
@@ -111,11 +123,59 @@ body {
 .select {
     height: 33px;
     border-radius: 4px;
-    width: 50%;
+    width: 100%;
     border: 1px solid #ccc;
 }
 
-/*---------------------------------------*/
+.panel-Login {
+    background: #fff;    
+}
+
+.red {
+    color: red;
+}
+
+.white {
+    color: #fff;
+}
+
+.center {
+    text-align: center;
+}
+
+.card-panel {
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    padding: 10px;
+    margin: 0 0 2rem 0;
+    border-radius: 2px;
+}
+
+.spaceRight-1 {
+    margin-right: 1rem;
+}
+
+.linkProj {
+    color: #656565;
+    text-decoration: none !important;
+}
+
+.nav-ul {
+    list-style: none;
+    margin-top: 1rem;
+    margin-right: 0rem !important;
+}
+
+.col-offset-2 {
+    margin-left: 25.666667%;
+}
+
+.navProj {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+/*Elementos ID*/
 
 #divMenuLateral {
     position: fixed;
@@ -123,4 +183,13 @@ body {
     height: 100%;
     border-right: 1px solid #ccc;
 }
+
+#clrblk {
+    background: url('../img/gestao-projetos.png') no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 

@@ -15,17 +15,19 @@
   <!-- Static navbar -->
   <nav class="navbar navbar-light">
     <div class="container-fluid">
-      <div id="navbar" class="navbar-collapse collapse">
+      <div id="navbar" class="">
         <!-- <ul class="nav navbar-nav">
             <li class="active"><a href="/home/dashboard">Home</a></li>
           </ul> -->
         <ul class="nav navbar-nav">
           <li>
-            <img src="../img/projWebLogo.png" class="img-responsive img-17 col-md-offset-2" alt="ProjWEB Gestão de Projetos OnLine">
+            <img src="../img/projWebLogo.png" class="img-responsive img-17 col-offset-2" alt="ProjWEB Gestão de Projetos OnLine">          
           </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/home/logout">Logout</a></li>
+        <ul class="navbar-right nav-ul">
+          <li>
+            <a class="linkProj" href="/home/logout">Sair&nbsp;&nbsp;<img src="../img/logout.png" alt=""></a>          
+          </li>
         </ul>
       </div>
       <!--/.nav-collapse -->
@@ -35,6 +37,10 @@
 
   <div id="divMenuLateral">
     <div class="divOptions">
+        <div class="btn-menuLateral">
+            <a class="btnLateral" href="/cadastrarRecurso"><img src="/img/recursos.png" class="img-responsive center-block" alt="Responsive image">
+              Novo Recurso</a>
+          </div>
       <div class="btn-menuLateral">
         <a class="btnLateral" href="/cadastrarProjeto"><img src="/img/proj.png" class="img-responsive center-block" alt="Responsive image">
           Novo Projeto</a>

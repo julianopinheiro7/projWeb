@@ -1,0 +1,66 @@
+<html lang="pt">
+
+<%- include header %>
+
+<div class="container">
+
+    <div id="recursobox" style=" margin-top:50px" class="mainbox col-md-10 col-sm-10 col-md-offset-1">
+
+
+        <div class="panel panel-light">
+            <div class="panel-heading">
+                <div class="panel-title text-center tituloPainel">Novo Recurso</div>
+            </div>
+            <div class="panel-body">
+
+                <%if(message == 'T') {%>
+                <div class="card-panel red center white">
+                    Recurso cadastrado com sucesso!
+                </div>
+                <% } %>
+                <%if(message == 'F') {%>
+                <div class="card-panel red center">
+                    <span>Para criar um novo recurso você deve preencher todos os campos!</b>
+                </div>
+                <% } %>
+
+                <form class="form-horizontal" role="form" method="post" action="/gravarRecurso" onSubmit="return checkblank(this);">
+
+                    <div class="form-group">
+                        <label for="nome" class="col-md-3 control-label">Nome</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="nome" placeholder="Nome do Recurso">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor" class="col-md-3 control-label">Valor</label>
+                        <div class="col-md-3">
+                            <input type="number" class="form-control" name="valor" placeholder="Valor">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="horas_previstas" class="col-md-3 control-label">Tipo de Cobrança</label>
+                        <div class="col-md-3">
+                            <select name="tipoCobranca" id="status" class="select">
+                                <option value="D">Dia</option>
+                                <option value="H">Hora</option>                                
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-Recurso" type="submit" class="btn btn-light">
+                                <i class="icon-hand-right"></i>
+                                Cadastrar Recurso</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include footer %>
