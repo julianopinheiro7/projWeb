@@ -13,13 +13,18 @@
                 </div>
                 <div class="panel-body">
 
-                    <% if (message.length > 0) { %>
-                        <div class="alert alert-danger col-sm-12">
-                            <%= message %>
-                        </div>
+                        <%if(message == 'T') {%>
+                            <div class="card-panel teal lighten-3 center">
+                                <b class="white-text">Projeto cadastrado com sucesso!</b>
+                            </div>
+                        <% } %>
+                        <%if(message == 'F') {%>
+                            <div class="card-panel red lighten-1 text-center">
+                                <b class="red-text">Para criar seu projeto, você deve preencher todos os campos!</b>
+                            </div>
                         <% } %>
 
-                            <form class="form-horizontal" role="form" method="post" action="/cadastrarProjeto" onSubmit="return checkblank(this);">
+                            <form class="form-horizontal" role="form" method="post" action="/cadastrar" onSubmit="return checkblank(this);">
 
                                 <div class="form-group">
                                     <label for="nome" class="col-md-3 control-label">Nome</label>
