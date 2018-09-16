@@ -13,7 +13,7 @@
 <body>
   <!--div class="container"-->
   <!-- Static navbar -->
-  <nav class="navbar navbar-light">
+  <nav class="navbar navProj">
     <div class="container-fluid">
       <div id="navbar" class="">
         <!-- <ul class="nav navbar-nav">
@@ -21,12 +21,87 @@
           </ul> -->
         <ul class="nav navbar-nav">
           <li>
-            <img src="../img/projWebLogo.png" class="img-responsive img-17 col-offset-2" alt="ProjWEB Gestão de Projetos OnLine">          
+            <div class="dropdown">
+              <i class="material-icons dropbtn"><img src="../img/menu.png" alt="ProjWeb"></i>
+
+              <div class="dropdown-content">
+
+                <div class="div-user center">
+                  <div id="iconeUser">
+                    icon user
+                  </div>
+                  <div>
+                    <label id="name-user">Olá! </label>
+                    <div>
+                      <%= user %>
+                    </div>
+                    <div>
+                      <%= nome %>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="div-card-apps">
+
+                  <div class="btn-menuLateral">
+                    <a class="btnLateral" href="/cadastrarRecurso"><img src="/img/recursos.png" class="img-responsive center-block"
+                        alt="Recursos">
+                      Novo Recurso</a>
+                  </div>
+
+                  <div class="btn-menuLateral">
+                    <a class="btnLateral" href="/cadastrarProjeto"><img src="/img/proj.png" class="img-responsive center-block"
+                        alt="Recursos">
+                      Novo Projeto</a>
+                  </div>
+
+                  <div class="div-apps">
+                    <a routerLink="/tarefas/novo" class="lnkOpcoes" title="Para Cadastrar Um Nova Tarefa, Clique Aqui.">
+                      <img src="assets/img/task.png" class="img-icons">
+                      <label class="label-icons">Tarefas</label>
+                    </a>
+                  </div>
+
+                  <div class="div-apps">
+                    <a routerLink="/status/novo" class="lnkOpcoes" title="Para Cadastrar Um Novo Status, Clique Aqui.">
+                      <img src="assets/img/status.png" class="img-icons">
+                      <label class="label-icons">Status</label>
+                    </a>
+                  </div>
+
+                  <div id="div-config-out">
+                    <div class="div-logout">
+                      <a routerLink="/#">
+                        <img src="assets/img/config.png" class="spaceRight">
+                        <label class="lbl-icon">Configurações</label>
+                      </a>
+                    </div>
+                    <div class="div-logout border-left">
+                      <a routerLink="/home">
+                        <img src="assets/img/log-out.png" class="spaceRight invert-icon">
+                        <label class="lbl-icon">Sair</label>
+                      </a>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+
+            </div>
+          </li>
+          <li>
+            <div>
+              <a href="/home/dashboard">
+                <img src="../img/projWebLogo.png" class="img-responsive img-17 col-offset-2" alt="ProjWEB Gestão de Projetos OnLine">
+              </a>
+            </div>
           </li>
         </ul>
         <ul class="navbar-right nav-ul">
           <li>
-            <a class="linkProj" href="/home/logout">Sair&nbsp;&nbsp;<img src="../img/logout.png" alt=""></a>          
+            <a class="linkProj" href="/home/logout">Sair&nbsp;&nbsp;<img src="../img/logout.png" alt=""></a>
           </li>
         </ul>
       </div>
@@ -34,16 +109,3 @@
     </div>
     <!--/.container-fluid -->
   </nav>
-
-  <div id="divMenuLateral">
-    <div class="divOptions">
-        <div class="btn-menuLateral">
-            <a class="btnLateral" href="/cadastrarRecurso"><img src="/img/recursos.png" class="img-responsive center-block" alt="Responsive image">
-              Novo Recurso</a>
-          </div>
-      <div class="btn-menuLateral">
-        <a class="btnLateral" href="/cadastrarProjeto"><img src="/img/proj.png" class="img-responsive center-block" alt="Responsive image">
-          Novo Projeto</a>
-      </div>
-    </div>
-  </div>

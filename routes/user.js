@@ -65,6 +65,7 @@ exports.login = function (req, res) {
 
 exports.dashboard = function (req, res, next) {
 
+    var nome = '';
     var user = req.session.user,
         userId = req.session.userId;
     console.log('ddd=' + userId);
@@ -75,8 +76,9 @@ exports.dashboard = function (req, res, next) {
 
     var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
 
-    db.query(sql, function (err, results) {
-        res.render('dashboard.ejs', { user: user });
+    db.query(sql, function (err, results) {        
+        res.render('dashboard.ejs', { user: userId, nome: results[0].first_name });        
+        
     });
 };
 //------------------------------------logout functionality----------------------------------------------
@@ -133,5 +135,22 @@ exports.novoProjeto = function (req, res, next) {
 
     db.query(sql, function (err, results) {
         res.render('novoProjeto.ejs', { user: user, message: msg });
+    });
+};
+//------------------------------- render header
+exports.header = function (req, res, next) {
+   
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
+
+    db.query(sql, function (err, results) {
+        res.render('header', { user: userId, nome: results[0].first_name });
     });
 };
