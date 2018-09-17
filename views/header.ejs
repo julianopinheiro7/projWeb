@@ -27,17 +27,15 @@
               <div class="dropdown-content">
 
                 <div class="div-user center">
-                  <div id="iconeUser">
-                    icon user
+                  <div class="iconeUser">
+                    <img src="../img/user.png" alt="User ProjWeb" id="userIcon">
+                    <div id="divUserID"> Id. Usuário: <b><%= user %></b>    </div>
                   </div>
-                  <div>
-                    <label id="name-user">Olá! </label>
-                    <div>
-                      <%= user %>
-                    </div>
-                    <div>
-                      <%= nome %>
-                    </div>
+                  <div class="iconeUser">
+                    <p class="name-user">
+                      Usuário Logado:
+                    </p>             
+                    <p id="nameUserLogado"><%= nome %></p>
                   </div>
                 </div>
 
@@ -46,45 +44,14 @@
                   <div class="btn-menuLateral">
                     <a class="btnLateral" href="/cadastrarRecurso"><img src="/img/recursos.png" class="img-responsive center-block"
                         alt="Recursos">
-                      Novo Recurso</a>
+                      <p class="descOptions">Novo Recurso</p></a>
                   </div>
 
                   <div class="btn-menuLateral">
                     <a class="btnLateral" href="/cadastrarProjeto"><img src="/img/proj.png" class="img-responsive center-block"
                         alt="Recursos">
-                      Novo Projeto</a>
+                        <p class="descOptions">Novo Projeto</p></a>
                   </div>
-
-                  <div class="div-apps">
-                    <a routerLink="/tarefas/novo" class="lnkOpcoes" title="Para Cadastrar Um Nova Tarefa, Clique Aqui.">
-                      <img src="assets/img/task.png" class="img-icons">
-                      <label class="label-icons">Tarefas</label>
-                    </a>
-                  </div>
-
-                  <div class="div-apps">
-                    <a routerLink="/status/novo" class="lnkOpcoes" title="Para Cadastrar Um Novo Status, Clique Aqui.">
-                      <img src="assets/img/status.png" class="img-icons">
-                      <label class="label-icons">Status</label>
-                    </a>
-                  </div>
-
-                  <div id="div-config-out">
-                    <div class="div-logout">
-                      <a routerLink="/#">
-                        <img src="assets/img/config.png" class="spaceRight">
-                        <label class="lbl-icon">Configurações</label>
-                      </a>
-                    </div>
-                    <div class="div-logout border-left">
-                      <a routerLink="/home">
-                        <img src="assets/img/log-out.png" class="spaceRight invert-icon">
-                        <label class="lbl-icon">Sair</label>
-                      </a>
-                    </div>
-                  </div>
-
-
                 </div>
               </div>
 

@@ -6,22 +6,26 @@ module.exports.cadastrarProjeto = function (application, req, res) {
     }
     
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
-       
+    
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
 
     projetoModel.getProjeto(req.query.id, (err, result) => {
-        
-        if (err != null) {
-            res.render('novoProjeto', { message: msg });
-        } else {
-            res.render('novoProjeto', { message: msg });
-        }            
+        projetoModel.getUsuario(userId, (err2, result2) => {
+            res.render('novoProjeto', { message: msg, user: userId, nome: result2[0].first_name });
+        })
     });
 }
 
 
 module.exports.cadastrar = function (application, req, res) {
     
-    let projeto = req.body;
+    let projeto = req.body;    
     const projetoModel = new application.app.models.ProjetoDAO(global.db);  
          
     projetoModel.postProjeto(projeto, (err, result) => {

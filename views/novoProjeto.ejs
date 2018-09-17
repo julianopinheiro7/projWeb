@@ -2,72 +2,74 @@
 
 <%- include header %>
 
-    <div class="container">
+<div class="container">
 
-        <div id="projetobox" style=" margin-top:50px" class="mainbox col-md-10 col-sm-10 col-md-offset-1">
+    <div id="projetobox" style=" margin-top:50px" class="mainbox col-md-10 col-sm-10 col-md-offset-1">
 
 
-            <div class="panel panel-light">
-                <div class="panel-heading">
-                    <div class="panel-title text-center tituloPainel">Novo Projeto</div>
-                </div>
-                <div class="panel-body">
-
-                        <%if(message == 'T') {%>                            
-                            <div class="card-panel red lighten-3 center white">
-                                Projeto cadastrado com sucesso!
-                            </div>
-                        <% } %>
-                        <%if(message == 'F') {%>
-                            <div class="card-panel red lighten-1 center">
-                                <span>Para criar um novo projeto você deve preencher todos os campos!</b>
-                            </div>
-                        <% } %>
-
-                            <form class="form-horizontal" role="form" method="post" action="/cadastrar" onSubmit="return checkblank(this);">
-
-                                <div class="form-group">
-                                    <label for="nome" class="col-md-3 control-label">Nome</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control" name="nome" placeholder="Nome do Projeto">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="data_inicio" class="col-md-3 control-label">Data de Inicio</label>
-                                    <div class="col-md-3">
-                                        <input type="date" class="form-control" name="data_inicio" placeholder="Data de Inicio">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="horas_previstas" class="col-md-3 control-label">Horas Previstas</label>
-                                    <div class="col-md-3">
-                                        <input type="number" class="form-control" name="horas_previstas" placeholder="Horas Previstas">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="status" class="col-md-3 control-label">Status</label>
-                                    <div class="col-md-3">
-                                        <select name="status" id="status" class="select">
-                                            <option value="Pendente">Pendente</option>
-                                            <option value="Em andamento">Em andamento</option>
-                                            <option value="Concluid">Concluído</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <!-- Button -->
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-projeto" type="submit" class="btn btn-light">
-                                            <i class="icon-hand-right"></i>
-                                            Cadastrar Projeto</button>
-                                    </div>
-                                </div>
-                            </form>
-                </div>
+        <div class="panel panel-light">
+            <div class="panel-heading">
+                <div class="panel-title text-center tituloPainel">Novo Projeto</div>
             </div>
+            <div class="panel-body">
 
+                <%if(message == 'T') {%>
+                <div class="card-panel red lighten-3 center red">
+                    Projeto cadastrado com sucesso!
+                </div>
+                <% } %>
+                <%if(message == 'F') {%>
+                <div class="card-panel red lighten-1 center">
+                    <span>Para criar um novo projeto você deve preencher todos os campos!</b>
+                </div>
+                <% } %>
+                <form class="form-horizontal" role="form" method="post" action="/cadastrar" onSubmit="return checkblank(this);">
+
+                    <div class="form-group">
+                        <label for="nome" class="col-md-3 control-label">Nome</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="nome" placeholder="Nome do Projeto">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="data_inicio" class="col-md-3 control-label">Data de Inicio</label>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control" name="data_inicio" placeholder="Data de Inicio">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="horas_previstas" class="col-md-3 control-label">Horas Previstas</label>
+                        <div class="col-md-3">
+                            <input type="number" class="form-control" name="horas_previstas" placeholder="Horas Previstas">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="col-md-3 control-label">Status</label>
+                        <div class="col-md-3">
+                            <select name="status" id="status" class="select">
+                                <option value="Pendente">Pendente</option>
+                                <option value="Em andamento">Em andamento</option>
+                                <option value="Concluid">Concluído</option>
+                            </select>
+                        </div>
+                    </div>                    
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-projeto" type="submit" class="btn btn-light btn-width30">
+                                <i class="icon-hand-right"></i>
+                                Cadastrar Projeto</button>
+                        </div>
+                    </div>
+
+                    <input type="text" class="form-control disabled" name="idUsuario" value="<%=user%>">
+
+                </form>
+            </div>
         </div>
-    </div>
 
-    <%- include footer %>
+    </div>
+</div>
+
+<%- include footer %>

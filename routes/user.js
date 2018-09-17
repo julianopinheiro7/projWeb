@@ -64,8 +64,7 @@ exports.login = function (req, res) {
 //-----------------------------------------------dashboard page functionality----------------------------------------------
 
 exports.dashboard = function (req, res, next) {
-
-    var nome = '';
+    
     var user = req.session.user,
         userId = req.session.userId;
     console.log('ddd=' + userId);
@@ -75,10 +74,12 @@ exports.dashboard = function (req, res, next) {
     }
 
     var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
+    var sql2 = "select count(*) as qtde from `projeto`";
 
     db.query(sql, function (err, results) {        
-        res.render('dashboard.ejs', { user: userId, nome: results[0].first_name });        
-        
+        db.query(sql2, function (err2, results2) {            
+            res.render('dashboard.ejs', { user: userId, nome: results[0].first_name, qtde: results2[0].qtde });
+        })        
     });
 };
 //------------------------------------logout functionality----------------------------------------------
@@ -134,7 +135,7 @@ exports.novoProjeto = function (req, res, next) {
     var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
 
     db.query(sql, function (err, results) {
-        res.render('novoProjeto.ejs', { user: user, message: msg });
+        res.render('novoProjeto.ejs', { user: userId, message: msg });
     });
 };
 //------------------------------- render header

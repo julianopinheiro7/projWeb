@@ -95,9 +95,9 @@ body {
 
 .btn-menuLateral {
     text-align: center;
-    font-size: 11px;            
-    margin-top: 2rem;
-    color: #656565;    
+    font-size: 12px;                
+    color: #656565;        
+    padding: 0.5rem;
 }
 
 .btnLateral {
@@ -113,6 +113,7 @@ body {
     color: #2ec3c8 !important;
     font-size: 18px !important;
     font-weight: bold !important;
+    margin-top: 2.0rem !important;    
 }
 
 .select {
@@ -176,6 +177,21 @@ body {
     border-bottom: 1px solid #efefef !important;
 }
 
+.name-user {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.iconeUser {
+    width: 50%;
+    height: 7rem;
+}
+
+.descOptions {
+    top: 12px;
+    position: relative;
+}
+
 /*Elementos ID*/
 
 #clrblk {
@@ -197,8 +213,18 @@ body {
     transition: 0.2s;  
 }
 
-#iconeUser {
-    width: 50%;
+#userIcon {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+#divUserID {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+#nameUserLogado {
+    font-weight: bold;
 }
 
 /*-------------------------------------------*/
@@ -206,6 +232,7 @@ body {
 .dropdown {
     position: relative;
     margin: 0;
+    height: 5rem;
 }
 
 .dropdown-toggle::after {
@@ -320,13 +347,14 @@ body {
 
 .dropdown-content {
     display: none;
+   /*  display: block; */
     position: absolute;
     background-color: #fff;
     width: 320px;
     border: 1px solid #e0e0e0;
     z-index: 1;
-    margin-left: 17px;
-    margin-top: -8px;
+    margin-left: 15px;
+    margin-top: 15px;    
 }
 
 .dropdown-content a {
@@ -353,4 +381,42 @@ body {
     display: inline-flex;
     text-align: center;
     width: 100%;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.divQuadrosDash {
+    width: 100%;
+    max-width: 35rem;
+    height: 30vh;
+    background: #fbfbfb;
+    margin: 2rem;
+}
+
+.flex-container-dash {
+    display: flex;
+    width: 100%;
+}
+
+.tituloDash {
+    padding: 1rem;
+    font-size: 1.8rem;    
+    color: #8c8c8c;
+}
+
+.dadosDash {
+    text-align: center;
+    font-size: 4rem;
+    color: #3fc3be;
+    font-weight: bold;
+    position: relative;
+    bottom: 20px;
+}
+
+.disabled {
+    display: none;
+    visibility: hidden;
+}
+
+.btn-width30 {
+    width: 30%;
 }
