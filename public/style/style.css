@@ -97,7 +97,7 @@ body {
     text-align: center;
     font-size: 12px;                
     color: #656565;        
-    padding: 0.5rem;
+    padding: 0.5rem;    
 }
 
 .btnLateral {
@@ -388,8 +388,8 @@ body {
     width: 100%;
     max-width: 35rem;
     height: 30vh;
-    background: #fbfbfb;
     margin: 2rem;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
 }
 
 .flex-container-dash {
@@ -399,7 +399,7 @@ body {
 
 .tituloDash {
     padding: 1rem;
-    font-size: 1.8rem;    
+    font-size: 1.4rem;    
     color: #8c8c8c;
 }
 

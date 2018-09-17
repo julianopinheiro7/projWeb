@@ -20,8 +20,7 @@ exports.signup = function (req, res) {
         }
 
         var sql = "INSERT INTO `users`(`first_name`,`last_name`,`email`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + email + "','" + name + "','" + pass + "')";
-
-        //var query = 
+        
         db.query(sql, function (err, result) {
             message = "Parabéns! Sua conta foi criada com sucesso.";
             res.render('signup.ejs', { message: message });
