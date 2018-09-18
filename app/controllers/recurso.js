@@ -6,15 +6,20 @@ module.exports.cadastrarRecurso = function (application, req, res) {
     }
     
     const recursoModel = new application.app.models.RecursoDAO(global.db);
-       
+    const projetoModel = new application.app.models.ProjetoDAO(global.db); 
+    
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
 
     recursoModel.getRecurso(req.query.id, (err, result) => {
-        
-        if (err != null) {
-            res.render('novoRecurso', { message: msg });
-        } else {
-            res.render('novoRecurso', { message: msg });
-        }            
+        projetoModel.getUsuario(userId, (err2, result2) => {
+            res.render('novoRecurso', { message: msg, user: userId, nome: result2[0].first_name });
+        })
     });
 }
 

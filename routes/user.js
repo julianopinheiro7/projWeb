@@ -72,8 +72,8 @@ exports.dashboard = function (req, res, next) {
         return;
     }
 
-    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
-    var sql2 = "select count(*) as qtde from `projeto`";
+    var sql = "select * from `users` where `id`='" + userId + "'";
+    var sql2 = "select count(*) as qtde from `projeto` where `idUsuario` = '" + userId + "'";
 
     db.query(sql, function (err, results) {        
         db.query(sql2, function (err2, results2) {            
