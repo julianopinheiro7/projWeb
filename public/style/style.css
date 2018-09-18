@@ -242,8 +242,14 @@ body {
 }
 
 #imgLogoNewUser {
-    bottom: 60px;
+    top: 5px;
     position: relative;
+}
+
+#img-exit {
+    width: 18px;
+    position: relative;
+    left: 5px;
 }
 
 /*-------------------------------------------*/
