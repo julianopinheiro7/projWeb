@@ -228,13 +228,22 @@ body {
 }
 
 #exit {
-    border: 1px solid #ccc;
+    border: 1px solid #e2e2e2;
     border-radius: 20px;
-    padding: 5px 20px !important;
+    padding: 1.5px 10px !important;
 }
 
 #exit:hover {
     background-color: #f5f5f5;
+}
+
+#bodyNewUser {
+    background: url('../img/new_user.jpg');
+}
+
+#imgLogoNewUser {
+    bottom: 60px;
+    position: relative;
 }
 
 /*-------------------------------------------*/
@@ -399,7 +408,7 @@ body {
     max-width: 35rem;
     height: 22rem;
     margin: 1rem;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16);
 }
 
 .flex-container-dash {
