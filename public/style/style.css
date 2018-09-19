@@ -39,6 +39,10 @@
     width: 100%;
 }
 
+.width-10 {
+    width: 10rem;
+}
+
 .width-22 {
     width: 22rem;
 }
@@ -230,7 +234,7 @@ body {
 #exit {
     border: 1px solid #e2e2e2;
     border-radius: 20px;
-    padding: 1.5px 10px !important;
+    padding: 3.5px 10px !important;
 }
 
 #exit:hover {
@@ -411,29 +415,41 @@ body {
 
 .divQuadrosDash {
     width: 100%;
-    max-width: 35rem;
+    max-width: 25rem;
     height: 22rem;
-    margin: 1rem;    
+    margin: 1.5rem;
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     border: 1px solid #ccc;
     border: 1px solid rgba(0,0,0,0.2);
+    background: #fff;
 }
 
 .flex-container-dash {
-    width: 79rem;        
+    width: 56rem;        
     display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     display: flex;
     flex-wrap: wrap;
+    background: #fafafa;
 }
 
 .tituloDash {
     padding: 1rem;
     font-size: 1.4rem;    
-    color: #8c8c8c;
+    color: #5d5b5b;
     margin-left: 10px;
+}
+
+.tituloAlerta {
+    padding: 1rem;
+    font-size: 1.4rem;
+    color: #5d5b5b;
+    margin-left: 3rem;
+    text-align: center;
+    width: 100%;
+    background: #f5f5f5;
 }
 
 .dadosDash {
@@ -453,4 +469,63 @@ body {
 
 .btn-width30 {
     width: 30%;
+}
+
+.inline {
+    display: inline-flex;
+}
+
+.quadro2 {
+    border: 0;
+    width: 40rem;
+}
+
+.quadro3 {        
+    margin: 1rem;    
+}
+
+.quadro1-dash {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5rem;    
+}
+
+.quadro2-dash {
+    width: 27rem;
+}
+
+.iconQuadro {
+    margin-right: 10px;
+    vertical-align: baseline;
+}
+
+.iconQuadro2 {
+    margin-right: 10px;    
+}
+
+.menuDash {
+    border: 1px solid #ccc;
+}
+
+.linkDash {
+    text-decoration: none !important;
+    color: #525252;
+    position: relative;
+    top: 8px;
+    font-size: 12px;
+}
+
+.descOpDash {
+    margin-top: 5px;    
+}
+
+.optDash {
+    border: 1px solid #d6d5d5;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    background: #fff;
+}
+
+.dash-body {
+    background: #fafafa;
 }
