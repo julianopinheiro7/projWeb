@@ -256,6 +256,11 @@ body {
     left: 5px;
 }
 
+#img-integra-dash {
+    position: relative;
+    top: 8px;
+}
+
 /*-------------------------------------------*/
 
 .dropdown {
@@ -415,15 +420,16 @@ body {
 
 .divQuadrosDash {
     width: 100%;
-    max-width: 25rem;
-    height: 22rem;
-    margin: 1.5rem;
+    max-width: 60rem;
+    height: 17rem;
+    margin: 0.5rem;
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     border: 1px solid #ccc;
     border: 1px solid rgba(0,0,0,0.2);
     background: #fff;
+    display: inline-block;
 }
 
 .flex-container-dash {
@@ -440,16 +446,16 @@ body {
     font-size: 1.4rem;    
     color: #5d5b5b;
     margin-left: 10px;
+    text-align: center;
 }
 
 .tituloAlerta {
     padding: 1rem;
     font-size: 1.4rem;
-    color: #5d5b5b;
-    margin-left: 3rem;
+    color: #5d5b5b;    
     text-align: center;
     width: 100%;
-    background: #f5f5f5;
+    background: #fafafa;
 }
 
 .dadosDash {
@@ -509,23 +515,49 @@ body {
 
 .linkDash {
     text-decoration: none !important;
-    color: #525252;
+    color: #848484;
     position: relative;
-    top: 8px;
+    top: 25px;
     font-size: 12px;
+    width: 90%;    
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.linkDash:hover {
+    color: #3fc3be;    
 }
 
 .descOpDash {
-    margin-top: 5px;    
+    margin-top: 15px;    
 }
 
 .optDash {
-    border: 1px solid #d6d5d5;
-    border-radius: 5px;
+    height: 542px;
     margin-bottom: 25px;
-    background: #fff;
+    background: #fafafa;
+    width: 100%;
 }
 
 .dash-body {
     background: #fafafa;
+}
+
+.containerDash {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 97%;
+}
+
+.bodyDash {    
+    height: 542px;
+}
+
+.col-sm--6 {
+    width: 47% !important;
 }
