@@ -4,7 +4,10 @@
 
 <div class="container height-2">
     <div class="row">
-        <table class="table table-striped">
+
+        <div class="divListar">Projetos</div>
+
+        <table class="table table-sm">
             <thead class="size-14">
                 <tr>
                     <th scope="col">Num. Projeto</th>
@@ -38,19 +41,19 @@
                         <div class="options">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" id="linkOption">
                                         <img class="iconActions" src="../img/actions.png" alt="">
                                     </a>
                                     <ul>
                                         <div class="inline div-actions">
-                                            <li>
+                                            <li class="li-div-actions">
                                                 <a href="/editarProjeto/<%= data[i].id %>">
-                                                    <img src="../img/edit.png" alt="Editar">
+                                                    <img src="../img/edit.png" alt="Editar" title="Editar Projeto">
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="/excluirProjeto/<%= data[i].id %>">
-                                                    <img src="../img/delete.png" alt="Delete">
+                                                    <img src="../img/delete.png" alt="Delete" title="Deletar Projeto">
                                                 </a>
                                             </li>
                                         </div>
