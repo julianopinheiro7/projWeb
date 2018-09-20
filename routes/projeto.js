@@ -10,4 +10,9 @@ module.exports = function (application) {
         application.app.controllers.projeto.cadastrar(application, req, res);
     });
     
+    application.get('/listarProjetos', (req, res) => {
+        console.log('Listar Projetos...');
+        application.app.controllers.projeto.listar(application, req, res);
+    });
+
 }

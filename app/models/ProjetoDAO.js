@@ -8,13 +8,12 @@ ProjetoDAO.prototype.postProjeto = function(projeto, callback){
     this._connection.query('insert into projeto set ?', projeto, callback);       
 }
 
-ProjetoDAO.prototype.getProjeto = function(id, callback){
-    this._connection.query('select * from projeto where idProjeto = ' + id, callback);
+ProjetoDAO.prototype.getProjeto = function(userID, callback){    
+    this._connection.query('select * from projeto where idUsuario = ' + userID, callback);    
 }
 
 ProjetoDAO.prototype.getUsuario = function(userID, callback){
-    this._connection.query('select * from users where id = ' + userID, callback);
-    console.log('Estou chegando aqui...', userID);
+    this._connection.query('select * from users where id = ' + userID, callback);    
 }
 
 module.exports = function(){

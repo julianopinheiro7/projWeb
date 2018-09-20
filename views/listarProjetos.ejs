@@ -1,0 +1,71 @@
+<html lang="pt">
+
+<%- include header %>
+
+<div class="container height-2">
+    <div class="row">
+        <table class="table table-striped">
+            <thead class="size-14">
+                <tr>
+                    <th scope="col">Num. Projeto</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Data de Inicio</th>
+                    <th scope="col">Horas Previstas</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" id="thActions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (data) { %>
+                <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= data[i].idProjeto %>
+                    </td>
+                    <td>
+                        <%= data[i].nome %>
+                    </td>
+                    <td>
+                        <%= moment(data[i].data_inicio).format('DD/MM/YYYY') %>
+                    </td>
+                    <td>
+                        <%= data[i].horas_previstas %>
+                    </td>
+                    <td>
+                        <%= data[i].status %>
+                    </td>
+                    <td class="actions center">
+                        <div class="options">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <img class="iconActions" src="../img/actions.png" alt="">
+                                    </a>
+                                    <ul>
+                                        <div class="inline div-actions">
+                                            <li>
+                                                <a href="/editarProjeto/<%= data[i].id %>">
+                                                    <img src="../img/edit.png" alt="Editar">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/excluirProjeto/<%= data[i].id %>">
+                                                    <img src="../img/delete.png" alt="Delete">
+                                                </a>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </td>
+                </tr>
+                <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include footer %>
