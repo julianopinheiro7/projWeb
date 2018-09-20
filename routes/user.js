@@ -60,8 +60,8 @@ exports.login = function (req, res) {
     }
 
 };
-//-----------------------------------------------dashboard page functionality----------------------------------------------
 
+//-----------------------------------------------dashboard page functionality----------------------------------------------
 exports.dashboard = function (req, res, next) {
     
     var user = req.session.user,
@@ -81,12 +81,14 @@ exports.dashboard = function (req, res, next) {
         })        
     });
 };
+
 //------------------------------------logout functionality----------------------------------------------
 exports.logout = function (req, res) {
     req.session.destroy(function (err) {
         res.redirect("/login");
     })
 };
+
 //--------------------------------render user details after login--------------------------------
 exports.profile = function (req, res) {
 
@@ -101,6 +103,7 @@ exports.profile = function (req, res) {
         res.render('profile.ejs', { data: result });
     });
 };
+
 //---------------------------------edit users details after login----------------------------------
 exports.editprofile = function (req, res) {
     var userId = req.session.userId;
@@ -114,6 +117,7 @@ exports.editprofile = function (req, res) {
         res.render('edit_profile.ejs', { data: results });
     });
 };
+
 //--------------------------------- render view novos projetos
 exports.novoProjeto = function (req, res, next) {
 
@@ -137,6 +141,7 @@ exports.novoProjeto = function (req, res, next) {
         res.render('novoProjeto.ejs', { user: userId, message: msg });
     });
 };
+
 //------------------------------- render header
 exports.header = function (req, res, next) {
    
