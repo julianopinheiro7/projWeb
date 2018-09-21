@@ -16,14 +16,11 @@ module.exports.cadastrarProjeto = function (application, req, res) {
         return;
     }
 
-    let id = req.query.idProjeto;
-    console.log('Variavel proj...:', id);
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
+    let id = req.query.idProjeto;    
     if (id != undefined) {
-
-        console.log('Entrei no if...:', id);
-        const projetoModel = new application.app.models.ProjetoDAO(global.db);
-
+        
         let dados = {
             idProj: id,
             idUser: userId
@@ -31,38 +28,55 @@ module.exports.cadastrarProjeto = function (application, req, res) {
 
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjeto(dados, (err, result) => {
+                
+                let dtInicio = result[0].data_inicio;
+                Date.parse(dtInicio);
+                
+                console.log(dtInicio);
+
                 if (err) {
                     res.json(err);
                 }
-                console.log('Result....:', result[0].nome);
-                res.render('novoProjeto', {
-                    message: msg,
-                    user: userId,
-                    nome: result2[0].first_name,
-                    proj: result[0].nome
-                });                
+                else {                    
+                    res.render('novoProjeto', {
+                        message: msg,
+                        user: userId,
+                        nomeUsuario: result2[0].first_name,
+                        dados: result[0],  
+                        dtInicio: dtInicio,                      
+                        moment: moment                      
+                    });                
+                }
             })
         });
     }
-    else {
-        console.log('Estou caindo no else !!!');
-        res.render('novoProjeto', { message: msg, user: userId, nome: result2[0].first_name });
+    else {       
+        projetoModel.getUsuario(userId, (err2, result2) => {
+            if (err2) {
+                console.log(err2);
+            }
+            else {
+                res.render('novoProjeto', { 
+                    message: msg,
+                    user: userId,
+                    nomeUsuario: result2[0].first_name,
+                    dados: {},
+                    moment: moment       
+                });
+            }
+        });
     }
-
-
-
-
-
-
 }
-
 
 module.exports.cadastrar = function (application, req, res) {
 
     let projeto = req.body;
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
-    if (projeto.idProjeto == '') {
+    console.log('idProjeto', projeto.idProjeto );
+
+    if (projeto.idProjeto == undefined) {
+        console.log('Entrei aqui...')
         projetoModel.postProjeto(projeto, (err, result) => {
             if (err) {
                 console.log(err);
@@ -72,8 +86,7 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/cadastrarProjeto?msg=T');
             }
         });
-    }
-    else {
+    } else {
         projetoModel.putProjeto(projeto, (err, result) => {
             if (err != null) {
                 res.redirect('/cadastrarProjeto?msg=F');
@@ -105,18 +118,16 @@ module.exports.listar = function (application, req, res) {
     }
 
     let proj = req.body;
-    console.log(proj);
 
     projetoModel.getUsuario(userId, (err2, result2) => {
         projetoModel.getListarProjeto(userId, (err, result) => {
-            if (err) {
-                console.log('Erro...: ', err);
+            if (err) {                
                 res.json(err);
             }
             res.render('listarProjetos', {
                 message: msg,
                 user: userId,
-                nome: result2[0].first_name,
+                nomeUsuario: result2[0].first_name,
                 data: result,
                 moment: moment
             });

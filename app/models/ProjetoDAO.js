@@ -7,13 +7,11 @@ ProjetoDAO.prototype.postProjeto = function(projeto, callback){
 }
 
 ProjetoDAO.prototype.getProjeto = function(dados, callback){    
-    this._connection.query('select * from projeto where idProjeto = ? and idUsuario = ?', [dados.idProj, dados.idUser], callback);
-    console.log('Consegui fazer o select...');  
+    this._connection.query('select * from projeto where idProjeto = ? and idUsuario = ?', [dados.idProj, dados.idUser], callback);    
 }
 
 ProjetoDAO.prototype.getListarProjeto = function(userID, callback){    
-    this._connection.query('select * from projeto where idUsuario = ' + userID, callback);
-    console.log('Consegui fazer o select getListarProjeto');  
+    this._connection.query('select * from projeto where idUsuario = ' + userID, callback);    
 }
 
 ProjetoDAO.prototype.getUsuario = function(userID, callback){

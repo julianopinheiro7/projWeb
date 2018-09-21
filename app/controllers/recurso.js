@@ -18,7 +18,7 @@ module.exports.cadastrarRecurso = function (application, req, res) {
 
     recursoModel.getRecurso(req.query.id, (err, result) => {
         projetoModel.getUsuario(userId, (err2, result2) => {
-            res.render('novoRecurso', { message: msg, user: userId, nome: result2[0].first_name });
+            res.render('novoRecurso', { message: msg, user: userId, nomeUsuario: result2[0].first_name });
         })
     });
 }

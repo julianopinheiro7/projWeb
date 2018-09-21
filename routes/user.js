@@ -77,7 +77,7 @@ exports.dashboard = function (req, res, next) {
 
     db.query(sql, function (err, results) {        
         db.query(sql2, function (err2, results2) {            
-            res.render('dashboard.ejs', { user: userId, nome: results[0].first_name, qtde: results2[0].qtde });
+            res.render('dashboard.ejs', { user: userId, nomeUsuario: results[0].first_name, qtde: results2[0].qtde });
         })        
     });
 };
@@ -156,6 +156,11 @@ exports.header = function (req, res, next) {
     var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
 
     db.query(sql, function (err, results) {
-        res.render('header', { user: userId, nome: results[0].first_name });
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render('header', { user: userId, nomeUsuario: results[0].first_name });
+        }        
     });
 };
