@@ -12,4 +12,8 @@ module.exports = function (application) {
         application.app.controllers.projeto.listar(application, req, res);
     });
 
+    application.get('/excluirProjeto', (req, res) => {
+        application.app.controllers.projeto.excluirProjeto(application, req, res);
+    });
+
 }

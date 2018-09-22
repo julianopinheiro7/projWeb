@@ -1,5 +1,4 @@
 var moment = require('moment');
-
 module.exports.cadastrarProjeto = function (application, req, res) {
 
     let msg = '';
@@ -28,11 +27,6 @@ module.exports.cadastrarProjeto = function (application, req, res) {
 
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjeto(dados, (err, result) => {
-                
-                let dtInicio = result[0].data_inicio;
-                Date.parse(dtInicio);
-                
-                console.log(dtInicio);
 
                 if (err) {
                     res.json(err);
@@ -42,8 +36,7 @@ module.exports.cadastrarProjeto = function (application, req, res) {
                         message: msg,
                         user: userId,
                         nomeUsuario: result2[0].first_name,
-                        dados: result[0],  
-                        dtInicio: dtInicio,                      
+                        dados: result[0],                    
                         moment: moment                      
                     });                
                 }
@@ -73,11 +66,18 @@ module.exports.cadastrar = function (application, req, res) {
     let projeto = req.body;
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
-    console.log('idProjeto', projeto.idProjeto );
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }    
 
-    if (projeto.idProjeto == undefined) {
-        console.log('Entrei aqui...')
+    if (projeto.idProjeto == '') {        
+        delete projeto.idProjeto;            
         projetoModel.postProjeto(projeto, (err, result) => {
+            
             if (err) {
                 console.log(err);
                 res.redirect('/cadastrarProjeto?msg=F');
@@ -88,11 +88,12 @@ module.exports.cadastrar = function (application, req, res) {
         });
     } else {
         projetoModel.putProjeto(projeto, (err, result) => {
+            
             if (err != null) {
                 res.redirect('/cadastrarProjeto?msg=F');
             }
-            else {
-                res.redirect('/cadastrarProjeto?msg=T');
+            else {                
+                res.redirect('http://localhost:8080/listarProjetos');
             }
         });
     }
@@ -117,8 +118,6 @@ module.exports.listar = function (application, req, res) {
         return;
     }
 
-    let proj = req.body;
-
     projetoModel.getUsuario(userId, (err2, result2) => {
         projetoModel.getListarProjeto(userId, (err, result) => {
             if (err) {                
@@ -133,6 +132,26 @@ module.exports.listar = function (application, req, res) {
             });
         })
     });
+}
+
+module.exports.excluirProjeto = function (application, req, res) {
+    
+    let projeto = req.body; 
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+
+    if (req.query.idProjeto != undefined) {
+        
+        projetoModel.deleteProjeto(req.query.idProjeto, (err, result) => {
+            if (err != null) {
+                console.log(err);
+            }
+            else {                
+                res.redirect('http://localhost:8080/listarProjetos');
+            }
+        });
+    } else {
+        console.log('To pulando pro else mesmo!');        
+    }
 }
 
 

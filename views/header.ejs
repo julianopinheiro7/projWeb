@@ -5,7 +5,17 @@
   <title>ProjWEB - Gestão de Projetos</title>
   <link rel='stylesheet' href='../style/style.css' />
   <link rel="icon" href="../img/icon.ico">
-  <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/-->
+  <script>
+    function UpdateConfirm() {
+      var userPreference;
+      if (confirm("Voce realmente deseja excluir?") == true) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+  </script>
   <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
   <link rel="stylesheet" href="../style/bootstrap-3.3.1/dist/css/bootstrap.min.css">
 </head>
@@ -30,7 +40,8 @@
                 <div class="div-user center">
                   <div class="iconeUser">
                     <img src="../img/user.png" alt="User ProjWeb" id="userIcon">
-                    <div class="divUserID"> Id. Usuário: <b><%= user %></b> </div>
+                    <div class="divUserID"> Id. Usuário: <b>
+                        <%= user %></b> </div>
                   </div>
                   <div class="iconeUser">
                     <p class="name-user">
@@ -47,13 +58,15 @@
                   <div class="btn-menuLateral">
                     <a class="btnLateral" href="/cadastrarRecurso"><img src="/img/recursos.png" class="img-responsive center-block"
                         alt="Recursos">
-                      <p class="descOptions">Novo Recurso</p></a>
+                      <p class="descOptions">Novo Recurso</p>
+                    </a>
                   </div>
 
                   <div class="btn-menuLateral">
                     <a class="btnLateral" href="/cadastrarProjeto"><img src="/img/proj.png" class="img-responsive center-block"
                         alt="Recursos">
-                      <p class="descOptions">Novo Projeto</p></a>
+                      <p class="descOptions">Novo Projeto</p>
+                    </a>
                   </div>
 
                 </div>

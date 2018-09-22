@@ -29,7 +29,7 @@
                         <%= data[i].nome %>
                     </td>
                     <td>
-                        <%= moment(data[i].data_inicio).format('DD/MM/YYYY') %>
+                        <%= data[i].data_inicio %>
                     </td>
                     <td>
                         <%= data[i].horas_previstas %>
@@ -52,7 +52,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/excluirProjeto?idProjeto=<%= data[i].idProjeto %>">
+                                                <a href="/excluirProjeto?idProjeto=<%= data[i].idProjeto %>" onclick="updateConfirm();" >
                                                     <img src="../img/delete.png" alt="Delete" title="Deletar Projeto">
                                                 </a>
                                             </li>

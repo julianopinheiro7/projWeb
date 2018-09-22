@@ -21,8 +21,11 @@ ProjetoDAO.prototype.getUsuario = function(userID, callback){
 ProjetoDAO.prototype.putProjeto = function(projeto, callback){
     let idProjeto = projeto.idProjeto;
     delete projeto.idProjeto;
-
     this._connection.query('update projeto set ? where idProjeto = ?', [projeto, idProjeto], callback);
+}
+
+ProjetoDAO.prototype.deleteProjeto = function(idProjeto, callback){
+    this._connection.query('delete from projeto where idProjeto = ?', idProjeto, callback);
 }
 
 module.exports = function(){
