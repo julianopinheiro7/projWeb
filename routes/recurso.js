@@ -1,13 +1,15 @@
 module.exports = function (application) {
 
-    application.get('/cadastrarRecurso', (req, res) => {
-        console.log('Passei aqui...');
+    application.get('/cadastrarRecurso', (req, res) => {        
         application.app.controllers.recurso.cadastrarRecurso(application, req, res);
     });
 
-    application.post('/gravarRecurso', (req, res) => {
-        console.log('Entrei aqui mano!');
+    application.post('/gravarRecurso', (req, res) => {        
         application.app.controllers.recurso.cadastrar(application, req, res);
+    });
+
+    application.get('/listarRecursos', (req, res) => {        
+        application.app.controllers.recurso.listarRecurso(application, req, res);
     });
     
 }

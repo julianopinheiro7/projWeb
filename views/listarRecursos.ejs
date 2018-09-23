@@ -5,16 +5,15 @@
 <div class="container height-2">
     <div class="row">
 
-        <div class="divListar">Projetos</div>
+        <div class="divListar">Recursos</div>
 
         <table class="table table-sm">
             <thead class="size-14">
                 <tr>
-                    <th scope="col">Num. Projeto</th>
+                    <th scope="col">Num. Recurso</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Data de Inicio</th>
-                    <th scope="col">Horas Previstas</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Modo de Cobrança</th>                    
                     <th scope="col" id="thActions">Actions</th>
                 </tr>
             </thead>
@@ -23,37 +22,34 @@
                 <% for(var i=0; i < data.length; i++) { %>
                 <tr>
                     <td>
-                        <%= data[i].idProjeto %>
+                        <%= data[i].idRecurso %>
                     </td>
                     <td>
                         <%= data[i].nome %>
                     </td>
                     <td>
-                        <%= data[i].data_inicio %>
+                        <div><%= data[i].valor %></div> 
                     </td>
                     <td>
-                        <%= data[i].horas_previstas %>
-                    </td>
-                    <td>
-                        <%= data[i].status %>
-                    </td>
+                        <%= data[i].tipoCobranca %>
+                    </td>                    
                     <td class="actions center">
                         <div class="options">
                             <ul>
                                 <li>
-                                    <a href="#" class="linkOption">
+                                    <a href="#" class="linkOptionRec">
                                         <img class="iconActions" src="../img/actions.png" alt="">
                                     </a>
                                     <ul>
                                         <div class="inline div-actions">
                                             <li class="li-div-actions">
-                                                <a href="/cadastrarProjeto?idProjeto=<%= data[i].idProjeto %>">
-                                                    <img src="../img/edit.png" alt="Editar" title="Editar Projeto">
+                                                <a href="/cadastrarRecurso?idRecurso=<%= data[i].idRecurso %>">
+                                                    <img src="../img/edit.png" alt="Editar" title="Editar Recurso">
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/excluirProjeto?idProjeto=<%= data[i].idProjeto %>" onclick="updateConfirm();" >
-                                                    <img src="../img/delete.png" alt="Delete" title="Deletar Projeto">
+                                                <a href="/excluirRecurso?idRecurso=<%= data[i].idRecurso %>" onclick="updateConfirm();" >
+                                                    <img src="../img/delete.png" alt="Delete" title="Deletar Recurso">
                                                 </a>
                                             </li>
                                         </div>

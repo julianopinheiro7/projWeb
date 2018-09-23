@@ -83,7 +83,7 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/cadastrarProjeto?msg=F');
             }
             else {
-                res.redirect('/cadastrarProjeto?msg=T');
+                res.redirect('http://localhost:8080/listarProjetos');
             }
         });
     } else {

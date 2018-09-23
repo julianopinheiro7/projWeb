@@ -23,6 +23,7 @@
                     <span>Você deve preencher todos os campos!</b>
                 </div>
                 <% } %>
+                
                 <form class="form-horizontal" role="form" method="post" action="/cadastrar" onSubmit="return checkblank(this);">
                     <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
                     <div class="form-group">

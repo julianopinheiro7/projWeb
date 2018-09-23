@@ -25,26 +25,26 @@
                 <% } %>
 
                 <form class="form-horizontal" role="form" method="post" action="/gravarRecurso" onSubmit="return checkblank(this);">
-
+                    <input type="hidden" name="idRecurso" value="<%=dados.idRecurso%>">
                     <div class="form-group">
                         <label for="nome" class="col-md-3 control-label">Nome</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="nome" placeholder="Nome do Recurso">
+                            <input type="text" class="form-control" value="<%=dados.nome%>" name="nome" placeholder="Nome do Recurso">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="valor" class="col-md-3 control-label">Valor</label>
                         <div class="col-md-3">
-                            <input type="number" class="form-control" name="valor" placeholder="Valor">
+                            <input type="text" id="valor" value="<%=dados.valor%>" class="form-control" name="valor" placeholder="Valor">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="horas_previstas" class="col-md-3 control-label">Tipo de Cobrança</label>
+                        <label for="horas_previstas" value="<%=dados.tipoCobranca%>" class="col-md-3 control-label">Tipo de Cobrança</label>
                         <div class="col-md-3">
                             <select name="tipoCobranca" id="status" class="select">
-                                <option value="D">Dia</option>
-                                <option value="H">Hora</option>                                
-                                <option value="M">Mensal</option>    
+                                <option value="Dia">Dia</option>
+                                <option value="Hora">Hora</option>                                
+                                <option value="Mensal">Mensal</option>    
                             </select>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <div class="col-md-offset-3 col-md-9">
                             <button id="btn-Recurso" type="submit" class="btn btn-light">
                                 <i class="icon-hand-right"></i>
-                                Cadastrar Recurso</button>
+                                Salvar</button>
                         </div>
                     </div>
 

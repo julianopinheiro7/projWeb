@@ -6,7 +6,7 @@ ProjetoDAO.prototype.postProjeto = function(projeto, callback){
     this._connection.query('insert into projeto set ?', projeto, callback);       
 }
 
-ProjetoDAO.prototype.getProjeto = function(dados, callback){    
+ProjetoDAO.prototype.getProjeto = function(id, callback){    
     this._connection.query('select * from projeto where idProjeto = ? and idUsuario = ?', [dados.idProj, dados.idUser], callback);    
 }
 
