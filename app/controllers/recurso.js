@@ -61,23 +61,6 @@ module.exports.cadastrarRecurso = function (application, req, res) {
     }
 }
 
-/* 
-module.exports.cadastrar = function (application, req, res) {
-    
-    let recurso = req.body;
-    const recursoModel = new application.app.models.RecursoDAO(global.db);  
-         
-    recursoModel.postRecurso(recurso, (err, result) => {
-        if (err) {
-            console.log(err);
-            res.redirect('/cadastrarRecurso?msg=F');            
-        }
-        else {
-            res.redirect('/cadastrarRecurso?msg=T');
-        }
-    });
-} */
-
 module.exports.cadastrar = function (application, req, res) {
 
     let recurso = req.body;
@@ -125,7 +108,7 @@ module.exports.listarRecurso = function (application, req, res) {
         msg = req.query.msg;
     }
 
-    const projetoModel = new application.app.models.RecursoDAO(global.db);
+    const recursoModel = new application.app.models.RecursoDAO(global.db);
 
     var user = req.session.user,
         userId = req.session.userId;
@@ -135,8 +118,8 @@ module.exports.listarRecurso = function (application, req, res) {
         return;
     }
 
-    projetoModel.getUsuario(userId, (err2, result2) => {
-        projetoModel.getListarRecurso(userId, (err, result) => {
+    recursoModel.getUsuario(userId, (err2, result2) => {
+        recursoModel.getListarRecurso(userId, (err, result) => {
             if (err) {                
                 res.json(err);
             }
@@ -148,5 +131,24 @@ module.exports.listarRecurso = function (application, req, res) {
             });
         })
     });
+}
+
+module.exports.excluirRecurso = function (application, req, res) {
+    
+    const recursoModel = new application.app.models.RecursoDAO(global.db); 
+
+    if (req.query.idRecurso != undefined) {
+        
+        recursoModel.deleteRecurso(req.query.idRecurso, (err, result) => {
+            if (err != null) {
+                console.log(err);
+            }
+            else {                
+                res.redirect('http://localhost:8080/listarRecursos');
+            }
+        });
+    } else {
+        console.log('To pulando pro else mesmo!');        
+    }
 }
 
