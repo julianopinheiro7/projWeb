@@ -63,6 +63,10 @@
       $('#valor').bind('keypress', mask.money)
     });
 
+    $(function () {
+      $(".data").mask("99/99/9999");
+    })      
+
   </script>
 
   <link rel="stylesheet" href="../style/bootstrap-3.3.1/dist/css/bootstrap.min.css">
@@ -160,7 +164,7 @@
         </ul>
         <ul class="nav-ul nav-ul-right nav-ul-top">
           <li>
-            <a href="/apontarTarefa" class="tooltip2">
+            <a href="/listarTarefa" class="tooltip2">
               <img src="../img/iconTarefa.png" alt=""><span>Listar Tarefa</span>
             </a>
           </li>

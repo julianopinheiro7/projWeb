@@ -28,6 +28,11 @@ ProjetoDAO.prototype.deleteProjeto = function(idProjeto, callback){
     this._connection.query('delete from projeto where idProjeto = ?', idProjeto, callback);
 }
 
+ProjetoDAO.prototype.getProjetoSelect = function(callback){
+    console.log('To chegando aqui');
+    this._connection.query('select idProjeto, nome from projeto', callback);
+}
+
 module.exports = function(){
     return ProjetoDAO;
 }

@@ -1,0 +1,33 @@
+<html lang="pt">
+
+<%- include header %>
+
+<div class="container height-2">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 inline">
+        <div class="col-md-9">
+            <label for="selectProjetos" class="labelTitulo">Listar Tarefas</label>
+            <div class="inline">
+                <select name="idProjeto" id="selectProjetos" class="form-control selectList">
+                    <option value="">Selecione um Projeto</option>
+                    <% 
+                        for(var i = 0; i < selectProjeto.length; i++) { 
+                            let selected = ( data.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
+                    %>
+                    <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
+                        <%=selectProjeto[i].nome%>
+                    </option>
+                    <% } %>
+                </select>
+                <button class="btn btn-light btn-left-1">Listar Tarefas</button>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="col-md-3"></div>
+
+</div>
+
+
+
+<%- include footer %>

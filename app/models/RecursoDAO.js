@@ -2,8 +2,7 @@ function RecursoDAO(connection) {
     this._connection = connection;
 }
 
-RecursoDAO.prototype.postRecurso = function(recurso, callback){    
-    
+RecursoDAO.prototype.postRecurso = function(recurso, callback){        
     this._connection.query('insert into recursos set ?', recurso, callback);       
 }
 

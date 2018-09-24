@@ -26,6 +26,10 @@
     margin-top: 2rem;
 }
 
+.height-1 {
+    margin-top: 1rem;
+}
+
 .btn-light {
     background-color: #e0e0e0 !important;
     outline: none;
@@ -272,7 +276,9 @@ body {
     text-align: center;
 }
 
-
+#descricao {
+    height: 10rem;
+}
 
 /*-------------------------------------------*/
 
@@ -708,4 +714,23 @@ ul {
     height: 100%;
     width: 100%;
     align-items: center;
+}
+
+.listTarefas {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.btn-left-1 {
+    margin-left: 1rem;
+}
+
+.selectList {
+    width: 39rem !important;
+}
+
+.labelTitulo {
+    color: #7f7f7f;
+    font-weight: normal;
 }

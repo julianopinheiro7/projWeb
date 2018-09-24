@@ -1,6 +1,6 @@
 - Pontos de atenção, são observações para serem mostradas no dashboard, com a opção para continuar mostrando ou fechar.
 
-- Terminar o crud dos projetos e recursos.
+- Terminar o crud dos projetos e recursos [CONCLUIDO]
 
 - Criar tela para integração dos projetos e a visualização após integração dos dados.
 
