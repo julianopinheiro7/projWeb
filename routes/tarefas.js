@@ -12,4 +12,8 @@ module.exports = function (application) {
         application.app.controllers.tarefa.listarTarefa(application, req, res);
     });
 
+    application.get('/listarTarefaProjeto', (req, res) => {        
+        application.app.controllers.tarefa.listarTarefaProjeto(application, req, res);
+    });
+
 }

@@ -5,26 +5,52 @@
 <div class="container height-2">
     <div class="col-md-3"></div>
     <div class="col-md-6 inline">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <label for="selectProjetos" class="labelTitulo">Listar Tarefas</label>
-            <div class="inline">
-                <select name="idProjeto" id="selectProjetos" class="form-control selectList">
-                    <option value="">Selecione um Projeto</option>
-                    <% 
+            <form action="/listarTarefaProjeto" class="flex">
+                
+                    <select name="idProjeto" id="selectProjetos" class="form-control selectList">
+                        <option value="">Selecione um Projeto</option>
+                        <% 
                         for(var i = 0; i < selectProjeto.length; i++) { 
                             let selected = ( data.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
                     %>
-                    <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
-                        <%=selectProjeto[i].nome%>
-                    </option>
-                    <% } %>
-                </select>
-                <button class="btn btn-light btn-left-1">Listar Tarefas</button>
-            </div>
+                        <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
+                            <%=selectProjeto[i].nome%>
+                        </option>
+                        <% } %>
+                    </select>
+                    <button class="btn btn-light btn-left-1">Listar Tarefas</button>
+                
+            </form>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
     </div>
     <div class="col-md-3"></div>
+</div>
+
+<div class="containerTask height-4">
+
+    <%if(message == 'T') {%>
+    <div class="divListar">Projeto: </div>
+    
+    <% if (data) { %>
+        <% for(var i=0; i < data.length; i++) { %>
+
+        <div class="divTarefas">
+            <% data.descricao %>
+        </div>
+
+        <% } %>
+    <% } %>    
+    
+   
+    <% } %>
+    <%if(message == 'F') {%>
+    <div class="card-panel red center">
+        <span>Esse projeto não possui tarefas cadastradas</b>
+    </div>
+    <% } %>
 
 </div>
 

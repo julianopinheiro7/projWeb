@@ -734,3 +734,21 @@ ul {
     color: #7f7f7f;
     font-weight: normal;
 }
+
+.divTarefas {
+    border-radius: 5px;
+    padding: 2rem;
+    background: #fbfbfb;
+}
+
+.containerTask {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 70%;
+}
+
+.flex {
+    display: flex;
+}

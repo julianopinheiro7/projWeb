@@ -93,7 +93,7 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('http://localhost:8080/listarTarefa');
+                res.redirect('/listarTarefa?msg=T');
             }
         });
     } else {
@@ -142,6 +142,45 @@ module.exports.listarTarefa = function (application, req, res) {
                     selectProjeto: result3
                 });
             })
+        })
+    });
+}
+
+module.exports.listarTarefaProjeto = function (application, req, res) {
+    let msg = '';
+
+    if (req.query.msg != '') {
+        msg = req.query.msg;
+    }
+
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    proj = {
+        userId: req.query.userId,
+        idProj: req.query.idProjeto
+    }
+
+    const tarefaModel = new application.app.models.TarefaDAO(global.db);
+
+    console.log('idProj', proj.idProj);
+
+    tarefaModel.getUsuario(userId, (err2, result2) => {
+        tarefaModel.getListarTarefaProjeto(proj, (err, result) => {
+            if (err) {
+                res.json(err);
+            }
+            res.render('/listarTarefa', {
+                message: 'T',
+                user: userId,
+                nomeUsuario: result2[0].first_name,
+                data: result
+            });
         })
     });
 }
