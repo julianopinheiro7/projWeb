@@ -93,7 +93,7 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('/listarTarefa?msg=T');
+                res.redirect('/listarTarefa?msg=T');                
             }
         });
     } else {
@@ -146,7 +146,7 @@ module.exports.listarTarefa = function (application, req, res) {
     });
 }
 
-module.exports.listarTarefaProjeto = function (application, req, res) {
+/* module.exports.listarTarefaProjeto = function (application, req, res) {
     let msg = '';
 
     if (req.query.msg != '') {
@@ -175,12 +175,12 @@ module.exports.listarTarefaProjeto = function (application, req, res) {
             if (err) {
                 res.json(err);
             }
-            res.render('/listarTarefa', {
-                message: 'T',
+            res.render('listarTarefa', {
+                message: msg,
                 user: userId,
                 nomeUsuario: result2[0].first_name,
                 data: result
             });
         })
     });
-}
+} */

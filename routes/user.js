@@ -12,22 +12,22 @@ exports.signup = function (req, res) {
         var fname = post.first_name;
         var lname = post.last_name;
         var email = post.email;
-       
-        if (post.first_name == '' || post.last_name == '' || post.email == '' || post.user_name == '' || post.password == '' ) {
-            
+
+        if (post.first_name == '' || post.last_name == '' || post.email == '' || post.user_name == '' || post.password == '') {
+
             message = "Para criar sua conta, você deve preencher todos os campos!";
             res.render('signup.ejs', { message: message });
         }
 
         var sql = "INSERT INTO `users`(`first_name`,`last_name`,`email`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + email + "','" + name + "','" + pass + "')";
-        
+
         db.query(sql, function (err, result) {
             message = "Parabéns! Sua conta foi criada com sucesso.";
             res.render('signup.ejs', { message: message });
         });
 
     } else {
-        res.render('signup');        
+        res.render('signup');
     }
 };
 
@@ -63,10 +63,10 @@ exports.login = function (req, res) {
 
 //-----------------------------------------------dashboard page functionality----------------------------------------------
 exports.dashboard = function (req, res, next) {
-    
+
     var user = req.session.user,
         userId = req.session.userId;
-    console.log('ddd=' + userId);
+    console.log('ddd_dash=' + userId);
     if (userId == null) {
         res.redirect("/login");
         return;
@@ -74,11 +74,22 @@ exports.dashboard = function (req, res, next) {
 
     var sql = "select * from `users` where `id`='" + userId + "'";
     var sql2 = "select count(*) as qtde from `projeto` where `idUsuario` = '" + userId + "'";
+    
+    //var sql3 = "select idProjeto, nome from `projeto` where `idUsuario` = '" + userId + "'";
 
-    db.query(sql, function (err, results) {        
-        db.query(sql2, function (err2, results2) {            
-            res.render('dashboard.ejs', { user: userId, nomeUsuario: results[0].first_name, qtde: results2[0].qtde });
-        })        
+
+
+    db.query(sql, function (err, results) {
+        db.query(sql2, function (err2, results2) {
+            //db.query(sql3, function (err3, results3) {
+                res.render('dashboard.ejs', {
+                    user: userId,
+                    nomeUsuario: results[0].first_name,
+                    qtde: results2[0].qtde
+//                    proj: results3[0]
+                });
+            //})            
+        })
     });
 };
 
@@ -144,10 +155,10 @@ exports.novoProjeto = function (req, res, next) {
 
 //------------------------------- render header
 exports.header = function (req, res, next) {
-   
+
     var user = req.session.user,
         userId = req.session.userId;
-    console.log('ddd=' + userId);
+    console.log('ddd_header=' + userId);
     if (userId == null) {
         res.redirect("/login");
         return;
@@ -155,12 +166,17 @@ exports.header = function (req, res, next) {
 
     var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
 
-    db.query(sql, function (err, results) {
-        if (err) {
-            console.log(err);
+    db.query(sql, function (err1, results) {
+
+        if (err2) {
+            console.log(err2);
         }
         else {
-            res.render('header', { user: userId, nomeUsuario: results[0].first_name });
-        }        
+            res.render('header', {
+                user: userId,
+                nomeUsuario: results[0].first_name
+            });
+        }
+
     });
 };
