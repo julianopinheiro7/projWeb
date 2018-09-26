@@ -8,7 +8,7 @@ module.exports.apontarTarefa = function (application, req, res) {
 
     var user = req.session.user,
         userId = req.session.userId;
-    console.log('ddd=' + userId);
+        console.log('ddd=' + userId);
     if (userId == null) {
         res.redirect("/login");
         return;
@@ -71,6 +71,7 @@ module.exports.apontarTarefa = function (application, req, res) {
 
 module.exports.cadastrar = function (application, req, res) {
 
+    let msg = '';
     let tarefa = req.body;
     const tarefaModel = new application.app.models.TarefaDAO(global.db);
 
@@ -82,10 +83,16 @@ module.exports.cadastrar = function (application, req, res) {
         return;
     }
 
+    proj = {
+        idProj: tarefa.idProjeto,
+        idUser: userId
+    }
+
+    console.log(proj);
+
     if (tarefa.idTarefa == '') {
 
         delete tarefa.idTarefa;
-
         tarefaModel.postTarefa(tarefa, (err, result) => {
 
             if (err) {
@@ -93,7 +100,20 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('/listarTarefa?msg=T');                
+                tarefaModel.getUsuario(userId, (err2, result2) => {
+                    tarefaModel.getListarTarefaProjeto(proj, (err, result) => {
+                        console.log(result[0].descricao);
+                        if (err) {
+                            res.json(err);
+                        }
+                        res.render('listarTarefa', {
+                            message: msg,
+                            user: userId,
+                            nomeUsuario: result2[0].first_name,
+                            data: result[0].descricao
+                        });
+                    })
+                });                
             }
         });
     } else {
@@ -117,8 +137,7 @@ module.exports.listarTarefa = function (application, req, res) {
         msg = req.query.msg;
     }
 
-    const tarefaModel = new application.app.models.TarefaDAO(global.db);
-    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+    const tarefaModel = new application.app.models.TarefaDAO(global.db);    
 
     var user = req.session.user,
         userId = req.session.userId;
@@ -128,25 +147,22 @@ module.exports.listarTarefa = function (application, req, res) {
         return;
     }
 
-    tarefaModel.getUsuario(userId, (err2, result2) => {
-        projetoModel.getProjetoSelect((err3, result3) => {
-            tarefaModel.getListarTarefa(userId, (err, result) => {
-                if (err) {
-                    res.json(err);
-                }
-                res.render('listarTarefa', {
-                    message: msg,
-                    user: userId,
-                    nomeUsuario: result2[0].first_name,
-                    data: result,
-                    selectProjeto: result3
-                });
-            })
-        })
+    tarefaModel.getUsuario(userId, (err2, result2) => {        
+        tarefaModel.getListarTarefa(userId, (err, result) => {            
+            if (err) {
+                res.json(err);
+            }
+            res.render('listarTarefa', {
+                message: msg,
+                user: userId,
+                nomeUsuario: result2[0].first_name,
+                data: result[0].descricao                
+            });
+        })        
     });
 }
 
-/* module.exports.listarTarefaProjeto = function (application, req, res) {
+module.exports.listarTarefaProjeto = function (application, req, res) {
     let msg = '';
 
     if (req.query.msg != '') {
@@ -183,4 +199,4 @@ module.exports.listarTarefa = function (application, req, res) {
             });
         })
     });
-} */
+} 

@@ -277,7 +277,12 @@ body {
 }
 
 #descricao {
-    height: 10rem;
+    height: 15rem;
+    width: 110%;
+}
+
+#formApontarTarefa {
+    margin: 0 0 0 -40px;
 }
 
 /*-------------------------------------------*/
@@ -652,6 +657,10 @@ a.tooltip2:hover span {
     font-size: 14px;
 }
 
+.size-13 {
+    font-size: 13px;
+}
+
 .iconActions {
     display: block;
     text-align: center;
@@ -702,7 +711,7 @@ ul {
 .divListar {        
     margin-bottom: 15px;
     padding: 5px 0 5px 15px;
-    border: 1px solid #f4f5f7;
+    border: 1px solid #e8e8e8;
     border-radius: 5px;
     font-size: 17px;        
     color: #2fc4c9;
@@ -722,6 +731,10 @@ ul {
     border-radius: 5px;
 }
 
+.col-3 {
+    width: 20% !important;
+}
+
 .btn-left-1 {
     margin-left: 1rem;
 }
@@ -735,10 +748,13 @@ ul {
     font-weight: normal;
 }
 
+
+
 .divTarefas {
     border-radius: 5px;
     padding: 2rem;
     background: #fbfbfb;
+    margin-bottom: 1rem;
 }
 
 .containerTask {
