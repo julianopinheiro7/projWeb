@@ -8,7 +8,7 @@ module.exports.apontarTarefa = function (application, req, res) {
 
     var user = req.session.user,
         userId = req.session.userId;
-        console.log('ddd=' + userId);
+    console.log('ddd=' + userId);
     if (userId == null) {
         res.redirect("/login");
         return;
@@ -71,7 +71,6 @@ module.exports.apontarTarefa = function (application, req, res) {
 
 module.exports.cadastrar = function (application, req, res) {
 
-    let msg = '';
     let tarefa = req.body;
     const tarefaModel = new application.app.models.TarefaDAO(global.db);
 
@@ -88,7 +87,6 @@ module.exports.cadastrar = function (application, req, res) {
         idUser: userId
     }
 
-    console.log(proj);
 
     if (tarefa.idTarefa == '') {
 
@@ -100,20 +98,7 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                tarefaModel.getUsuario(userId, (err2, result2) => {
-                    tarefaModel.getListarTarefaProjeto(proj, (err, result) => {
-                        console.log(result[0].descricao);
-                        if (err) {
-                            res.json(err);
-                        }
-                        res.render('listarTarefa', {
-                            message: msg,
-                            user: userId,
-                            nomeUsuario: result2[0].first_name,
-                            data: result[0].descricao
-                        });
-                    })
-                });                
+                res.redirect('/apontarTarefa?msg=F');
             }
         });
     } else {
@@ -123,21 +108,13 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('http://localhost:8080/listarTarefa');
+                res.redirect('/apontarTarefa?msg=F');
             }
         });
     }
 }
 
-module.exports.listarTarefa = function (application, req, res) {
-
-    let msg = '';
-
-    if (req.query.msg != '') {
-        msg = req.query.msg;
-    }
-
-    const tarefaModel = new application.app.models.TarefaDAO(global.db);    
+module.exports.consultarTarefa = function (application, req, res) {
 
     var user = req.session.user,
         userId = req.session.userId;
@@ -145,58 +122,23 @@ module.exports.listarTarefa = function (application, req, res) {
     if (userId == null) {
         res.redirect("/login");
         return;
-    }
-
-    tarefaModel.getUsuario(userId, (err2, result2) => {        
-        tarefaModel.getListarTarefa(userId, (err, result) => {            
-            if (err) {
-                res.json(err);
-            }
-            res.render('listarTarefa', {
-                message: msg,
-                user: userId,
-                nomeUsuario: result2[0].first_name,
-                data: result[0].descricao                
-            });
-        })        
-    });
-}
-
-module.exports.listarTarefaProjeto = function (application, req, res) {
-    let msg = '';
-
-    if (req.query.msg != '') {
-        msg = req.query.msg;
-    }
-
-    var user = req.session.user,
-        userId = req.session.userId;
-    console.log('ddd=' + userId);
-    if (userId == null) {
-        res.redirect("/login");
-        return;
-    }
-
-    proj = {
-        userId: req.query.userId,
-        idProj: req.query.idProjeto
     }
 
     const tarefaModel = new application.app.models.TarefaDAO(global.db);
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
-    console.log('idProj', proj.idProj);
-
-    tarefaModel.getUsuario(userId, (err2, result2) => {
-        tarefaModel.getListarTarefaProjeto(proj, (err, result) => {
+    tarefaModel.getUsuario(userId, (err, result) => {
+        projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
+            
             if (err) {
                 res.json(err);
             }
-            res.render('listarTarefa', {
-                message: msg,
+            res.render('consultarTarefa', {
                 user: userId,
-                nomeUsuario: result2[0].first_name,
-                data: result
+                nomeUsuario: result[0].first_name,
+                select: result1
             });
-        })
+        });
     });
-} 
+}
+

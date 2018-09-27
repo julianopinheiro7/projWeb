@@ -2,84 +2,84 @@
 
 <%- include header %>
 
-<div class="col-md-7 col-sm-7">
+<div class="container">
+    <div id="recursobox" class="mainbox col-md-12 col-sm-12">
 
-</div>
+        <div class="panel panel-light">
+            <div class="panel-heading">
+                <div class="panel-title text-center tituloPainel">Apontar Tarefa</div>
+            </div>
+            <div class="panel-body">
 
-<div id="recursobox" style=" margin-top:50px" class="mainbox col-md-5 col-sm-5">
-
-    <div class="panel panel-light">
-        <div class="panel-heading">
-            <div class="panel-title text-center tituloPainel">Apontar Tarefa</div>
-        </div>
-        <div class="panel-body">
-
-            <%if(message == 'T') {%>
+                <%if(message == 'T') {%>
                 <div class="card-panel red center">
                     Dados gravados com sucesso!
                 </div>
                 <% } %>
-                    <%if(message == 'F') {%>
-                        <div class="card-panel red center">
-                            <span>Você deve preencher todos os campos!</b>
-                        </div>
-                        <% } %>
+                <%if(message == 'F') {%>
+                <div class="card-panel red center">
+                    <span>Você deve preencher todos os campos!</b>
+                </div>
+                <% } %>
 
-                            <form class="form-horizontal" role="form" method="post" action="/gravarTarefa" id="formApontarTarefa" onSubmit="return checkblank(this);">
-                                <input type="hidden" name="idTarefa" value="<%=dados.idTarefa%>">
-                                <div class="form-group">
-                                    <label for="idProjeto" class="col-md-3 control-label size-13">Projeto</label>
-                                    <div class="col-md-6">
-
-                                        <select name="idProjeto" class="form-control">
-                                            <option value="">Selecione</option>
-                                            <% 
+                <form class="form-horizontal" role="form" method="post" action="/gravarTarefa" id="formApontarTarefa"
+                    onSubmit="return checkblank(this);">
+                    <input type="text" class="form-control disabled" name="idUsuario" value="<%=user%>">
+                    <input type="hidden" name="idTarefa" value="<%=dados.idTarefa%>">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class=col-md-6>
+                                <label for="idProjeto" class="size-13">Projeto</label>
+                                <select name="idProjeto" class="form-control">
+                                    <option value="">Selecione</option>
+                                    <% 
                                             for(var i = 0; i < selectProjeto.length; i++) { 
                                                 let selected = ( dados.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
                                             %>
-                                            <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
-                                                <%=selectProjeto[i].nome%>
-                                            </option>
-                                            <% } %>
-                                        </select>
+                                    <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
+                                        <%=selectProjeto[i].nome%>
+                                    </option>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class=col-md-2>
+                                <label for="data_inicial" class="size-13">Data Inicial</label>
+                                <input type="text" id="data_inicial" class="form-control data " value="<%=dados.data_inicial%>"
+                                    name="data_inicial" placeholder="___/___/_____">
+                            </div>
+                            <div class=col-md-2>
+                                <label for="hora_inicial" class="size-13">Hora Inicial</label>
+                                <input type="text" id="data_inicial" class="form-control hora" value="<%=dados.hora_inicial%>"
+                                    name="hora_inicial" placeholder=" ___:___ ">
+                            </div>
+                            <div class=col-md-2>
 
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="data_inicial" class="col-md-3 control-label size-13">Data Inicial</label>
-                                    <div class="col-md-3">
-                                        <input type="text" id="data_inicial" class="form-control data" value="<%=dados.data_inicial%>" name="data_inicial" placeholder="___/___/_____">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="data_final" class="col-md-3 control-label size-13">Data Final</label>
-                                    <div class="col-md-3">
-                                        <input type="text" id="data_final" class="form-control data" value="<%=dados.data_final%>" name="data_final" placeholder="___/___/_____">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="descricao" class="col-md-3 control-label size-13">Descrição</label>
-                                    <div class="col-md-8">
-                                        <textarea name="descricao" id="descricao" class="form-control" value="" cols="30" rows="10"></textarea>
-                                    </div>
-                                </div>
+                                <label for="hora_final" class="size-13">Hora Final</label>
+                                <input type="text" id="data_inicial" class="form-control hora " value="<%=dados.hora_final%>"
+                                    name="hora_final" placeholder=" ___:___ ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
 
-                                <div class="form-group">
-                                    <!-- Button -->
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button id="btn-Recurso" type="submit" class="btn btn-light">
-                                            <i class="icon-hand-right"></i>
-                                            Salvar</button>
-                                    </div>
-                                </div>
+                                <label for="descricao" class="size-13">Descrição</label>
+                                <textarea name="descricao" id="descricao" class="form-control" value=""></textarea>
 
-                                <input type="text" class="form-control disabled" name="idUsuario" value="<%=user%>">
+                                <button id="btnRecurso" type="submit" class="btn btn-light">
+                                    <i class="icon-hand-right"></i>
+                                    Salvar</button>
+                            </div>
 
-                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
 </div>
 
 
-    <%- include footer %>
+
+<%- include footer %>

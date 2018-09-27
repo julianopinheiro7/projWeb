@@ -67,6 +67,10 @@
       $(".data").mask("99/99/9999");
     })
 
+    $(function () {
+      $(".hora").mask("99:99");
+    })
+
   </script>
 
   <link rel="stylesheet" href="../style/bootstrap-3.3.1/dist/css/bootstrap.min.css">
@@ -157,14 +161,14 @@
               <img src="../img/listRecurso.png" alt=""><span>Listar Recurso</span>
             </a>
           </li>
-        </ul>
+        </ul>        
         <ul class="nav-ul nav-ul-right nav-ul-top">
-          <li>
-            <a href="/listarTarefa" class="tooltip2">
-              <img src="../img/iconTarefa.png" alt=""><span>Listar Tarefa</span>
-            </a>
-          </li>
-        </ul>
+            <li>
+              <a href="/consultarTarefa" class="tooltip2">
+                <img src="../img/iconTarefa.png" alt=""><span>Consultar Tarefas</span>
+              </a>
+            </li>
+          </ul>
       </div>
       <!--/.nav-collapse -->
     </div>

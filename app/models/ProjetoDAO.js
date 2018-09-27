@@ -33,6 +33,10 @@ ProjetoDAO.prototype.getProjetoSelect = function(callback){
     this._connection.query('select idProjeto, nome from projeto', callback);
 }
 
+ProjetoDAO.prototype.getProjetoSelectUser = function(userID, callback){    
+    this._connection.query('select idProjeto, nome from projeto where idUsuario = ?', userID, callback);    
+}
+
 module.exports = function(){
     return ProjetoDAO;
 }

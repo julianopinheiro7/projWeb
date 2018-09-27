@@ -8,12 +8,10 @@ module.exports = function (application) {
         application.app.controllers.tarefa.cadastrar(application, req, res);
     });
 
-    application.get('/listarTarefa', (req, res) => {        
-        application.app.controllers.tarefa.listarTarefa(application, req, res);
+    application.get('/consultarTarefa', (req, res) => {        
+        application.app.controllers.tarefa.consultarTarefa(application, req, res);
     });
 
-    application.get('/listarTarefaProjeto', (req, res) => {        
-        application.app.controllers.tarefa.listarTarefaProjeto(application, req, res);
-    });
+
 
 }
