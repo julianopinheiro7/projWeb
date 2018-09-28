@@ -98,7 +98,7 @@ module.exports.cadastrar = function (application, req, res) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('/apontarTarefa?msg=F');
+                res.redirect('/apontarTarefa?msg=T');
             }
         });
     } else {
@@ -116,29 +116,67 @@ module.exports.cadastrar = function (application, req, res) {
 
 module.exports.consultarTarefa = function (application, req, res) {
 
+    let msg = ''
+    let id = req.query.idProjeto;
+
+    if (req.query.msg != '') {
+        msg = req.query.msg;
+    }
+
     var user = req.session.user,
         userId = req.session.userId;
-    console.log('ddd=' + userId);
+        console.log('ddd=' + userId);
     if (userId == null) {
         res.redirect("/login");
         return;
     }
 
+    let obj = {
+        id: id,
+        idUser: userId
+    }
+
     const tarefaModel = new application.app.models.TarefaDAO(global.db);
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
-    tarefaModel.getUsuario(userId, (err, result) => {
-        projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
-            
-            if (err) {
-                res.json(err);
-            }
-            res.render('consultarTarefa', {
-                user: userId,
-                nomeUsuario: result[0].first_name,
-                select: result1
+    if (id == undefined) {
+
+        tarefaModel.getUsuario(userId, (err, result) => {
+            projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
+                
+                if (err) {
+                    res.json(err);
+                }
+                res.render('consultarTarefa', {
+                    message: msg,
+                    user: userId,
+                    nomeUsuario: result[0].first_name,
+                    select: result1,
+                    dados: {}
+                });                
+            });
+        });        
+    }
+    else {
+        tarefaModel.getUsuario(userId, (err, result) => {
+            tarefaModel.getExibirTarefa(obj, (err2, result2) => {
+                if(err2) {
+                    res.json(err);
+                }
+                res.render('consultarTarefa', {
+                    message: msg,
+                    user: userId,
+                    nomeUsuario: result[0].first_name,
+                    select: {},                    
+                    dados: result2
+                })
+                console.log('msg...:', msg);
             });
         });
-    });
+    }
+
+    
+    
+    
 }
 

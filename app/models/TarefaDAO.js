@@ -24,9 +24,8 @@ TarefaDAO.prototype.getListarTarefa = function(userID, callback){
     this._connection.query('select * from tarefas where idUsuario = ' + userID, callback);    
 }
 
-TarefaDAO.prototype.getListarTarefaProjeto = function(proj, callback){    
-    console.log(proj);
-    this._connection.query('select * from tarefas where idProjeto = ? and idUsuario = ?', [proj.idProj, proj.idUser], callback);    
+TarefaDAO.prototype.getExibirTarefa = function(obj, callback) {
+    this._connection.query('select * from tarefas where idProjeto = ? and idUsuario = ?', [obj.id, obj.idUser], callback);
 }
 
 module.exports = function(){

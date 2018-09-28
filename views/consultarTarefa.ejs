@@ -2,25 +2,62 @@
 
 <%- include header %>
 
-<div class="container height-4">
-    <div class="col-md-12 inline">Selecione o Projeto:
+    <div class="container height-4">
 
-        <div class="col-md-4">
-            <select name="idProjeto" class="form-control">
-                <option value="">Selecione</option>
-                <% 
+        <form action="/consultarTarefa" method="GET">
+            <div class="row">
+
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <span>Selecione o Projeto:</span>
+                    <select name="idProjeto" class="form-control">
+                        <option value="">Selecione</option>
+                        <% 
                     for(var i = 0; i < select.length; i++) { 
                         let selected = ( select.idProjeto == select[i].idProjeto ) ? "selected" : "";
                     %>
-                <option value="<%=select[i].idProjeto%>" <%=selected %> >
-                    <%=select[i].nome%>
-                </option>
+                            <option value="<%=select[i].idProjeto%>" <%=selected %> >
+                                <%=select[i].nome%>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="row height-2">
+                <div class="col-md-12 center">
+                    <button>Exibir Tarefas</button>
+                </div>
+            </div>
+        </form>
+        
+        <%if(message == undefined) {%>
+
+            <div>
+                <% if (dados) { %>
+                    <% for(var i=0; i < dados.length; i++) { %>
+
+                    <div class="container">
+                        <div class="divTarefas">
+                            <div class="flex">
+                                <div class="divDados"><span class="spanTarefas">Data Inicial:</span><%= dados[i].data_inicial %></div>
+                                <div class="divDados"><span class="spanTarefas">Hora Inicial:</span><%= dados[i].hora_inicial %></div>
+                                <div class="divDados"><span class="spanTarefas">Hora Final:</span><%= dados[i].hora_final %></div>                            
+                            </div>
+                            <div class="divDados"><span class="spanTarefas">Descrição:</span><%= dados[i].descricao %></div>
+                        </div>
+                    </div>
+
+                    <% } %>
                 <% } %>
-            </select>
-        </div>
+            </div>
+        <% } %>
+        
+        <%if(message != undefined) {%>
+            <div class="card-panel red center">
+                <span>Projeto sem tarefas cadastradas</b>
+            </div>
+        <% } %>
 
     </div>
 
-</div>
-
-<%- include footer %>
+    <%- include footer %>

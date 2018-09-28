@@ -752,8 +752,6 @@ ul {
     font-weight: normal;
 }
 
-
-
 .divTarefas {
     border-radius: 5px;
     padding: 2rem;
@@ -795,4 +793,14 @@ ul {
 
 .linkProjTarefas:hover {
     background: #f4f5f7;
+}
+
+.spanTarefas {
+    font-weight: bold;
+    font-size: 14px;
+    margin-right: 1rem;
+}
+
+.divDados {
+    margin-right: 1rem;
 }

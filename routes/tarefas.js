@@ -12,6 +12,4 @@ module.exports = function (application) {
         application.app.controllers.tarefa.consultarTarefa(application, req, res);
     });
 
-
-
 }
