@@ -160,23 +160,35 @@ module.exports.consultarTarefa = function (application, req, res) {
     else {
         tarefaModel.getUsuario(userId, (err, result) => {
             tarefaModel.getExibirTarefa(obj, (err2, result2) => {
-                if(err2) {
-                    res.json(err);
-                }
-                res.render('consultarTarefa', {
-                    message: msg,
-                    user: userId,
-                    nomeUsuario: result[0].first_name,
-                    select: {},                    
-                    dados: result2
-                })
-                console.log('msg...:', msg);
+                projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
+                    if(err) {
+                        res.json(err);
+                    }
+                    if(err2) {
+                        res.json(err2);
+                    }
+                    if(err1) {
+                        res.json(err3);
+                    }
+                    res.render('consultarTarefa', {
+                        message: msg,
+                        user: userId,
+                        nomeUsuario: result[0].first_name,
+                        select: result1,                    
+                        dados: result2
+                    })
+                });
             });
         });
     }
 
-    
-    
-    
-}
+
+};
+
+
+
+
+
+
+
 
