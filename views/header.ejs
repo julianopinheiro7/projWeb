@@ -86,7 +86,22 @@
             <li class="active"><a href="/home/dashboard">Home</a></li>
           </ul> -->
 
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">          
+          <li>
+            <div>
+              <a href="/home/dashboard">
+                <img src="../img/projWebLogo.png" class="img-responsive img-20" alt="ProjWEB Gestão de Projetos OnLine">
+              </a>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="navbar-right nav-ul nav-ul-top" id="exit">
+          <li>
+            <a class="linkProj" href="/home/logout">Sair&nbsp;&nbsp;<img id="img-exit" src="../img/logout.png" alt=""></a>
+          </li>
+        </ul>
+        <ul class="navbar-right nav-ul nav-ul-top">
           <li>
             <div class="dropdown">
               <i class="material-icons dropbtn"><img src="../img/menu.png" alt="ProjWeb"></i>
@@ -132,22 +147,19 @@
                   </div>
                 </div>
               </div>
+              
             </div>
           </li>
+        </ul>
+        <ul class="nav-ul nav-ul-right nav-ul-top">
           <li>
-            <div>
-              <a href="/home/dashboard">
-                <img src="../img/projWebLogo.png" class="img-responsive img-17 col-offset-2" alt="ProjWEB Gestão de Projetos OnLine">
-              </a>
+            <div class="inline">
+              <img src="../img/user.png" alt="User ProjWeb" id="userIcon">
+              <p id="nameUserLogado"> <%= nomeUsuario %> </p>
             </div>
           </li>
         </ul>
 
-        <ul class="navbar-right nav-ul nav-ul-top" id="exit">
-          <li>
-            <a class="linkProj" href="/home/logout">Sair&nbsp;&nbsp;<img id="img-exit" src="../img/logout.png" alt=""></a>
-          </li>
-        </ul>
         <ul class="nav-ul nav-ul-right nav-ul-top">
           <li>
             <a href="/listarProjetos" class="tooltip2">
