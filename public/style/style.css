@@ -66,8 +66,7 @@
 }
 
 body {
-    font-family: roboto !important;
-    background: #f4f5f7 !important;
+    font-family: roboto !important;    
 }
 
 .navbar {
@@ -221,14 +220,16 @@ body {
     font-size: 11px;
 }
 
+
 /*Elementos ID*/
 
 #clrblk {
-    background: url('../img/gestao-projetos.png') no-repeat center top fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url('../img/gestao-projetos.png') !important; 
+    background-size: cover !important;  
+}
+
+#dash_back {
+    background: #f4f5f7 !important;
 }
 
 #icoMenu {
@@ -529,15 +530,14 @@ body {
 
 .quadrosDash {
     padding: 1rem;
-    width: 35rem;
+    width: 39rem;
     height: 22rem;
     background: #fff;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-    margin-right: 1rem;
+    border-radius: 2px;    
 }
 
 .heightQuadroDash {
