@@ -70,6 +70,8 @@
     $(function () {
       $(".hora").mask("99:99");
     })
+  
+    
 
   </script>
 
@@ -86,7 +88,7 @@
             <li class="active"><a href="/home/dashboard">Home</a></li>
           </ul> -->
 
-        <ul class="nav navbar-nav">          
+        <ul class="nav navbar-nav">
           <li>
             <div>
               <a href="/home/dashboard">
@@ -121,7 +123,7 @@
                     <p id="nameUserLogado">
                       <%= nomeUsuario %>
                     </p>
-                  </div>                  
+                  </div>
                 </div>
 
                 <div id="div-card-apps">
@@ -147,7 +149,7 @@
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </li>
         </ul>
@@ -155,32 +157,19 @@
           <li>
             <div class="inline">
               <img src="../img/user.png" alt="User ProjWeb" id="userIcon">
-              <p id="nameUserLogado"> <%= nomeUsuario %> </p>
+              <p id="nameUserLogado">
+                <%= nomeUsuario %>
+              </p>
             </div>
           </li>
         </ul>
-
         <ul class="nav-ul nav-ul-right nav-ul-top">
           <li>
-            <a href="/listarProjetos" class="tooltip2">
-              <img src="../img/listProjeto.png" alt=""><span>Listar Projeto</span>
+            <a href="/consultarTarefa" class="tooltip2">
+              <img src="../img/iconTarefa.png" alt=""><span>Consultar Tarefas</span>
             </a>
           </li>
         </ul>
-        <ul class="nav-ul nav-ul-right nav-ul-top">
-          <li>
-            <a href="/listarRecursos" class="tooltip2">
-              <img src="../img/listRecurso.png" alt=""><span>Listar Recurso</span>
-            </a>
-          </li>
-        </ul>        
-        <ul class="nav-ul nav-ul-right nav-ul-top">
-            <li>
-              <a href="/consultarTarefa" class="tooltip2">
-                <img src="../img/iconTarefa.png" alt=""><span>Consultar Tarefas</span>
-              </a>
-            </li>
-          </ul>
       </div>
       <!--/.nav-collapse -->
     </div>

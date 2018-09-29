@@ -2,130 +2,138 @@
 
 <%- include header %>
 
-<div class="containerDash height-2">
-    <div class="row">
+    <div class="containerDash height-2">
+        <div class="row">
 
-        <div class="col-sm-1">
-            <div class="optDash">
-                <div class="btn-menuLateral">
-                    <div class="optLateral">
-                        <a class="btnLateral" href="/cadastrarRecurso">
-                            <img src="/img/recursos.png" class="img-responsive center-block" alt="Recursos">
-                            <p class="descOptions">Novo Recurso</p>
-                        </a>
-                    </div>
-                    <div class="optLateral">
-                        <a class="btnLateral" href="/cadastrarProjeto">
-                            <img src="/img/proj.png" class="img-responsive center-block" alt="Recursos">
-                            <p class="descOptions">Novo Projeto</p>
-                        </a>
-                    </div>
-                    <div class="optLateral">
-                        <a class="btnLateral" href="/apontarTarefa">
-                            <img src="/img/apontarTarefa.png" class="img-responsive center-block" alt="Tarefas">
-                            <p class="descOptions">Apontar Tarefa</p>
-                        </a>
-                    </div>
-                    <div class="optLateral">
-                        <a class="btnLateral" href="/integrar">
-                            <img src="../img/integrar.png" class="img-responsive center-block" alt="Integrar">
-                            <p class="descOptions">Integrar Projeto</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="containerDash col-sm-7">
-            <div class="row">
-                <div class="tituloAlerta">
-                    <img class="iconQuadro2" src="../img/iconAtencao.png" alt="">Pontos de Atenção
-                </div>
-            </div>
-
-            <div class="row height-1 quad">
-                <div class="flex">
-                    <div class="quadrosDash">1</div>
-                    <div class="quadrosDash">2</div>
-                </div>
-            </div>
-
-            <div class="row quad">
-                <div class="flex">
-                    <div class="quadrosDash height-1">3</div>
-                    <div class="quadrosDash height-1">4</div>
-                </div>
-            </div>
-
-            <div class="row height-1">
-                <div class="divQuadrosDash">
-                    <div class="tituloDash">
-                        <img class="iconQuadro2" src="../img/iconProjCoad.png" alt="">Projetos Coadjuvantes
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="dadosDash">
-                                <div class="qtdeIndicadores">
-                                    -
-                                </div>
-                            </div>
+            <div class="col-sm-1">
+                <div class="optDash">
+                    <div class="btn-menuLateral">
+                        <div class="optLateral">
+                            <a class="btnLateral" href="/cadastrarRecurso">
+                                <img src="/img/recursos.png" class="img-responsive center-block" alt="Recursos">
+                                <p class="descOptions">Novo Recurso</p>
+                            </a>
                         </div>
-                        <div class="col-md-7">
-                            Estatisticas
+                        <div class="optLateral">
+                            <a class="btnLateral" href="/cadastrarProjeto">
+                                <img src="/img/proj.png" class="img-responsive center-block" alt="Recursos">
+                                <p class="descOptions">Novo Projeto</p>
+                            </a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="divQuadrosDash">
-                    <div class="tituloDash">
-                        <img class="iconQuadro2" src="../img/iconRecurso.png" alt="">Recursos
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="dadosDash">
-                                <div class="qtdeIndicadores">
-                                    -
-                                </div>
-                            </div>
+                        <div class="optLateral">
+                            <a class="btnLateral" href="/apontarTarefa">
+                                <img src="/img/apontarTarefa.png" class="img-responsive center-block" alt="Tarefas">
+                                <p class="descOptions">Apontar Tarefa</p>
+                            </a>
                         </div>
-                        <div class="col-md-7">
-                            Estatisticas
+                        <div class="optLateral">
+                            <a class="btnLateral" href="/integrar">
+                                <img src="../img/integrar.png" class="img-responsive center-block" alt="Integrar">
+                                <p class="descOptions">Integrar Projeto</p>
+                            </a>
                         </div>
                     </div>
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="containerDash col-sm-4 bodyDash">
-
-            <div class="divQuadrosDash">
-                <div class="tituloDash">
-                    <img class="iconQuadro" src="../img/iconMeusProjetos.png" alt="">Projetos Próprios
-                </div>
+            <div class="containerDash col-sm-7">
                 <div class="row">
-                    <div class="col-md-5">
-                        <div class="dadosDash">
-                            <div class="qtdeIndicadores">
-                                <%= qtde %>
+                    <div class="tituloAlerta">
+                        <p id="data"></p>
+                    </div>
+                </div>
+
+                <div class="row height-1 quad">
+                    <div class="flex">
+                        <div class="quadrosDash margin-right-1">
+                            <div class="">
+                                <div class="title">
+                                    <span class="font-15">Recursos</span>
+                                </div>
+                                <div class="center height-2">
+                                    <a class="size-13 linkQuadros" href="/listarRecursos">
+                                        <img class="width-8" src="../img/recursosDash.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="center font-12 height-4">
+                                    <p>Consulte aqui os seus recursos cadastrados e efetue alterações quando desejar. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quadrosDash">
+                            <div class="">
+                                <div class="title">
+                                    <span class="font-15">Tarefas</span>
+                                </div>
+                                <div class="center height-2">
+                                    <a class="size-13 linkQuadros" href="/consultarTarefa">
+                                        <img class="width-8" src="../img/tarefasDash.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="center font-12 height-4">
+                                    <p>Liste suas tarefas apontadas e edite as informações de acordo com seu andamento. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
-                        Estatisticas
+                </div>
+
+                <div class="row quad">
+                    <div class="flex">
+                        <div class="quadrosDash height-1 margin-right-1">
+                            <div class="">
+                                <div class="title">
+                                    <span class="font-15">Projetos</span>
+                                </div>
+                                <div class="center height-2">
+                                    <a class="size-13 linkQuadros" href="/listarProjetos">
+                                        <img class="width-8" src="../img/projetosDash.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="center font-12 height-4">
+                                    <p>Exiba se projetos, verifique status e as demais informações detalhadas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quadrosDash height-1">
+                            <div class="">
+                                <div class="title">
+                                    <span class="font-15">Pontos de Atenção</span>
+                                </div>                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div class="containerDash col-sm-4 bodyDash">
+
+                <div class="divQuadrosDash">
+                    <div class="tituloDash">
+                        <img class="iconQuadro" src="../img/iconMeusProjetos.png" alt="">Projetos Próprios
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="dadosDash">
+                                <div class="qtdeIndicadores">
+                                    <%= qtde %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            Estatisticas
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
 
         </div>
-
-
-
     </div>
-</div>
 
 
-<%- include footer %>
+    <%- include footer %>

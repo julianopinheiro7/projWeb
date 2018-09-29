@@ -51,6 +51,10 @@
     width: 10rem;
 }
 
+.width-8 {
+    width: 8rem;
+}
+
 .width-22 {
     width: 22rem;
 }
@@ -63,6 +67,11 @@
 @font-face {
     font-family: roboto;
     src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: robotolight;
+    src: url(../fonts/Roboto-Light.ttf);
 }
 
 body {
@@ -488,8 +497,7 @@ body {
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid #fff;    
     background: #fff;
     display: inline-block;
 }
@@ -506,13 +514,27 @@ body {
 }
 
 .tituloDash {    
-    font-size: 1.4rem;
-    color: #5d5b5b;  
+    color: #5d5b5b;
     margin-left: 15px;
-    margin-right: 15px;
-    padding: 0.5rem;
-    margin-top: 1rem;
     border-radius: 5px;
+    width: 90%;
+}
+
+.floatRight {
+    float: right;
+}
+
+.font-15 {
+    font-size: 15px;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.title {
+    font-size: 16px;
+    font-family: robotolight, roboto, sans-serif;
 }
 
 .tituloAlerta {
@@ -538,6 +560,10 @@ body {
     box-sizing: border-box;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 2px;    
+}
+
+.margin-right-1 {
+    margin-right: 1rem;
 }
 
 .heightQuadroDash {
@@ -695,6 +721,12 @@ a.tooltip2:hover span {
 
 .size-13 {
     font-size: 13px;
+}
+
+.linkQuadros {
+    color: #007cff;
+    padding-left: 7rem;
+    padding-right: 7rem;
 }
 
 .iconActions {
