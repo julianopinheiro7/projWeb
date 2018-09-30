@@ -74,21 +74,26 @@ exports.dashboard = function (req, res, next) {
 
     var sql = "select * from `users` where `id`='" + userId + "'";
     var sql2 = "select count(*) as qtde from `projeto` where `idUsuario` = '" + userId + "'";
-    
+    var sql3 = "select count(*) as qtdeRec from `recursos` where `idUsuario` = '" + userId + "'";
+    var sql4 = "select count(*) as qtdeTar from `tarefas` where `idUsuario` = '" + userId + "'";
+
     //var sql3 = "select idProjeto, nome from `projeto` where `idUsuario` = '" + userId + "'";
 
 
 
     db.query(sql, function (err, results) {
         db.query(sql2, function (err2, results2) {
-            //db.query(sql3, function (err3, results3) {
-                res.render('dashboard.ejs', {
-                    user: userId,
-                    nomeUsuario: results[0].first_name,
-                    qtde: results2[0].qtde
-//                    proj: results3[0]
+            db.query(sql3, function (err3, results3) {
+                db.query(sql4, function (err4, results4) {
+                    res.render('dashboard.ejs', {
+                        user: userId,
+                        nomeUsuario: results[0].first_name,
+                        qtde: results2[0].qtde,
+                        qtdeRec: results3[0].qtdeRec,
+                        qtdeTar: results4[0].qtdeTar
+                    });
                 });
-            //})            
+            })
         })
     });
 };

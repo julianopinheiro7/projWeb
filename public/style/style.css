@@ -82,6 +82,12 @@ body {
     font-family: roboto !important;    
 }
 
+.back {
+    margin: 0;
+    width: 100%;    
+    background: #f4f5f7;
+}
+
 .navbar {
     margin-bottom: 0 !important;
     min-height: 65px !important;
@@ -233,8 +239,45 @@ body {
     font-size: 11px;
 }
 
+.rowIndicadores {        
+    margin-left: 10px;
+    width: 95%;   
+    display: inline-flex;
+    text-align: center; 
+}
+
+.dadosIndicadores {    
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    background: #f4f5f7;
+    width: 20%;
+    padding: 1rem;
+}
+
+.numberIndicadores {
+    color: #059a95;
+    font-size: 22px;
+    font-weight: bold;
+}
 
 /*Elementos ID*/
+
+#quadroDicas {
+    height: 32rem !important;
+    margin-top: 5px;
+}
+
+#date {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+#titledash {
+    color: #3fc3be;
+    margin-left: 5px;    
+}
 
 #clrblk {
     background: url('../img/gestao-projetos.png') !important; 
@@ -541,8 +584,10 @@ body {
     font-family: robotolight, roboto, sans-serif;
 }
 
+
+
 .tituloAlerta {
-    padding: 1rem;
+    padding: 1rem 0 0;
     font-size: 1.4rem;
     color: #5d5b5b;    
     width: 100%;
@@ -551,7 +596,8 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;    
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
+    border-radius: 2px; 
+    display: inline-flex;   
 }
 
 .quadrosDash {
@@ -568,6 +614,10 @@ body {
 
 .margin-right-1 {
     margin-right: 1rem;
+}
+
+.margin-left-1 {
+    margin-left: 1rem;
 }
 
 .heightQuadroDash {
@@ -668,7 +718,8 @@ body {
     padding-right: 5px;
     padding-left: 5px;
     margin-right: auto;
-    margin-left: auto;
+    margin-left: auto;    
+    padding-top: 15px;
     width: 98%;
 }
 
@@ -782,10 +833,9 @@ ul {
 
 .divListar {        
     margin-bottom: 15px;
-    padding: 5px 0 5px 15px;
-    border: 1px solid #e8e8e8;
-    border-radius: 5px;
-    font-size: 17px;        
+    padding: 5px 0 0;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 17px;
     color: #2fc4c9;
 }
 
