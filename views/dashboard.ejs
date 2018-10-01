@@ -1,182 +1,193 @@
 <html lang="pt">
 
 <%- include header %>
-<div class="back">
-    <div class="containerDash">
-        <div class="row">
+    <div class="back">
+        <div class="containerDash">
+            <div class="row">
 
-            <div class="col-sm-1 height-2">
-                <div class="optDash">
-                    <div class="btn-menuLateral">
-                        <div class="optLateral">
-                            <a class="btnLateral" href="/cadastrarRecurso">
-                                <img src="/img/recursos.png" class="img-responsive center-block" alt="Recursos">
-                                <p class="descOptions">Novo Recurso</p>
-                            </a>
-                        </div>
-                        <div class="optLateral">
-                            <a class="btnLateral" href="/cadastrarProjeto">
-                                <img src="/img/proj.png" class="img-responsive center-block" alt="Recursos">
-                                <p class="descOptions">Novo Projeto</p>
-                            </a>
-                        </div>
-                        <div class="optLateral">
-                            <a class="btnLateral" href="/apontarTarefa">
-                                <img src="/img/apontarTarefa.png" class="img-responsive center-block" alt="Tarefas">
-                                <p class="descOptions">Apontar Tarefa</p>
-                            </a>
-                        </div>
-                        <div class="optLateral">
-                            <a class="btnLateral" href="/integrar">
-                                <img src="../img/integrar.png" class="img-responsive center-block" alt="Integrar">
-                                <p class="descOptions">Integrar Projeto</p>
-                            </a>
+                <div class="col-sm-1 height-2">
+                    <div class="optDash">
+                        <div class="btn-menuLateral">
+                            <div class="optLateral">
+                                <a class="btnLateral" href="/cadastrarRecurso">
+                                    <img src="/img/recursos.png" class="img-responsive center-block" alt="Recursos">
+                                    <p class="descOptions">Novo Recurso</p>
+                                </a>
+                            </div>
+                            <div class="optLateral">
+                                <a class="btnLateral" href="/cadastrarProjeto">
+                                    <img src="/img/proj.png" class="img-responsive center-block" alt="Recursos">
+                                    <p class="descOptions">Novo Projeto</p>
+                                </a>
+                            </div>
+                            <div class="optLateral">
+                                <a class="btnLateral" href="/apontarTarefa">
+                                    <img src="/img/apontarTarefa.png" class="img-responsive center-block" alt="Tarefas">
+                                    <p class="descOptions">Apontar Tarefa</p>
+                                </a>
+                            </div>
+                            <div class="optLateral">
+                                <a class="btnLateral" href="/integrar">
+                                    <img src="../img/integrar.png" class="img-responsive center-block" alt="Integrar">
+                                    <p class="descOptions">Integrar Projeto</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+
+                <div class="containerDash col-sm-7">
+                    <div class="row">
+                        <div class="tituloAlerta">
+                            <p id="titledash">Dashboard</p>
+                            <div class="width-100">
+                                <p id="date" class="floatRight"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row height-1 quad">
+                        <div class="flex">
+                            <div class="quadrosDash margin-right-1">
+                                <div class="">
+                                    <div class="title">
+                                        <span class="font-15">Recursos</span>
+                                    </div>
+                                    <div class="center height-2">
+                                        <a class="size-13 linkQuadros" href="/listarRecursos">
+                                            <img class="width-8" src="../img/recursosDash.png" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="center font-12 height-4">
+                                        <p>Consulte aqui os seus recursos cadastrados e efetue alterações quando desejar.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quadrosDash">
+                                <div class="">
+                                    <div class="title">
+                                        <span class="font-15">Tarefas</span>
+                                    </div>
+                                    <div class="center height-2">
+                                        <a class="size-13 linkQuadros" href="/consultarTarefa">
+                                            <img class="width-8" src="../img/tarefasDash.png" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="center font-12 height-4">
+                                        <p>Liste suas tarefas apontadas e edite as informações de acordo com seu andamento.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row quad">
+                        <div class="flex">
+                            <div class="quadrosDash height-1 margin-right-1">
+                                <div class="">
+                                    <div class="title">
+                                        <span class="font-15">Projetos</span>
+                                    </div>
+                                    <div class="center height-2">
+                                        <a class="size-13 linkQuadros" href="/listarProjetos">
+                                            <img class="width-8" src="../img/projetosDash.png" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="center font-12 height-4">
+                                        <p>Exiba seus projetos, verifique status e demais informações detalhadas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="quadrosDash height-1">
+                                <div class="">
+                                    <div class="title">
+                                        <span class="font-15">Projetos Integrados</span>
+                                    </div>
+                                    <div class="center height-2">
+                                        <a class="size-13 linkQuadros" href="/integrarProjetos">
+                                            <img class="width-8" src="../img/integraDash.png" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="center font-12 height-4">
+                                        <p>Exiba os projetos integrados e verifique os custos e as despesas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="containerDash col-sm-4 bodyDash">
+
+                    <div class="divQuadrosDash">
+                        <div class="title height-1 margin-left-1">
+                            <span class="font-15">Indicadores ProjWeb</span>
+                        </div>
+                        <div class="rowIndicadores">
+                            <div class="dadosIndicadores">
+                                <span class="numberIndicadores">
+                                    <%= qtde %></span> Projeto(s)
+                            </div>
+                            <div class="dadosIndicadores">
+                                <span class="numberIndicadores">
+                                    <%= qtdeRec %></span> Recurso(s)
+                            </div>
+                            <div class="dadosIndicadores">
+                                <span class="numberIndicadores">
+                                    <%= qtdeTar %></span> Tarefa(s)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="divQuadrosDash" id="quadroDicas">
+
+                        <p id="titledash">Dicas de Projeto</p>
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="../img/dicas1.png" alt="Objetivo" style="width:100%;">
+                                    <p id="titledash" class="center">Defina de forma clara o objetivo do seu projeto. </p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="../img/dicas2.png" alt="Custos" style="width:100%;">
+                                    <p id="titledash" class="center">Monitore seus custos constantemente.</p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="../img/dicas3.png" alt="Prazos" style="width:100%;">
+                                    <p id="titledash" class="center">Defina prazos realistas.</p>
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
-
-            <div class="containerDash col-sm-7">
-                <div class="row">
-                    <div class="tituloAlerta">
-                        <p id="titledash">Dashboard</p>
-                        <div class="width-100">
-                            <p id="date" class="floatRight"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row height-1 quad">
-                    <div class="flex">
-                        <div class="quadrosDash margin-right-1">
-                            <div class="">
-                                <div class="title">
-                                    <span class="font-15">Recursos</span>
-                                </div>
-                                <div class="center height-2">
-                                    <a class="size-13 linkQuadros" href="/listarRecursos">
-                                        <img class="width-8" src="../img/recursosDash.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="center font-12 height-4">
-                                    <p>Consulte aqui os seus recursos cadastrados e efetue alterações quando desejar.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quadrosDash">
-                            <div class="">
-                                <div class="title">
-                                    <span class="font-15">Tarefas</span>
-                                </div>
-                                <div class="center height-2">
-                                    <a class="size-13 linkQuadros" href="/consultarTarefa">
-                                        <img class="width-8" src="../img/tarefasDash.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="center font-12 height-4">
-                                    <p>Liste suas tarefas apontadas e edite as informações de acordo com seu andamento.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row quad">
-                    <div class="flex">
-                        <div class="quadrosDash height-1 margin-right-1">
-                            <div class="">
-                                <div class="title">
-                                    <span class="font-15">Projetos</span>
-                                </div>
-                                <div class="center height-2">
-                                    <a class="size-13 linkQuadros" href="/listarProjetos">
-                                        <img class="width-8" src="../img/projetosDash.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="center font-12 height-4">
-                                    <p>Exiba seus projetos, verifique status e demais informações detalhadas.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quadrosDash height-1">
-                            <div class="">
-                                <div class="title">
-                                    <span class="font-15">Projetos Integrados</span>
-                                </div>
-                                <div class="center height-2">
-                                    <a class="size-13 linkQuadros" href="/integrarProjetos">
-                                        <img class="width-8" src="../img/integraDash.png" alt="">
-                                    </a>
-                                </div>
-                                <div class="center font-12 height-4">
-                                    <p>Exiba os projetos integrados e verifique os custos e as despesas.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="containerDash col-sm-4 bodyDash">
-
-                <div class="divQuadrosDash">
-                    <div class="title height-1 margin-left-1">
-                        <span class="font-15">Indicadores ProjWeb</span>
-                    </div>
-                    <div class="rowIndicadores">
-                        <div class="dadosIndicadores">
-                            <span class="numberIndicadores">
-                                <%= qtde %></span> Projeto(s)
-                        </div>
-                        <div class="dadosIndicadores">
-                            <span class="numberIndicadores">
-                                <%= qtdeRec %></span> Recurso(s)
-                        </div>
-                        <div class="dadosIndicadores">
-                            <span class="numberIndicadores">
-                                <%= qtdeTar %></span> Tarefa(s)
-                        </div>
-                    </div>
-                </div>
-
-                <div class="divQuadrosDash" id="quadroDicas">
-
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="d-block w-100" src="..." alt="First slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="..." alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="..." alt="Third slide">
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-
         </div>
-    </div>
 
-</div>
-<%- include footer %>
+    </div>
+    <%- include footer %>
