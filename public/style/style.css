@@ -264,6 +264,10 @@ body {
 
 /*Elementos ID*/
 
+#divEditarTarefa {
+    width: 28%;
+}
+
 #quadroDicas {
     height: 32rem !important;
     margin-top: 5px;
@@ -873,8 +877,9 @@ ul {
 .divTarefas {
     border-radius: 5px;
     padding: 2rem;
-    background: #f4f5f7;
+    border: 1px solid #ccc;
     margin-bottom: 1rem;
+    display: flex;
 }
 
 .containerTask {
