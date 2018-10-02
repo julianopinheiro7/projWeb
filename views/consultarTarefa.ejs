@@ -2,61 +2,65 @@
 
 <%- include header %>
 
-    <% if(select) {%>
+<% if(select) {%>
 
-        <div class="container height-4">
+<div class="container height-4">
 
-            <form action="/consultarTarefa" method="GET">
-                <div class="row">
+    <form action="/consultarTarefa" method="GET">
+        <div class="row">
 
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <span>Selecione o Projeto:</span>
-                        <select name="idProjeto" class="form-control">
-                            <option value="">Selecione</option>
-                            <% 
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <span>Selecione o Projeto:</span>
+                <select name="idProjeto" class="form-control">
+                    <option value="">Selecione</option>
+                    <% 
                         for(var i = 0; i < select.length; i++) { 
                             let selected = ( select.idProjeto == select[i].idProjeto ) ? "selected" : "";
                         %>
-                                <option value="<%=select[i].idProjeto%>" <%=selected %> >
-                                    <%=select[i].nome%>
-                                </option>
-                                <% } %>
-                        </select>
-                    </div>
-                </div>
-                <div class="row height-2">
-                    <div class="col-md-12 center">
-                        <button class="btn btn-light">Exibir Tarefas</button>
-                    </div>
-                </div>
-            </form>
-
-            <% if (dados) { %>
-                <% for(var i=0; i < dados.length; i++) { %>
-                        
-                    <div class="col-md-12">
-                        <div class="divTarefas">
-                            <div class="flex">
-                                <div class="divDados"><span class="spanTarefas">Data Inicial:</span><%= dados[i].data_inicial %>
-                                </div>
-                                <div class="divDados"><span class="spanTarefas">Hora Inicial:</span><%= dados[i].hora_inicial %>
-                                </div>
-                                <div class="divDados"><span class="spanTarefas">Hora Final:</span><%= dados[i].hora_final %>
-                                </div>
-                            </div>
-                            <div class="divDados"><span class="spanTarefas">Descrição:</span><%= dados[i].descricao %>
-                            </div>
-                        </div>
-                    </div>
-    
-                <% } %>
-            <% } %>
-
+                    <option value="<%=select[i].idProjeto%>" <%=selected %> >
+                        <%=select[i].nome%>
+                    </option>
+                    <% } %>
+                </select>
+            </div>
         </div>
+        <div class="row height-2">
+            <div class="col-md-12 center">
+                <button class="btn btn-light">Exibir Tarefas</button>
+            </div>
+        </div>
+    </form>
+
+    <% if (dados) { %>
+    <% for(var i=0; i < dados.length; i++) { %>
+
+    <div class="col-md-3"></div>
+    <div class="divTarefas col-md-7">
+        <div>
+            <div class="divDados"><span class="spanTarefas">Data Inicial:</span>
+                <div class="divDadosTarefas"><%= dados[i].data_inicial %></div>
+            </div>
+            <div class="divDados"><span class="spanTarefas">Hora Inicial:</span>
+                <div class="divDadosTarefas"><%= dados[i].hora_inicial %></div> 
+            </div>
+            <div class="divDados"><span class="spanTarefas">Hora Final:</span>
+                <div class="divDadosTarefas"><%= dados[i].hora_final %></div> 
+            </div>
+        </div>
+        <div class="divDados"><span class="spanTarefas">Descrição:</span>
+            <div class="divDadosTarefas"><%= dados[i].descricao %></div> 
+        </div>
+    </div>
+
 
     <% } %>
+    <% } %>
 
-   
+</div>
 
-    <%- include footer %>
+<% } %>
+
+
+
+<%- include footer %>

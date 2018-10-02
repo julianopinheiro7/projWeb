@@ -828,7 +828,7 @@ ul {
 }
 
 .li-div-actions {
-    margin-right: 3rem;
+    margin-right: 1rem;
 }
 
 .divListar {        
@@ -915,10 +915,15 @@ ul {
 
 .spanTarefas {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 13px;
     margin-right: 1rem;
 }
 
 .divDados {
     margin-right: 1rem;
+    display: inline-table;
+}
+
+.divDadosTarefas {    
+    padding-right: 5rem;
 }
