@@ -34,7 +34,7 @@
                                     <option value="">Selecione</option>
                                     <% 
                                         for(var i = 0; i < selectProjeto.length; i++) { 
-                                        let selected = ( selectProjeto.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
+                                        let selected = ( dados.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
                                     %>
                                     <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
                                         <%=selectProjeto[i].nome%>
@@ -50,13 +50,13 @@
                             <div class=col-md-2>
                                 <label for="hora_inicial" class="size-13">Hora Inicial</label>
                                 <input type="text" id="data_inicial" class="form-control hora" value="<%=dados.hora_inicial%>"
-                                    name="hora_inicial" placeholder=" ___:___ ">
+                                    name="hora_inicial" placeholder=" __:__ ">
                             </div>
                             <div class=col-md-2>
 
                                 <label for="hora_final" class="size-13">Hora Final</label>
                                 <input type="text" id="data_inicial" class="form-control hora " value="<%=dados.hora_final%>"
-                                    name="hora_final" placeholder=" ___:___ ">
+                                    name="hora_final" placeholder=" __:__ ">
                             </div>
                         </div>
                     </div>

@@ -15,7 +15,7 @@ TarefaDAO.prototype.postTarefa = function(tarefa, callback){
 }
 
 TarefaDAO.prototype.putTarefa = function(tarefa, callback){
-    let idTarefa = recurso.idTarefa;
+    let idTarefa = tarefa.idTarefa;
     delete tarefa.idTarefa;
     this._connection.query('update tarefas set ? where idTarefa = ?', [tarefa, idTarefa], callback);
 }

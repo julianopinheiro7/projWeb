@@ -2,98 +2,82 @@
 
 <%- include header %>
 
-<% if(select) {%>
+    <% if(select) {%>
 
-<div class="container height-4">
+        <div class="container height-4">
 
-    <form action="/consultarTarefa" method="GET">
-        <div class="row">
+            <form action="/consultarTarefa" method="GET">
+                <div class="row">
 
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <span>Selecione o Projeto:</span>
-                <select name="idProjeto" class="form-control">
-                    <option value="">Selecione</option>
-                    <% 
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <span>Selecione o Projeto:</span>
+                        <select name="idProjeto" class="form-control">
+                            <option value="">Selecione</option>
+                            <% 
                         for(var i = 0; i < select.length; i++) { 
                             let selected = ( select.idProjeto == select[i].idProjeto ) ? "selected" : "";
                         %>
-                    <option value="<%=select[i].idProjeto%>" <%=selected %> >
-                        <%=select[i].nome%>
-                    </option>
-                    <% } %>
-                </select>
-            </div>
-        </div>
-        <div class="row height-2">
-            <div class="col-md-12 center">
-                <button class="btn btn-light">Exibir Tarefas</button>
-            </div>
-        </div>
-    </form>
+                                <option value="<%=select[i].idProjeto%>" <%=selected %> >
+                                    <%=select[i].nome%>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div class="row height-2">
+                    <div class="col-md-12 center">
+                        <button class="btn btn-light">Exibir Tarefas</button>
+                    </div>
+                </div>
+            </form>
 
-    <% if (dados) { %>
-    <% for(var i=0; i < dados.length; i++) { %>
+            <% if (dados) { %>
+                <% for(var i=0; i < dados.length; i++) { %>
 
-    <div class="col-md-2"></div>
-    <div class="divTarefas col-md-8">        
-        <div>
-            <div class="divDados"><span class="spanTarefas">Data Inicial:</span>
-                <div class="divDadosTarefas">
-                    <%= dados[i].data_inicial %>
-                </div>
-            </div>
-            <div class="divDados"><span class="spanTarefas">Hora Inicial:</span>
-                <div class="divDadosTarefas">
-                    <%= dados[i].hora_inicial %>
-                </div>
-            </div>
-            <div class="divDados"><span class="spanTarefas">Hora Final:</span>
-                <div class="divDadosTarefas">
-                    <%= dados[i].hora_final %>
-                </div>
-            </div>
-        </div>
-        <div class="divDados"><span class="spanTarefas">Descrição:</span>
-            <div class="divDadosTarefas">
-                <%= dados[i].descricao %>
-            </div>
-        </div>
-        <div id="divEditarTarefa">
-            <div class="options">
-                <ul>
-                    <li>
-                        <a href="#" class="linkOptionRec">
-                            <img class="iconActions" src="../img/actions.png" alt="">
-                        </a>
-                        <ul>
-                            <div class="inline div-actions">
-                                <li class="li-div-actions">
-                                    <a href="/apontarTarefa?idTarefa=<%= dados[i].idTarefa %>">
-                                        <img src="../img/edit.png" alt="Editar" title="Editar Tarefa">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/excluirTarefa?idTarefa=<%= dados[i].idTarefa %>" onclick="updateConfirm();">
-                                        <img src="../img/delete.png" alt="Delete" title="Deletar Tarefa">
-                                    </a>
-                                </li>
+                    <div id="divExibirTarefas">
+                        <span class="spaceRight-5"> <%= dados[i].data_inicial %> </span>
+                        <span class="spaceRight-5"> <%= dados[i].hora_inicial %> </span>
+                        <span class="spaceRight-5"> <%= dados[i].hora_final %> </span>
+                        <div id="divEditarTarefa">
+                            <div class="options">
+                                <ul>
+                                    <li>
+                                        <a href="#" class="linkOptionRec">
+                                            <img class="iconActions" src="../img/actions.png" alt="">
+                                        </a>
+                                        <ul>
+                                            <div class="inline div-actions">
+                                                <li class="li-div-actions">
+                                                    <a href="/apontarTarefa?idTarefa=<%= dados[i].idTarefa %>">
+                                                        <img src="../img/edit.png" alt="Editar" title="Editar Tarefa">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/excluirTarefa?idTarefa=<%= dados[i].idTarefa %>" onclick="updateConfirm();">
+                                                        <img src="../img/delete.png" alt="Delete" title="Deletar Tarefa">
+                                                    </a>
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                        </div>
+                        <div>
+                            <span class="spaceRight-5"> <%= dados[i].descricao %> </span>
+                        </div>
+                    </div>
+
+
+
+                    <% } %>
+                        <% } %>
         </div>
-    </div>
+        </div>
 
-
-    <% } %>
-    <% } %>
-
-</div>
-
-<% } %>
+        <% } %>
 
 
 
-<%- include footer %>
+            <%- include footer %>

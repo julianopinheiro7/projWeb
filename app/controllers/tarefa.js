@@ -31,26 +31,28 @@ module.exports.apontarTarefa = function (application, req, res) {
         tarefaModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelect((err3, result3) => {
                 tarefaModel.getTarefa(dados, (err, result) => {
-
+                    console.log('goku', result3);
                     if (err3) {
                         res.json(err);
                     }
                     else {
+                        console.log(result);
                         res.render('apontarTarefa', {
                             message: msg,
                             user: userId,
                             nomeUsuario: result2[0].first_name,
                             dados: result[0],
-                            selectProjeto: result3[0]
+                            selectProjeto: result3
                         });
                     }
                 })
             })
         });
     }
-    else {        
+    else {
         tarefaModel.getUsuario(userId, (err2, result2) => {
-            projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
+            projetoModel.getProjetoSelect((err3, result3) => {
+                
                 if (err2) {
                     console.log(err2);
                 }
@@ -102,12 +104,13 @@ module.exports.cadastrar = function (application, req, res) {
         });
     } else {
         tarefaModel.putTarefa(tarefa, (err, result) => {
+            console.log('Estou entrando no else do putTarefa', tarefa);
 
             if (err != null) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('/apontarTarefa?msg=F');
+                res.redirect('/apontarTarefa?msg=T');
             }
         });
     }
@@ -124,7 +127,7 @@ module.exports.consultarTarefa = function (application, req, res) {
 
     var user = req.session.user,
         userId = req.session.userId;
-        console.log('ddd=' + userId);
+    console.log('ddd=' + userId);
     if (userId == null) {
         res.redirect("/login");
         return;
@@ -142,7 +145,7 @@ module.exports.consultarTarefa = function (application, req, res) {
 
         tarefaModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
-                
+
                 if (err) {
                     res.json(err);
                 }
@@ -152,22 +155,22 @@ module.exports.consultarTarefa = function (application, req, res) {
                     nomeUsuario: result[0].first_name,
                     select: result1,
                     dados: {}
-                });                
+                });
             });
-        });        
+        });
     }
     else {
         tarefaModel.getUsuario(userId, (err, result) => {
             tarefaModel.getExibirTarefa(obj, (err2, result2) => {
                 projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
                     console.log('dados', result1);
-                    if(err) {
+                    if (err) {
                         res.json(err);
                     }
-                    if(err2) {
+                    if (err2) {
                         res.json(err2);
                     }
-                    if(err1) {
+                    if (err1) {
                         res.json(err3);
                     }
                     res.render('consultarTarefa', {

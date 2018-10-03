@@ -185,6 +185,10 @@ body {
     margin-right: 1rem;
 }
 
+.spaceRight-5 {
+    margin-right: 5rem;
+}
+
 .linkProj {
     color: #656565;
     text-decoration: none !important;
@@ -262,10 +266,20 @@ body {
     font-weight: bold;
 }
 
+
+
 /*Elementos ID*/
 
+#divExibirTarefas {
+    margin-left: 10rem;
+    margin-bottom: 3rem;
+    background: #f4f5f7;
+}
+
 #divEditarTarefa {
-    width: 28%;
+    display: inline-flex;
+    position: relative;
+    top: 8px;    
 }
 
 #quadroDicas {
@@ -826,13 +840,14 @@ ul {
     position: relative;
     background: #fff;
     left: 95px;    
-    width: 85px;
+    width: 115px;
     text-align: center;
     border-radius: 10px;
+    padding: 1rem;
 }
 
 .li-div-actions {
-    margin-right: 1rem;
+    margin-right: 5rem;
 }
 
 .divListar {        
