@@ -33,9 +33,9 @@
                                 <select name="idProjeto" class="form-control">
                                     <option value="">Selecione</option>
                                     <% 
-                                            for(var i = 0; i < selectProjeto.length; i++) { 
-                                                let selected = ( dados.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
-                                            %>
+                                        for(var i = 0; i < selectProjeto.length; i++) { 
+                                        let selected = ( selectProjeto.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
+                                    %>
                                     <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
                                         <%=selectProjeto[i].nome%>
                                     </option>
@@ -65,7 +65,7 @@
                             <div class="col-md-12">
 
                                 <label for="descricao" class="size-13">Descrição</label>
-                                <textarea name="descricao" id="descricao" class="form-control" value=""></textarea>
+                                <input name="descricao" id="descricao" class="form-control" value="<%=dados.descricao%>">
 
                                 <button id="btnRecurso" type="submit" class="btn btn-light">
                                     <i class="icon-hand-right"></i>

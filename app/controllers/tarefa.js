@@ -48,10 +48,9 @@ module.exports.apontarTarefa = function (application, req, res) {
             })
         });
     }
-    else {
-        console.log('Fiote estou entrando no else');
+    else {        
         tarefaModel.getUsuario(userId, (err2, result2) => {
-            projetoModel.getProjetoSelect((err3, result3) => {
+            projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 if (err2) {
                     console.log(err2);
                 }
@@ -161,6 +160,7 @@ module.exports.consultarTarefa = function (application, req, res) {
         tarefaModel.getUsuario(userId, (err, result) => {
             tarefaModel.getExibirTarefa(obj, (err2, result2) => {
                 projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
+                    console.log('dados', result1);
                     if(err) {
                         res.json(err);
                     }
@@ -174,8 +174,8 @@ module.exports.consultarTarefa = function (application, req, res) {
                         message: msg,
                         user: userId,
                         nomeUsuario: result[0].first_name,
-                        select: result1,                    
-                        dados: result2
+                        dados: result2,
+                        select: result1
                     })
                 });
             });
