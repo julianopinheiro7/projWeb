@@ -508,9 +508,23 @@ body {
     font-family: 'Varela Round', sans-serif;
 }
 
+.titleIntegrar {
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    color: #2ec3c8;
+    padding: 0 1rem 1rem;
+}
+
 .linkOption {
     position: relative;
     left: 2rem;
+    cursor: pointer;
+}
+
+.linkOptionProj {
+    position: relative;
+    left: 1rem;
     cursor: pointer;
 }
 
@@ -865,6 +879,16 @@ ul {
     background: #fff;
     right: 60px;
     bottom: 20px;
+    width: 115px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.div-actionsProj {
+    position: relative;
+    background: #fff;
+    right: -89px;
+    bottom: 0px;
     width: 115px;
     text-align: center;
     border-radius: 10px;

@@ -155,5 +155,40 @@ module.exports.excluirProjeto = function (application, req, res) {
     }
 }
 
+module.exports.integrarProjeto = function (application, req, res) {
+
+    let msg = '';
+
+    if (req.query.msg != '') {
+        msg = req.query.msg;
+    }
+
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    projetoModel.getUsuario(userId, (err, result) => {
+        projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
+
+            if (err) {
+                res.json(err);
+            }
+            res.render('integrarProjeto', {
+                message: msg,
+                user: userId,
+                nomeUsuario: result[0].first_name,
+                select: result1,                    
+            });
+        });
+    });
+
+}
+
 
 

@@ -1,0 +1,62 @@
+<html lang="pt">
+
+<%- include header %>
+
+    <div class="container height-2">
+
+        <div>
+            <p class="title titleIntegrar">Integrar Projeto</p>
+        </div>
+
+        <form action="/exibirProjetoInteg" method="GET">
+
+            <div class="col-md-6 height-2">
+                <span>Selecione o Projeto:</span>
+                <select name="idProjeto" class="form-control">
+                    <option value="">Selecione</option>
+                    <% 
+                            for(var i = 0; i < select.length; i++) { 
+                                let selected = ( select.idProjeto == select[i].idProjeto ) ? "selected" : "";
+                            %>
+                        <option value="<%=select[i].idProjeto%>" <%=selected %> >
+                            <%=select[i].nome%>
+                        </option>
+                        <% } %>
+                </select>
+            </div>
+
+            <div class="col-md-2 height-4">
+                <button class="btn btn-light">Exibir</button>
+            </div>
+        </form>
+
+        <!-- Mostrar quadro com os recursos do projeto -->
+
+        <div id="quadroRecursos">
+
+            <table>
+                <td>
+                    <% if (dados) { %>
+                        <% for(var i=0; i < dados.length; i++) { %>
+
+                            <tr>
+                                <td>
+                                    <%= dados[i].idProjeto %>
+                                </td>
+                            </tr>
+
+                        <% } %>
+                    <% } %>
+                </td>
+            </table>
+        </div>
+
+        <!-- Fim do quadro de recursos -->
+
+
+
+
+    </div>
+
+
+    <%- include footer %>

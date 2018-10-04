@@ -13,7 +13,7 @@
                     <th scope="col">Num. Projeto</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Data de Inicio</th>
-                    <th scope="col">Horas Previstas</th>
+                    <th scope="col">Data de Conclusão</th>
                     <th scope="col">Status</th>
                     <th scope="col" id="thActions">Actions</th>
                 </tr>
@@ -32,7 +32,7 @@
                         <%= data[i].data_inicio %>
                     </td>
                     <td>
-                        <%= data[i].horas_previstas %>
+                        <%= data[i].data_conclusao %>
                     </td>
                     <td>
                         <%= data[i].status %>
@@ -41,11 +41,11 @@
                         <div class="options">
                             <ul>
                                 <li>
-                                    <a href="#" class="linkOption">
+                                    <a href="#" class="linkOptionProj">
                                         <img class="iconActions" src="../img/actions.png" alt="">
                                     </a>
                                     <ul>
-                                        <div class="inline div-actions">
+                                        <div class="inline div-actionsProj">
                                             <li class="li-div-actions">
                                                 <a href="/cadastrarProjeto?idProjeto=<%= data[i].idProjeto %>">
                                                     <img src="../img/edit.png" alt="Editar" title="Editar Projeto">
