@@ -28,6 +28,15 @@ TarefaDAO.prototype.getExibirTarefa = function(obj, callback) {
     this._connection.query('select * from tarefas where idProjeto = ? and idUsuario = ?', [obj.id, obj.idUser], callback);
 }
 
+TarefaDAO.prototype.getProjetoTarefa = function(idTarefa, callback) {
+    this._connection.query('select idProjeto from tarefas where idTarefa = ' + idTarefa, callback);
+}
+
+TarefaDAO.prototype.deleteTarefa = function(idTarefa, callback){    
+    this._connection.query('delete from tarefas where idTarefa = ?', idTarefa, callback);
+}
+
+
 module.exports = function(){
     return TarefaDAO;
 }

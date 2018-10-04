@@ -31,7 +31,7 @@ module.exports.apontarTarefa = function (application, req, res) {
         tarefaModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelect((err3, result3) => {
                 tarefaModel.getTarefa(dados, (err, result) => {
-                    console.log('goku', result3);
+                    
                     if (err3) {
                         res.json(err);
                     }
@@ -163,7 +163,7 @@ module.exports.consultarTarefa = function (application, req, res) {
         tarefaModel.getUsuario(userId, (err, result) => {
             tarefaModel.getExibirTarefa(obj, (err2, result2) => {
                 projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
-                    console.log('dados', result1);
+                    
                     if (err) {
                         res.json(err);
                     }
@@ -187,6 +187,35 @@ module.exports.consultarTarefa = function (application, req, res) {
 
 
 };
+
+module.exports.excluirTarefa = function (application, req, res) {
+    
+    const tarefaModel = new application.app.models.TarefaDAO(global.db);     
+    
+
+    if (req.query.idTarefa != undefined) {
+
+        let id = req.query.idTarefa;        
+
+        tarefaModel.getProjetoTarefa(id, (err1, result1) => {
+            tarefaModel.deleteTarefa(id, (err, result) => {                
+                if (err != null) {
+                    console.log(err);
+                }
+                else {
+                    let idProjeto = result1[0].idProjeto;
+                    res.redirect('http://localhost:8080/consultarTarefa?idProjeto=' + idProjeto);
+                }
+            });     
+        });        
+
+         
+        
+       
+    } else {
+        console.log('To pulando pro else mesmo!');        
+    }
+}
 
 
 

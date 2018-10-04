@@ -12,4 +12,9 @@ module.exports = function (application) {
         application.app.controllers.tarefa.consultarTarefa(application, req, res);
     });
 
+    application.get('/excluirTarefa', (req, res) => {
+        application.app.controllers.tarefa.excluirTarefa(application, req, res);
+    });
+    
+
 }

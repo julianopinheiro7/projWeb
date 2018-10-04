@@ -24,8 +24,7 @@ RecursoDAO.prototype.getListarRecurso = function(userID, callback){
     this._connection.query('select * from recursos where idUsuario = ' + userID, callback);    
 }
 
-RecursoDAO.prototype.deleteRecurso = function(idRecurso, callback){
-    console.log('Chequei no DAO');
+RecursoDAO.prototype.deleteRecurso = function(idRecurso, callback){    
     this._connection.query('delete from recursos where idRecurso = ?', idRecurso, callback);
 }
 

@@ -31,12 +31,14 @@
             </div>
         </div>
     </form>
+   
 
     <% if (dados) { %>
     <% for(var i=0; i < dados.length; i++) { %>
 
-    <div id="divExibirTarefas" class="row">
-        
+    <div id="divExibirTarefas" class="row">        
+
+        <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
 
         <div id="titleTarefas" class="col-md-2">
             <span>Data Inicial:</span>
@@ -56,7 +58,7 @@
 
             <div>
                 <span class="spaceRight-5">
-                    <%= dados[i].descricao %> </span>
+                    <%= dados[i].descricao %> </span>                    
             </div>
         </div>
 
