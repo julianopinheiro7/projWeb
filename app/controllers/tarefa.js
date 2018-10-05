@@ -207,14 +207,10 @@ module.exports.excluirTarefa = function (application, req, res) {
                     res.redirect('http://localhost:8080/consultarTarefa?idProjeto=' + idProjeto);
                 }
             });     
-        });        
-
-         
-        
-       
+        });
     } else {
-        console.log('To pulando pro else mesmo!');        
-    }
+        console.log('Else');
+    }      
 }
 
 

@@ -8,7 +8,7 @@
             <p class="title titleIntegrar">Integrar Projeto</p>
         </div>
 
-        <form action="/exibirProjetoInteg" method="GET">
+        <form action="/integrarProjeto" method="GET">
 
             <div class="col-md-6 height-2">
                 <span>Selecione o Projeto:</span>
@@ -29,33 +29,36 @@
                 <button class="btn btn-light">Exibir</button>
             </div>
         </form>
+    </div>
 
+    <% if (dados) { %>
+
+    <div class="container height-2">
         <!-- Mostrar quadro com os recursos do projeto -->
 
         <div id="quadroRecursos">
-
             <table>
-                <td>
+                <thead>
+                    <th>idProjeto</th>
+                </thead>
+                <tbody>
                     <% if (dados) { %>
                         <% for(var i=0; i < dados.length; i++) { %>
-
-                            <tr>
-                                <td>
-                                    <%= dados[i].idProjeto %>
-                                </td>
-                            </tr>
-
+                        <tr>
+                            <td>
+                                <%= dados[i].idProjeto %>
+                            </td>                                
+                        </tr>
                         <% } %>
                     <% } %>
-                </td>
+                </tbody>
+                
             </table>
         </div>
+    
+    <% } %>
 
         <!-- Fim do quadro de recursos -->
-
-
-
-
     </div>
 
 

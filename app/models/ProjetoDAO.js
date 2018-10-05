@@ -28,13 +28,16 @@ ProjetoDAO.prototype.deleteProjeto = function(idProjeto, callback){
     this._connection.query('delete from projeto where idProjeto = ?', idProjeto, callback);
 }
 
-ProjetoDAO.prototype.getProjetoSelect = function(callback){
-    console.log('To chegando aqui');
+ProjetoDAO.prototype.getProjetoSelect = function(callback){    
     this._connection.query('select idProjeto, nome from projeto', callback);
 }
 
 ProjetoDAO.prototype.getProjetoSelectUser = function(userID, callback){    
     this._connection.query('select idProjeto, nome from projeto where idUsuario = ?', userID, callback);    
+}
+
+ProjetoDAO.prototype.getProjetoIntegrado = function(idProjeto, callback){    
+    this._connection.query('select * from proj_recursos where idProjeto = ?', idProjeto, callback);    
 }
 
 module.exports = function(){
