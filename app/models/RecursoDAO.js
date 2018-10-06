@@ -29,7 +29,7 @@ RecursoDAO.prototype.deleteRecurso = function(idRecurso, callback){
 }
 
 RecursoDAO.prototype.getRecursoSelectUser = function(userID, callback){    
-    this._connection.query('select idRecurso, nome from recursos where idRecurso = ?', userID, callback);    
+    this._connection.query('select idRecurso, nome from recursos where idUsuario = ?', userID, callback);    
 }
 
 module.exports = function(){

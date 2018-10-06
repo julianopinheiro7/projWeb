@@ -190,8 +190,7 @@ module.exports.consultarTarefa = function (application, req, res) {
 
 module.exports.excluirTarefa = function (application, req, res) {
     
-    const tarefaModel = new application.app.models.TarefaDAO(global.db);     
-    
+    const tarefaModel = new application.app.models.TarefaDAO(global.db);
 
     if (req.query.idTarefa != undefined) {
 

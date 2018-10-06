@@ -26,50 +26,23 @@
                 </select>
             </div>
 
-            <div class="col-md-2 height-3">
+            <div class="col-md-1 height-3">
                 <button class="btn btn-light">Exibir</button>
             </div>
         </form>
-    </div>
 
-    <div class="row height-2">
-        <div>
-            <button class="btn btn-light" id="btnNovoRecurso" onClick="novoRecurso();">Novo Recurso</button>
-        </div>
-        <div id="incluirNovoRecurso">
-            <form action="/incluirRecurso">
-                <div class="col-md-5 height-1 divNovoRecurso">
-                    <div>
-                        <span>Selecione o Recurso a incluir:</span>
-                        <select name="idRecurso" class="form-control">
-                            <option value="">Selecione</option>
-                            <% 
-                            for(var i = 0; i < selectR.length; i++) { 
-                                let selected = ( selectR.idRecurso == selectR[i].idRecurso ) ? "selected" : "";
-                            %>
-                            <option value="<%=selectR[i].idRecurso%>" <%=selected %> >
-                                <%=selectR[i].nome%>
-                            </option>
-                            <% } %>
-                        </select>
-                    </div>
-                    <div class="col-md-5 height-1 padding-left-0">
-                        <span>Quantidade a ser utilizada:</span>
-                        <div>
-                            <input type="number" class="form-control" placeholder="Quantidade">
-                        </div>
-                    </div>
-                </div>
-            </form>
+        <div class="height-3">
+            <a class="btn btn-light" id="btnNovoRecurso" href="/novoProjRecurso">Adicionar Recurso</a>
         </div>
     </div>
 
     <div class="row height-2">
 
         <% if (nomeProjeto) { %>
-            <% for(var i=0; i < nomeProjeto.length; i++) { %>
-            <span>Projeto: </span><span id="nameProjeto"><%= nomeProjeto[i].nome %> </span>
-            <% } %>
+        <% for(var i=0; i < nomeProjeto.length; i++) { %>
+        <span>Projeto: </span><span id="nameProjeto">
+            <%= nomeProjeto[i].nome %> </span>
+        <% } %>
         <% } %>
 
         <% if (dados) { %>

@@ -189,7 +189,7 @@ module.exports.integrarProjeto = function (application, req, res) {
                     selectP: result1,
                     selectR: {},
                     dados: {},
-                    nomeProjeto: {}  
+                    nomeProjeto: {}
                 });
             });
         });
@@ -200,8 +200,8 @@ module.exports.integrarProjeto = function (application, req, res) {
             recursoModel.getRecursoSelectUser(userId, (err1, result1) => {
                 projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
                     projetoModel.getExibirProjRecursos(id, (err3, result3) => {
-                        projetoModel.getProjetoSelect(id, (err4, result4) => {
-                            console.log('result4...:', result4);                            
+                        projetoModel.getProjetoRec(id, (err4, result4) => {
+                            
                             if (err1) {
                                 console.log('Erro na consulta:', err1);
                             }
@@ -220,6 +220,28 @@ module.exports.integrarProjeto = function (application, req, res) {
             });
         });
     }
+}
+
+module.exports.incluirRecursoProj = function (application, req, res) {
+
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+
+    let projRecurso = req.body;
+    let id = req.query.idProjeto;
+    
+    projetoModel.getProjetoRecurso(id, (err1, result1) => {
+        projetoModel.postProjRecursos(projRecurso, (err, result) => {
+
+            if (err) {
+                console.log(err);
+                res.redirect('/integrarProjeto?msg=F');
+            }
+            else {
+                let idProjeto = result1[0].idProjeto;
+                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProjeto);
+            }
+        });
+    });
 }
 
 

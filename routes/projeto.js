@@ -20,4 +20,8 @@ module.exports = function (application) {
         application.app.controllers.projeto.integrarProjeto(application, req, res);
     });
 
+    application.get('/incluirRecursoProj', (req, res) => {        
+        application.app.controllers.projeto.incluirRecursoProj(application, req, res);
+    });
+
 }
