@@ -266,7 +266,43 @@ body {
     font-weight: bold;
 }
 
+.divNovoRecurso {
+    padding: 1rem;
+    border-radius: 5px;
+    background: #f4f5f7;
+}
+
 /*Elementos ID*/
+
+#nameProjeto {    
+    color: #42c9cd;    
+}
+
+#incluirNovoRecurso {
+    display: none;
+    transition: 3s;
+}
+
+#quadroProjRecursos {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+}
+
+#tableProjRec {
+    height: 45rem;    
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+#theadProjRec {
+    font-size: 13px;
+}
+
+#thForma {
+    width: 15rem;
+}
 
 #labelTask {
     height: 15px;
@@ -674,6 +710,10 @@ body {
 
 .margin-left-1 {
     margin-left: 1rem;
+}
+
+.padding-left-0 {
+    padding-left: 0 !important;
 }
 
 .heightQuadroDash {

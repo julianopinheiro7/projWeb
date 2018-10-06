@@ -165,6 +165,7 @@ module.exports.integrarProjeto = function (application, req, res) {
     }
 
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
+    const recursoModel = new application.app.models.RecursoDAO(global.db);
 
     var user = req.session.user,
         userId = req.session.userId;
@@ -185,34 +186,36 @@ module.exports.integrarProjeto = function (application, req, res) {
                     message: msg,
                     user: userId,
                     nomeUsuario: result[0].first_name,
-                    select: result1,
-                    dados: {}
+                    selectP: result1,
+                    selectR: {},
+                    dados: {},
+                    nomeProjeto: {}  
                 });
             });
         });
     }
     else {
-       
+        console.log('Entrei no else...', id);
         projetoModel.getUsuario(userId, (err, result) => {
-            projetoModel.getProjetoIntegrado(id, (err1, result1) => {
+            recursoModel.getRecursoSelectUser(userId, (err1, result1) => {
                 projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
-                    console.log('Entrei no else...', result1);
-                    if (err) {
-                        res.json(err);
-                    }
-                    if (err1) {
-                        res.json(err1);
-                    }
-                    if (err2) {
-                        res.json(err2)
-                    }
-                    res.render('integrarProjeto', {
-                        message: msg,
-                        user: userId,
-                        nomeUsuario: result[0].first_name,
-                        dados: result1,
-                        select: result2
-                    })
+                    projetoModel.getExibirProjRecursos(id, (err3, result3) => {
+                        projetoModel.getProjetoSelect(id, (err4, result4) => {
+                            console.log('result4...:', result4);                            
+                            if (err1) {
+                                console.log('Erro na consulta:', err1);
+                            }
+                            res.render('integrarProjeto', {
+                                message: msg,
+                                user: userId,
+                                nomeUsuario: result[0].first_name,
+                                selectP: result2,
+                                selectR: result1,
+                                dados: result3,
+                                nomeProjeto: result4
+                            })
+                        })
+                    });
                 });
             });
         });

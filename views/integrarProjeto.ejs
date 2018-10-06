@@ -2,64 +2,121 @@
 
 <%- include header %>
 
-    <div class="container height-2">
+<div class="container height-2">
 
-        <div>
-            <p class="title titleIntegrar">Integrar Projeto</p>
-        </div>
+    <div class="row">
+        <p class="title titleIntegrar">Integrar Projeto</p>
+    </div>
 
+    <div class="row">
         <form action="/integrarProjeto" method="GET">
 
-            <div class="col-md-6 height-2">
+            <div class="col-md-4 height-1 padding-left-0">
                 <span>Selecione o Projeto:</span>
                 <select name="idProjeto" class="form-control">
                     <option value="">Selecione</option>
                     <% 
-                            for(var i = 0; i < select.length; i++) { 
-                                let selected = ( select.idProjeto == select[i].idProjeto ) ? "selected" : "";
+                            for(var i = 0; i < selectP.length; i++) { 
+                                let selected = ( selectP.idProjeto == selectP[i].idProjeto ) ? "selected" : "";
                             %>
-                        <option value="<%=select[i].idProjeto%>" <%=selected %> >
-                            <%=select[i].nome%>
-                        </option>
-                        <% } %>
+                    <option value="<%=selectP[i].idProjeto%>" <%=selected %> >
+                        <%=selectP[i].nome%>
+                    </option>
+                    <% } %>
                 </select>
             </div>
 
-            <div class="col-md-2 height-4">
+            <div class="col-md-2 height-3">
                 <button class="btn btn-light">Exibir</button>
             </div>
         </form>
     </div>
 
-    <% if (dados) { %>
+    <div class="row height-2">
+        <div>
+            <button class="btn btn-light" id="btnNovoRecurso" onClick="novoRecurso();">Novo Recurso</button>
+        </div>
+        <div id="incluirNovoRecurso">
+            <form action="/incluirRecurso">
+                <div class="col-md-5 height-1 divNovoRecurso">
+                    <div>
+                        <span>Selecione o Recurso a incluir:</span>
+                        <select name="idRecurso" class="form-control">
+                            <option value="">Selecione</option>
+                            <% 
+                            for(var i = 0; i < selectR.length; i++) { 
+                                let selected = ( selectR.idRecurso == selectR[i].idRecurso ) ? "selected" : "";
+                            %>
+                            <option value="<%=selectR[i].idRecurso%>" <%=selected %> >
+                                <%=selectR[i].nome%>
+                            </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="col-md-5 height-1 padding-left-0">
+                        <span>Quantidade a ser utilizada:</span>
+                        <div>
+                            <input type="number" class="form-control" placeholder="Quantidade">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <div class="container height-2">
-        <!-- Mostrar quadro com os recursos do projeto -->
+    <div class="row height-2">
 
-        <div id="quadroRecursos">
-            <table>
-                <thead>
-                    <th>idProjeto</th>
-                </thead>
-                <tbody>
-                    <% if (dados) { %>
+        <% if (nomeProjeto) { %>
+            <% for(var i=0; i < nomeProjeto.length; i++) { %>
+            <span>Projeto: </span><span id="nameProjeto"><%= nomeProjeto[i].nome %> </span>
+            <% } %>
+        <% } %>
+
+        <% if (dados) { %>
+        <div class="container padding-left-0">
+            <!-- Mostrar quadro com os recursos do projeto -->
+
+            <div id="tableProjRec">
+                <table class="table table-sm">
+                    <thead>
+                        <tr id="theadProjRec">
+                            <th scope="col">Recurso</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col" id="thForma">Forma de Cobrança</th>
+                            <th scope="col">Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (dados) { %>
                         <% for(var i=0; i < dados.length; i++) { %>
                         <tr>
                             <td>
-                                <%= dados[i].idProjeto %>
-                            </td>                                
+                                <%= dados[i].nome %>
+                            </td>
+                            <td>
+                                <div class="money">
+                                    <%= dados[i].valor %>
+                                </div>
+                            </td>
+                            <td>
+                                <%= dados[i].tipoCobranca %>
+                            </td>
+                            <td>
+                                <%= dados[i].qtdeRecurso %>
+                            </td>
                         </tr>
                         <% } %>
-                    <% } %>
-                </tbody>
-                
-            </table>
-        </div>
-    
-    <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
 
-        <!-- Fim do quadro de recursos -->
+
+            <% } %>
+        </div>
     </div>
 
+</div>
 
-    <%- include footer %>
+
+<%- include footer %>

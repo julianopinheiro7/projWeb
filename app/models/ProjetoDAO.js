@@ -28,16 +28,30 @@ ProjetoDAO.prototype.deleteProjeto = function(idProjeto, callback){
     this._connection.query('delete from projeto where idProjeto = ?', idProjeto, callback);
 }
 
-ProjetoDAO.prototype.getProjetoSelect = function(callback){    
-    this._connection.query('select idProjeto, nome from projeto', callback);
+ProjetoDAO.prototype.getProjetoSelect = function(id, callback){    
+    this._connection.query('select idProjeto, nome from projeto where idProjeto = ?', id, callback);
 }
 
 ProjetoDAO.prototype.getProjetoSelectUser = function(userID, callback){    
-    this._connection.query('select idProjeto, nome from projeto where idUsuario = ?', userID, callback);    
+this._connection.query('select idProjeto, nome from projeto where idUsuario = ?', userID, callback);    
 }
 
-ProjetoDAO.prototype.getProjetoIntegrado = function(idProjeto, callback){    
-    this._connection.query('select * from proj_recursos where idProjeto = ?', idProjeto, callback);    
+ProjetoDAO.prototype.postProjRecursos = function(projRecursos, callback){    
+    this._connection.query('insert into proj_recursos set ?', projRecursos, callback);    
+}
+
+ProjetoDAO.prototype.getIntegrarProjeto = function(idProjeto, callback){    
+    this._connection.query(
+        'select r.nome, r.valor, r.tipoCobranca, pr.qtdeRecurso,' +
+        '(r.valor * pr.qtdeRecurso) as valorParcialvalor' +
+        'from proj_recursos as pr inner join projeto as p' +
+        'on p.idProjeto = pr.idProjeto' +
+        'inner join recursos as r on r.idRecurso = pr.idRecurso;' +
+        'where idProjeto = ?', idProjeto, callback);    
+}
+
+ProjetoDAO.prototype.getExibirProjRecursos = function(id, callback) {    
+    this._connection.query('select r.nome, FORMAT(r.valor, 2,"pt_BR") as valor, r.tipoCobranca, pr.qtdeRecurso from proj_recursos as pr inner join projeto as p on p.idProjeto = pr.idProjeto inner join recursos as r on r.idRecurso = pr.idRecurso where pr.idProjeto = ?', id, callback);      
 }
 
 module.exports = function(){
