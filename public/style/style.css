@@ -266,6 +266,14 @@ body {
     font-weight: bold;
 }
 
+.padding-5 {
+    padding: 5rem !important;
+}
+
+.link {
+    color: #333;
+}
+
 .divNovoRecurso {
     padding: 1rem;
     border-radius: 5px;
@@ -739,6 +747,10 @@ body {
 
 .btn-width30 {
     width: 30%;
+}
+
+.btn-width52 {
+    width: 52%;
 }
 
 .inline {

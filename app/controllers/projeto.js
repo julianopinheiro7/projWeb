@@ -187,7 +187,6 @@ module.exports.integrarProjeto = function (application, req, res) {
                     user: userId,
                     nomeUsuario: result[0].first_name,
                     selectP: result1,
-                    selectR: {},
                     dados: {},
                     nomeProjeto: {}
                 });
@@ -197,29 +196,62 @@ module.exports.integrarProjeto = function (application, req, res) {
     else {
         console.log('Entrei no else...', id);
         projetoModel.getUsuario(userId, (err, result) => {
-            recursoModel.getRecursoSelectUser(userId, (err1, result1) => {
-                projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
-                    projetoModel.getExibirProjRecursos(id, (err3, result3) => {
-                        projetoModel.getProjetoRec(id, (err4, result4) => {
-                            
-                            if (err1) {
-                                console.log('Erro na consulta:', err1);
-                            }
-                            res.render('integrarProjeto', {
-                                message: msg,
-                                user: userId,
-                                nomeUsuario: result[0].first_name,
-                                selectP: result2,
-                                selectR: result1,
-                                dados: result3,
-                                nomeProjeto: result4
-                            })
+            projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
+                projetoModel.getExibirProjRecursos(id, (err3, result3) => {
+                    projetoModel.getProjetoRec(id, (err4, result4) => {
+                        if (err) {
+                            console.log('Erro na consulta:', err);
+                        }
+                        res.render('integrarProjeto', {
+                            message: msg,
+                            user: userId,
+                            nomeUsuario: result[0].first_name,
+                            selectP: result2,
+                            dados: result3,
+                            nomeProjeto: result4
                         })
-                    });
+                    })
                 });
             });
         });
     }
+}
+
+module.exports.novoProjetoRecurso = function (application, req, res) {
+    let msg = '';
+
+    if (req.query.msg != '') {
+        msg = req.query.msg;
+    }
+
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+    const recursoModel = new application.app.models.RecursoDAO(global.db);
+
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    projetoModel.getUsuario(userId, (err2, result2) => {
+        projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
+            recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
+                
+                if (err2) {
+                    res.json(err2);
+                }
+                res.render('novoProjRecurso', {
+                    message: msg,
+                    user: userId,
+                    nomeUsuario: result2[0].first_name,
+                    selectProjeto: result3,
+                    selectRecurso: result4
+                });
+            });
+        });
+    });
 }
 
 module.exports.incluirRecursoProj = function (application, req, res) {
@@ -227,14 +259,13 @@ module.exports.incluirRecursoProj = function (application, req, res) {
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
     let projRecurso = req.body;
-    let id = req.query.idProjeto;
-    
+
     projetoModel.getProjetoRecurso(id, (err1, result1) => {
         projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
             if (err) {
                 console.log(err);
-                res.redirect('/integrarProjeto?msg=F');
+                res.redirect('/novoProjRecurso?msg=F');
             }
             else {
                 let idProjeto = result1[0].idProjeto;
