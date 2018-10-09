@@ -158,7 +158,7 @@ module.exports.excluirProjeto = function (application, req, res) {
 module.exports.integrarProjeto = function (application, req, res) {
 
     let msg = '';
-    let id = req.query.idProjeto;
+    let id = req.query.idProjeto;    
 
     if (req.query.msg != '') {
         msg = req.query.msg;
@@ -173,6 +173,11 @@ module.exports.integrarProjeto = function (application, req, res) {
     if (userId == null) {
         res.redirect("/login");
         return;
+    }
+
+    let recProj = {
+        idProj: id,
+        idUser: userId
     }
 
     if (id == undefined) {
@@ -197,8 +202,9 @@ module.exports.integrarProjeto = function (application, req, res) {
         console.log('Entrei no else...', id);
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
-                projetoModel.getExibirProjRecursos(id, (err3, result3) => {
+                projetoModel.getExibirProjRecursos(recProj, (err3, result3) => {
                     projetoModel.getProjetoRec(id, (err4, result4) => {
+                        console.log('Resultado select', result3);
                         if (err) {
                             console.log('Erro na consulta:', err);
                         }
@@ -238,7 +244,7 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
     projetoModel.getUsuario(userId, (err2, result2) => {
         projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
             recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
-                
+
                 if (err2) {
                     res.json(err2);
                 }
@@ -254,25 +260,25 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
     });
 }
 
-module.exports.incluirRecursoProj = function (application, req, res) {
+module.exports.adiconarRecursoProj = function (application, req, res) {
 
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
     let projRecurso = req.body;
+    let id = req.body.idProjeto
+    console.log('id pego do body', id);
 
-    projetoModel.getProjetoRecurso(id, (err1, result1) => {
-        projetoModel.postProjRecursos(projRecurso, (err, result) => {
+    projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
-            if (err) {
-                console.log(err);
-                res.redirect('/novoProjRecurso?msg=F');
-            }
-            else {
-                let idProjeto = result1[0].idProjeto;
-                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProjeto);
-            }
-        });
+        if (err) {
+            console.log(err);
+            res.redirect('/novoProjRecurso?msg=F');
+        }
+        else {
+            res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + id);
+        }
     });
+
 }
 
 

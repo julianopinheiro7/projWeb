@@ -427,7 +427,7 @@ body {
 }
 
 #thActions {
-    text-align: center;
+    padding-left: 4rem !important;
 }
 
 #descricao {    
@@ -573,9 +573,7 @@ body {
 }
 
 .linkOptionRec {
-    position: relative;
-    right: 10.5rem;
-    bottom: 2.3rem;
+    position: relative;    
     cursor: pointer;
 }
 
@@ -920,7 +918,7 @@ ul {
 .options li  ul{
     position:absolute; 
     top: 0px; 
-    right: 40px;
+    right: -45px;
     display:none;
 }
 
@@ -929,8 +927,6 @@ ul {
 .div-actions {
     position: relative;
     background: #fff;
-    right: 60px;
-    bottom: 20px;
     width: 115px;
     text-align: center;
     border-radius: 10px;
@@ -938,8 +934,7 @@ ul {
 
 .div-actionsProj {
     position: relative;
-    background: #fff;
-    right: -89px;
+    background: #fff;    
     bottom: 0px;
     width: 115px;
     text-align: center;

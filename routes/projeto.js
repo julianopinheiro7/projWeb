@@ -24,8 +24,9 @@ module.exports = function (application) {
         application.app.controllers.projeto.novoProjetoRecurso(application, req, res);
     })
 
-    application.get('/incluirRecursoProj', (req, res) => {        
-        application.app.controllers.projeto.incluirRecursoProj(application, req, res);
+    application.post('/addRecProj', (req, res) => {
+        console.log('rota de incluir novo recurso no projeto');
+        application.app.controllers.projeto.adiconarRecursoProj(application, req, res);
     });
 
 
