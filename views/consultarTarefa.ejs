@@ -44,11 +44,51 @@
     <% if (dados) { %>
     <% for(var i=0; i < dados.length; i++) { %>
 
-    <div id="divExibirTarefas" class="row">        
+    <div id="divExibirTarefas">        
 
         <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
 
-        <div id="titleTarefas" class="col-md-2">
+        <div >
+            <div class="linhaTarefas">
+                <label class="lblTituloTarefas" for="tarefa">Tarefa:</label>
+                <span class="spaceRight-5 backTask" id="tarefa"><%= i+1 %></span> 
+                <label class="lblTituloTarefas" for="data_inicial">Data Inicial:</label>
+                <span class="spaceRight-5 backTask" id="data_inicial"><%= dados[i].data_inicial %></span>                
+                <label class="lblTituloTarefas" for="data_final">Data Final:</label>
+                <span class="spaceRight-5 backTask" id="data_final"><%= dados[i].data_final %></span> 
+                <label class="lblTituloTarefas" for="descricao">Descrição:</label>
+                <span class="spaceRight-5 backTask" id="descricao"><%= dados[i].descricao %></span> 
+                
+                <div class="col-md-1" id="divOptionsTask">
+                    <div class="options">
+                        <ul>
+                            <li>
+                                <a href="#" class="linkOptionRec">
+                                    <img class="iconActions" src="../img/actions.png" alt="">
+                                </a>
+                                <ul>
+                                    <div class="inline div-actions" id="actionTask">
+                                        <li class="li-div-actions">
+                                            <a href="/apontarTarefa?idTarefa=<%= dados[i].idTarefa %>">
+                                                <img src="../img/edit.png" class="img-task" alt="Editar" title="Editar Tarefa">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/excluirTarefa?idTarefa=<%= dados[i].idTarefa %>" onclick="updateConfirm();">
+                                                <img src="../img/delete.png" class="img-task" alt="Delete" title="Deletar Tarefa">
+                                            </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>            
+        </div>
+
+  <!--       <div id="titleTarefas" class="col-md-2">
             <span>Tarefa:</span>
             <span>Data Inicial:</span>
             <span>Hora Inicial:</span>
@@ -71,33 +111,7 @@
                 <span class="spaceRight-5">
                     <%= dados[i].descricao %> </span>                    
             </div>
-        </div>
-
-        <div class="col-md-1" id="divOptionsTask">
-            <div class="options" id="editTarefas">
-                <ul>
-                    <li>
-                        <a href="#" class="linkOptionRec">
-                            <img class="iconActions" src="../img/actions.png" alt="">
-                        </a>
-                        <ul>
-                            <div class="inline div-actions">
-                                <li class="li-div-actions">
-                                    <a href="/apontarTarefa?idTarefa=<%= dados[i].idTarefa %>">
-                                        <img src="../img/edit.png" alt="Editar" title="Editar Tarefa">
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/excluirTarefa?idTarefa=<%= dados[i].idTarefa %>" onclick="updateConfirm();">
-                                        <img src="../img/delete.png" alt="Delete" title="Deletar Tarefa">
-                                    </a>
-                                </li>
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        </div> -->
 
     </div>
     <% } %>

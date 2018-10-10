@@ -290,15 +290,34 @@ body {
     vertical-align: middle !important;
 }
 
+.linhaTarefas {
+    padding: 4.5px 1.5rem;
+}
+
+.lblTituloTarefas {
+    font-family: roboto;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.backTask {
+    background: #f4f5f7;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .divNameProjeto {
     display: inline-flex;
 }
 
+.img-task {
+    width: 2rem;
+}
+
 /*Elementos ID*/
 
-#editTarefas {
-    right: 15rem;
-    top: 2rem;
+#actionTask {
+    background: #f4f5f7;
 }
 
 #nameProjeto {    
@@ -347,20 +366,23 @@ body {
     font-weight: 600;
 }
 
-#divExibirTarefas {
-    margin-left: 20rem;
-    margin-right: 20rem;
-    margin-bottom: 1.5rem;
+#divExibirTarefas {    
+    margin-bottom: 1rem;
     border: 1px solid #dedede;
-    border-radius: 10px;
-    padding: 1rem;
+    border-radius: 5px;    
+    margin: 0 0 1rem;
 }    
 
 #divOptionsTask {
     float: right;
-    left: 8rem;
-    top: 10px;    
     position: relative;
+    bottom: 5px;
+    right: 30px;
+    left: 15px;
+    background: #f4f5f7;
+    height: 29px;
+    top: -3px;
+    border-radius: 5px;
 }
 
 #divEditarTarefa {
@@ -930,7 +952,8 @@ ul {
 
 .options {
     position: relative;
-    bottom: 5px;
+    bottom: 8px;
+    right: 25px;
 }
 
 .options li {
@@ -950,10 +973,11 @@ ul {
 
 .div-actions {
     position: relative;
-    background: #fff;
-    width: 115px;
+    background: #fff;    
     text-align: center;
     border-radius: 10px;
+    right: 22px;
+    top: 2px;
 }
 
 .div-actionsProj {
@@ -966,7 +990,7 @@ ul {
 }
 
 .li-div-actions {
-    margin-right: 5rem;
+    margin-right: 4rem;
 }
 
 .divListar {        

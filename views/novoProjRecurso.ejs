@@ -31,7 +31,7 @@
                                 <option value="">Selecione</option>
                                 <% 
                                         for(var i = 0; i < selectProjeto.length; i++) { 
-                                            let selected = ( dados.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
+                                            let selected = ( selectProjeto.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
                                         %>
                                 <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
                                     <%=selectProjeto[i].nome%>
@@ -45,9 +45,9 @@
                             <select name="idRecurso" class="form-control">
                                 <option value="">Selecione</option>
                                 <% 
-                                        for(var i = 0; i < selectRecurso.length; i++) { 
-                                            let selected = ( dados.idRecurso == selectRecurso[i].idRecurso ) ? "selected" : "";
-                                        %>
+                                    for(var i = 0; i < selectRecurso.length; i++) { 
+                                        let selected = ( selectRecurso.idRecurso == selectRecurso[i].idRecurso ) ? "selected" : "";
+                                    %>
                                 <option value="<%=selectRecurso[i].idRecurso%>" <%=selected %> >
                                     <%=selectRecurso[i].nome%>
                                 </option>

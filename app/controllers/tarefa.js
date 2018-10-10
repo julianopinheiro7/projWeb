@@ -101,14 +101,13 @@ module.exports.cadastrar = function (application, req, res) {
             }
         });
     } else {
-        tarefaModel.putTarefa(tarefa, (err, result) => {
-            console.log('Estou entrando no else do putTarefa', tarefa);
+        tarefaModel.putTarefa(tarefa, (err, result) => {            
 
             if (err != null) {
                 res.redirect('/apontarTarefa?msg=F');
             }
             else {
-                res.redirect('/apontarTarefa?msg=T');
+                res.redirect('/consultarTarefa?idProjeto=' + tarefa.idProjeto);
             }
         });
     }
