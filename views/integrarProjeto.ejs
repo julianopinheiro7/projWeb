@@ -65,7 +65,7 @@
                         <% if (dados) { %>
                         <% for(var i=0; i < dados.length; i++) { %>
                         <tr>
-                            <td class="colProjRecursos">
+                            <td class="colProjRecursos">                                
                                 <%= dados[i].nome %>
                             </td>
                             <td class="colProjRecursos">
@@ -89,12 +89,12 @@
                                             <ul>
                                                 <div class="inline div-actions">
                                                     <li class="li-div-actions">
-                                                        <a href="/novoProjRecurso?idRecurso=<%= dados[i].idRecurso %>">
+                                                        <a href="/novoProjRecurso?idProj_recursos=<%= dados[i].idProj_recursos %>">
                                                             <img src="../img/edit.png" alt="Editar" title="Editar Recurso Alocado">
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="/excluirProjRec?idRecurso=<%= dados[i].idRecurso %>" onclick="updateConfirm();" >
+                                                        <a href="/excluirProjRec?idProj_recursos=<%= dados[i].idProj_recursos %>" onclick="updateConfirm();" >
                                                             <img src="../img/delete.png" alt="Delete" title="Deletar Recurso Alocado">
                                                         </a>
                                                     </li>

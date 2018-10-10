@@ -26,6 +26,8 @@ module.exports.cadastrarProjeto = function (application, req, res) {
             idUser: userId
         }
 
+        console.log('Entrei no id != undefined para editar');
+
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjeto(dados, (err, result) => {
 
@@ -198,12 +200,12 @@ module.exports.integrarProjeto = function (application, req, res) {
         });
     }
     else {
-
+        console.log('Goku');
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
                 projetoModel.getExibirProjRecursos(recProj, (err3, result3) => {
                     projetoModel.getProjetoRec(id, (err4, result4) => {
-                        console.log('Resultado select', result3);
+
                         if (err) {
                             console.log('Erro na consulta:', err);
                         }
@@ -240,12 +242,41 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
         return;
     }
 
-    let id = req.query.idProjeto;
+    let id = req.query.idProj_recursos;
+
+    let recProj = {
+        idProj: id,
+        idUser: userId
+    }    
+
     if (id != undefined) {
+        
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
-
+                    projetoModel.getExibirProjRecursos(recProj, (err3, result5) => {
+                        console.log('Result5', result5[0]);
+                        if (err2) {
+                            res.json(err2);
+                        }
+                        res.render('novoProjRecurso', {
+                            message: msg,
+                            user: userId,
+                            nomeUsuario: result2[0].first_name,
+                            selectProjeto: result3,
+                            selectRecurso: result4,
+                            dados: result5[0]
+                        });
+                    });
+                });
+            });
+        });
+    }
+    else {
+        console.log('goku else');
+        projetoModel.getUsuario(userId, (err2, result2) => {
+            projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
+                recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
                     if (err2) {
                         res.json(err2);
                     }
@@ -258,21 +289,6 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
                     });
                 });
             });
-        });
-    }
-    else {
-        projetoModel.getUsuario(userId, (err2, result2) => {
-            if (err2) {
-                res.json(err2);
-            }
-            res.render('novoProjRecurso', {
-                message: msg,
-                user: userId,
-                nomeUsuario: result2[0].first_name,
-                selectProjeto: {},
-                selectRecurso: {}
-            });
-
         });
     }
 

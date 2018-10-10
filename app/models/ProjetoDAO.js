@@ -56,7 +56,7 @@ ProjetoDAO.prototype.getIntegrarProjeto = function(idProjeto, callback){
 }
 
 ProjetoDAO.prototype.getExibirProjRecursos = function(recProj, callback) {      
-    this._connection.query('select r.nome, FORMAT(r.valor, 2,"pt_BR") as valor, r.tipoCobranca, pr.qtdeRecurso from proj_recursos as pr inner join projeto as p on p.idProjeto = pr.idProjeto inner join recursos as r on r.idRecurso = pr.idRecurso where pr.idProjeto = ? and pr.idUsuario = ?', [recProj.idProj, recProj.idUser], callback);          
+    this._connection.query('select pr.idProj_recursos, pr.idProjeto, pr.idRecurso, r.nome, FORMAT(r.valor, 2,"pt_BR") as valor, r.tipoCobranca, pr.qtdeRecurso from proj_recursos as pr inner join projeto as p on p.idProjeto = pr.idProjeto inner join recursos as r on r.idRecurso = pr.idRecurso where pr.idProjeto = ? and pr.idUsuario = ?', [recProj.idProj, recProj.idUser], callback);          
 }
 
 ProjetoDAO.prototype.getProjetoRecurso = function(idProjeto, callback) {

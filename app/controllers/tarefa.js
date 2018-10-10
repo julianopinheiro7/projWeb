@@ -19,8 +19,6 @@ module.exports.apontarTarefa = function (application, req, res) {
 
     let id = req.query.idTarefa;
 
-    console.log('Id...:', id);
-
     if (id != undefined) {
 
         let dados = {
