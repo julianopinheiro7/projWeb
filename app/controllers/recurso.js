@@ -120,6 +120,7 @@ module.exports.listarRecurso = function (application, req, res) {
 
     recursoModel.getUsuario(userId, (err2, result2) => {
         recursoModel.getListarRecurso(userId, (err, result) => {
+            console.log('result get lista recurso', result);
             if (err) {                
                 res.json(err);
             }

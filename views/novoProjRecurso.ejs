@@ -28,7 +28,7 @@
                         <div class="form-group">
                             <span>Selecione o Projeto:</span>
                             <select name="idProjeto" class="form-control">
-                                <option value="">Selecione</option>
+                                <option disabled value="">Selecione</option>
                                 <% 
                                         for(var i = 0; i < selectProjeto.length; i++) { 
                                             let selected = ( selectProjeto.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
@@ -43,7 +43,7 @@
                         <div class="form-group">
                             <span>Selecione um Recurso:</span>
                             <select name="idRecurso" class="form-control">
-                                <option value="">Selecione</option>
+                                <option disabled value="">Selecione</option>
                                 <% 
                                         for(var i = 0; i < selectRecurso.length; i++) { 
                                             let selected = ( selectRecurso.idRecurso == selectRecurso[i].idRecurso ) ? "selected" : "";

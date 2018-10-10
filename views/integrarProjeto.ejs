@@ -13,8 +13,16 @@
 
             <div class="col-md-4 height-1 padding-left-0">
                 <span>Selecione o Projeto:</span>
+                <div id="divNameProjeto">
+                    <% if (nomeProjeto) { %>
+                        <% for(var i=0; i < nomeProjeto.length; i++) { %>
+                        <span id="nameProjeto">
+                            <%= nomeProjeto[i].nome %> </span>
+                    <% } %>
+                    <% } %>
+                </div>
                 <select name="idProjeto" class="form-control">
-                    <option value="">Selecione</option>
+                    <option value=""></option>
                     <% 
                         for(var i = 0; i < selectP.length; i++) { 
                         let selected = ( selectP.idProjeto == selectP[i].idProjeto ) ? "selected" : "";
@@ -38,13 +46,6 @@
 
     <div class="row height-2">
 
-        <% if (nomeProjeto) { %>
-        <% for(var i=0; i < nomeProjeto.length; i++) { %>
-        <span>Projeto: </span><span id="nameProjeto">
-            <%= nomeProjeto[i].nome %> </span>
-        <% } %>
-        <% } %>
-
         <% if (dados) { %>
         <div class="container padding-left-0">
             <!-- Mostrar quadro com os recursos do projeto -->
@@ -64,18 +65,18 @@
                         <% if (dados) { %>
                         <% for(var i=0; i < dados.length; i++) { %>
                         <tr>
-                            <td>
+                            <td class="colProjRecursos">
                                 <%= dados[i].nome %>
                             </td>
-                            <td>
+                            <td class="colProjRecursos">
                                 <div class="money">
                                     <%= dados[i].valor %>
                                 </div>
                             </td>
-                            <td>
+                            <td class="colProjRecursos">
                                 <%= dados[i].tipoCobranca %>
                             </td>
-                            <td>
+                            <td class="colProjRecursos">
                                 <%= dados[i].qtdeRecurso %>
                             </td>
                             <td class="actions center">
@@ -88,7 +89,7 @@
                                             <ul>
                                                 <div class="inline div-actions">
                                                     <li class="li-div-actions">
-                                                        <a href="/editarProjRec?idRecurso=<%= dados[i].idRecurso %>">
+                                                        <a href="/novoProjRecurso?idRecurso=<%= dados[i].idRecurso %>">
                                                             <img src="../img/edit.png" alt="Editar" title="Editar Recurso Alocado">
                                                         </a>
                                                     </li>

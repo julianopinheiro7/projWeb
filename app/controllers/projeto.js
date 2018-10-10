@@ -89,7 +89,6 @@ module.exports.cadastrar = function (application, req, res) {
         });
     } else {
         projetoModel.putProjeto(projeto, (err, result) => {
-
             if (err != null) {
                 res.redirect('/cadastrarProjeto?msg=F');
             }
@@ -158,7 +157,7 @@ module.exports.excluirProjeto = function (application, req, res) {
 module.exports.integrarProjeto = function (application, req, res) {
 
     let msg = '';
-    let id = req.query.idProjeto;    
+    let id = req.query.idProjeto;
 
     if (req.query.msg != '') {
         msg = req.query.msg;
@@ -181,7 +180,7 @@ module.exports.integrarProjeto = function (application, req, res) {
     }
 
     if (id == undefined) {
-        console.log('Entrei no if');
+
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
                 if (err) {
@@ -199,7 +198,7 @@ module.exports.integrarProjeto = function (application, req, res) {
         });
     }
     else {
-        console.log('Entrei no else...', id);
+
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
                 projetoModel.getExibirProjRecursos(recProj, (err3, result3) => {
@@ -241,23 +240,43 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
         return;
     }
 
-    projetoModel.getUsuario(userId, (err2, result2) => {
-        projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
-            recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
+    let id = req.query.idProjeto;
+    if (id != undefined) {
+        projetoModel.getUsuario(userId, (err2, result2) => {
+            projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
+                recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
 
-                if (err2) {
-                    res.json(err2);
-                }
-                res.render('novoProjRecurso', {
-                    message: msg,
-                    user: userId,
-                    nomeUsuario: result2[0].first_name,
-                    selectProjeto: result3,
-                    selectRecurso: result4
+                    if (err2) {
+                        res.json(err2);
+                    }
+                    res.render('novoProjRecurso', {
+                        message: msg,
+                        user: userId,
+                        nomeUsuario: result2[0].first_name,
+                        selectProjeto: result3,
+                        selectRecurso: result4
+                    });
                 });
             });
         });
-    });
+    }
+    else {
+        projetoModel.getUsuario(userId, (err2, result2) => {
+            if (err2) {
+                res.json(err2);
+            }
+            res.render('novoProjRecurso', {
+                message: msg,
+                user: userId,
+                nomeUsuario: result2[0].first_name,
+                selectProjeto: {},
+                selectRecurso: {}
+            });
+
+        });
+    }
+
+
 }
 
 module.exports.adiconarRecursoProj = function (application, req, res) {

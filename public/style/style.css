@@ -286,7 +286,20 @@ body {
     background: #f4f5f7;
 }
 
+.colProjRecursos {
+    vertical-align: middle !important;
+}
+
+.divNameProjeto {
+    display: inline-flex;
+}
+
 /*Elementos ID*/
+
+#editTarefas {
+    right: 15rem;
+    top: 2rem;
+}
 
 #nameProjeto {    
     color: #42c9cd;    
@@ -325,6 +338,7 @@ body {
 #titleTarefas {    
     display: inline-grid;
     line-height: 2rem;
+    text-align: -webkit-right;
 }
 
 #bodyTarefas {

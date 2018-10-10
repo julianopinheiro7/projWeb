@@ -32,6 +32,10 @@ TarefaDAO.prototype.getProjetoTarefa = function(idTarefa, callback) {
     this._connection.query('select idProjeto from tarefas where idTarefa = ' + idTarefa, callback);
 }
 
+TarefaDAO.prototype.getProjetoTar = function(id, callback){    
+    this._connection.query('select idProjeto, nome from projeto where idProjeto = ?', id, callback);
+}
+
 TarefaDAO.prototype.deleteTarefa = function(idTarefa, callback){    
     this._connection.query('delete from tarefas where idTarefa = ?', idTarefa, callback);
 }

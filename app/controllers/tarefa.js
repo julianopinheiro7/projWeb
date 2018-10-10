@@ -31,7 +31,7 @@ module.exports.apontarTarefa = function (application, req, res) {
         tarefaModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelect((err3, result3) => {
                 tarefaModel.getTarefa(dados, (err, result) => {
-                    
+
                     if (err3) {
                         res.json(err);
                     }
@@ -52,7 +52,7 @@ module.exports.apontarTarefa = function (application, req, res) {
     else {
         tarefaModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelect((err3, result3) => {
-                
+
                 if (err2) {
                     console.log(err2);
                 }
@@ -154,7 +154,8 @@ module.exports.consultarTarefa = function (application, req, res) {
                     user: userId,
                     nomeUsuario: result[0].first_name,
                     select: result1,
-                    dados: {}
+                    dados: {},
+                    nomeProjeto: {}
                 });
             });
         });
@@ -163,22 +164,25 @@ module.exports.consultarTarefa = function (application, req, res) {
         tarefaModel.getUsuario(userId, (err, result) => {
             tarefaModel.getExibirTarefa(obj, (err2, result2) => {
                 projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
-                    
-                    if (err) {
-                        res.json(err);
-                    }
-                    if (err2) {
-                        res.json(err2);
-                    }
-                    if (err1) {
-                        res.json(err3);
-                    }
-                    res.render('consultarTarefa', {
-                        message: msg,
-                        user: userId,
-                        nomeUsuario: result[0].first_name,
-                        dados: result2,
-                        select: result1
+                    tarefaModel.getProjetoTar(id, (err4, result4) => {
+
+                        if (err) {
+                            res.json(err);
+                        }
+                        if (err2) {
+                            res.json(err2);
+                        }
+                        if (err1) {
+                            res.json(err3);
+                        }
+                        res.render('consultarTarefa', {
+                            message: msg,
+                            user: userId,
+                            nomeUsuario: result[0].first_name,
+                            dados: result2,
+                            select: result1,
+                            nomeProjeto: result4
+                        })
                     })
                 });
             });
@@ -189,15 +193,15 @@ module.exports.consultarTarefa = function (application, req, res) {
 };
 
 module.exports.excluirTarefa = function (application, req, res) {
-    
+
     const tarefaModel = new application.app.models.TarefaDAO(global.db);
 
     if (req.query.idTarefa != undefined) {
 
-        let id = req.query.idTarefa;        
+        let id = req.query.idTarefa;
 
         tarefaModel.getProjetoTarefa(id, (err1, result1) => {
-            tarefaModel.deleteTarefa(id, (err, result) => {                
+            tarefaModel.deleteTarefa(id, (err, result) => {
                 if (err != null) {
                     console.log(err);
                 }
@@ -205,11 +209,11 @@ module.exports.excluirTarefa = function (application, req, res) {
                     let idProjeto = result1[0].idProjeto;
                     res.redirect('http://localhost:8080/consultarTarefa?idProjeto=' + idProjeto);
                 }
-            });     
+            });
         });
     } else {
         console.log('Else');
-    }      
+    }
 }
 
 

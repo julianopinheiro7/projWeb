@@ -12,6 +12,14 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <span>Selecione o Projeto:</span>
+                <div class="divNameProjeto">
+                    <% if (nomeProjeto) { %>
+                        <% for(var i=0; i < nomeProjeto.length; i++) { %>
+                        <span id="nameProjeto">
+                            <%= nomeProjeto[i].nome %> </span>
+                    <% } %>
+                    <% } %>
+                </div>                
                 <select name="idProjeto" class="form-control">
                     <option value="">Selecione</option>
                     <% 
@@ -41,6 +49,7 @@
         <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
 
         <div id="titleTarefas" class="col-md-2">
+            <span>Tarefa:</span>
             <span>Data Inicial:</span>
             <span>Hora Inicial:</span>
             <span>Hora Final:</span>
@@ -48,6 +57,8 @@
         </div>
 
         <div id="bodyTarefas" class="col-md-4">
+            <span class="spaceRight-5">
+                <%= i+1 %> </span>
             <span class="spaceRight-5">
                 <%= dados[i].data_inicial %> </span>
             <span class="spaceRight-5">
@@ -63,7 +74,7 @@
         </div>
 
         <div class="col-md-1" id="divOptionsTask">
-            <div class="options">
+            <div class="options" id="editTarefas">
                 <ul>
                     <li>
                         <a href="#" class="linkOptionRec">
