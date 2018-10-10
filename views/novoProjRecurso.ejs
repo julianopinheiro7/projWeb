@@ -31,7 +31,7 @@
                                 <option value="">Selecione</option>
                                 <% 
                                         for(var i = 0; i < selectProjeto.length; i++) { 
-                                            let selected = ( selectProjeto.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
+                                            let selected = ( dados.idProjeto == selectProjeto[i].idProjeto ) ? "selected" : "";
                                         %>
                                 <option value="<%=selectProjeto[i].idProjeto%>" <%=selected %> >
                                     <%=selectProjeto[i].nome%>
@@ -46,7 +46,7 @@
                                 <option value="">Selecione</option>
                                 <% 
                                     for(var i = 0; i < selectRecurso.length; i++) { 
-                                        let selected = ( selectRecurso.idRecurso == selectRecurso[i].idRecurso ) ? "selected" : "";
+                                        let selected = ( dados.idRecurso == selectRecurso[i].idRecurso ) ? "selected" : "";
                                     %>
                                 <option value="<%=selectRecurso[i].idRecurso%>" <%=selected %> >
                                     <%=selectRecurso[i].nome%>
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label for="qtdeRecurso" class="col-md-3 control-label">Quantidade</label>
                             <div class="col-md-5">                           
-                                <input type="text" class="form-control data" name="qtdeRecurso" value="<%= dados.quantidade %>" placeholder="Quantidade">
+                                <input type="text" class="form-control data" id="qtdeRecurso" name="qtdeRecurso" value="<%= dados.qtdeRecurso %>" placeholder="Quantidade">
                             </div>
                         </div>                                           
     

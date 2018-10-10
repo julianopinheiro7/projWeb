@@ -241,20 +241,14 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
         return;
     }
 
-    let id = req.query.idProj_recursos;
-
-    let recProj = {
-        idProj: id,
-        idUser: userId
-    }    
+    let id = req.query.idProj_recursos; 
 
     if (id != undefined) {
         
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
-                    projetoModel.getExibirProjRecursos(recProj, (err3, result5) => {
-                        console.log('Result5', result5);
+                    projetoModel.getEditarProjRecursos(id, (err3, result5) => {                                                
                         if (err2) {
                             res.json(err2);
                         }
@@ -264,7 +258,7 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
                             nomeUsuario: result2[0].first_name,
                             selectProjeto: result3,
                             selectRecurso: result4,
-                            dados: result5
+                            dados: result5[0]
                         });
                     });
                 });
