@@ -152,8 +152,35 @@ module.exports.excluirProjeto = function (application, req, res) {
             }
         });
     } else {
-        console.log('To pulando pro else mesmo!');
+        console.log('Projeto não excluido! Verifique!');
     }
+}
+
+module.exports.excluirProjRec = function (application, req, res) {
+
+    let id = req.query.idProj_recursos;
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+
+
+    if (id != undefined) {
+
+        projetoModel.getProjetoRec(id, (err, result1) => {
+            projetoModel.deleteProjRecurso(id, (err, result) => {
+                console.log('retorno result1', result1[0]);
+                if (err != null) {
+                    console.log(err);
+                }
+                else {
+                    let idProjeto = result1[0].idProjeto;
+                    res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProjeto);
+                }
+            })
+        })
+
+    } else {
+        console.log('Recurso do Projeto não excluido! Verifique!');
+    }
+
 }
 
 module.exports.integrarProjeto = function (application, req, res) {
@@ -204,7 +231,7 @@ module.exports.integrarProjeto = function (application, req, res) {
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
                 projetoModel.getExibirProjRecursos(recProj, (err3, result3) => {
-                    projetoModel.getProjetoRec(id, (err4, result4) => {                        
+                    projetoModel.getProjetoRec(id, (err4, result4) => {
                         if (err) {
                             console.log('Erro na consulta:', err);
                         }
@@ -241,14 +268,14 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
         return;
     }
 
-    let id = req.query.idProj_recursos; 
+    let id = req.query.idProj_recursos;
 
     if (id != undefined) {
-        
+
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
-                    projetoModel.getEditarProjRecursos(id, (err3, result5) => {                                                
+                    projetoModel.getEditarProjRecursos(id, (err3, result5) => {
                         if (err2) {
                             res.json(err2);
                         }

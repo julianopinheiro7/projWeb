@@ -314,6 +314,10 @@ body {
     width: 2rem;
 }
 
+.paddingLeft-2 {
+    padding-left: 2rem !important;
+}
+
 /*Elementos ID*/
 
 #actionTask {
@@ -322,6 +326,7 @@ body {
 
 #nameProjeto {    
     color: #42c9cd;    
+    margin-left: 10px;
 }
 
 #incluirNovoRecurso {

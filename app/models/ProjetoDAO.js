@@ -14,6 +14,11 @@ ProjetoDAO.prototype.getProjeto = function(dados, callback){
     this._connection.query('select * from projeto where idProjeto = ? and idUsuario = ?', [dados.idProj, dados.idUser], callback);    
 }
 
+ProjetoDAO.prototype.getProjetoRec = function(id, callback) {
+    //ajustar esse select para trazer corretamente o id do Projeto.
+    this._connection.query('select * from projeto where idProjeto = ?', id, callback);
+}
+
 ProjetoDAO.prototype.getListarProjeto = function(userID, callback){    
     this._connection.query('select * from projeto where idUsuario = ' + userID, callback);    
 }
@@ -30,6 +35,10 @@ ProjetoDAO.prototype.putProjeto = function(projeto, callback){
 
 ProjetoDAO.prototype.deleteProjeto = function(idProjeto, callback){
     this._connection.query('delete from projeto where idProjeto = ?', idProjeto, callback);
+}
+
+ProjetoDAO.prototype.deleteProjRecurso = function(id, callback) {
+    this._connection.query('delete from proj_recursos where idProj_recursos = ?', id, callback);
 }
 
 ProjetoDAO.prototype.getProjetoSelect = function(callback){    
