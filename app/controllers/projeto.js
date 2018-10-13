@@ -167,13 +167,13 @@ module.exports.excluirProjRec = function (application, req, res) {
 
         projetoModel.getProjetoR(id, (err, result1) => {
             console.log('o que ta vindo', result1[0].idProjeto);
-            projetoModel.deleteProjRecurso(id, (err, result) => { 
-                
+            projetoModel.deleteProjRecurso(id, (err, result) => {
+
                 if (err != null) {
                     console.log(err);
                 }
-                else { 
-                    let idProj = result1[0].idProjeto;                
+                else {
+                    let idProj = result1[0].idProjeto;
                     res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProj);
                 }
             })
@@ -254,8 +254,43 @@ module.exports.integrarProjeto = function (application, req, res) {
 
 module.exports.integrarProjetoSelecionado = function (application, req, res) {
 
-    res.render('integrarProjetoRelatorio', {
-        
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+
+    let id = req.query.idProjeto;
+
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
+
+    db.query(sql, function (err, results) {
+        projetoModel.getProjetoRec(id, (err1, result1) => {
+            projetoModel.getListarProjetoList(id, (err2, result2) => {
+                projetoModel.getIntegrarProjeto(id, (err3, result3) => {
+                    projetoModel.getIntegrarProjTotal(id, (err4, result4) => {
+                        console.log('Result4.......', result4);
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            res.render('integrarProjetoRelatorio', {
+                                user: userId,
+                                nomeUsuario: results[0].first_name,
+                                nomeProjeto: result1[0].nome,
+                                dadosProj: result2[0],
+                                dadosRec: result3,
+                                totalProjeto: result4[0].valorTotalProjeto
+                            });
+                        }
+                    });
+                });
+            });
+        });
     });
 
 }

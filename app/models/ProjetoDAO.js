@@ -14,13 +14,16 @@ ProjetoDAO.prototype.getProjeto = function(dados, callback){
     this._connection.query('select * from projeto where idProjeto = ? and idUsuario = ?', [dados.idProj, dados.idUser], callback);    
 }
 
-ProjetoDAO.prototype.getProjetoR = function(id, callback) {   
-    console.log('o que ta passando para o select', id);
+ProjetoDAO.prototype.getProjetoR = function(id, callback) {       
     this._connection.query('select idProjeto from proj_recursos where idProj_recursos = ' + id, callback);
 }
 
 ProjetoDAO.prototype.getListarProjeto = function(userID, callback){    
     this._connection.query('select * from projeto where idUsuario = ' + userID, callback);    
+}
+
+ProjetoDAO.prototype.getListarProjetoList = function(id, callback){    
+    this._connection.query('select * from projeto where idProjeto = ' + id, callback);    
 }
 
 ProjetoDAO.prototype.getUsuario = function(userID, callback){
@@ -53,14 +56,14 @@ ProjetoDAO.prototype.getProjetoSelectUser = function(userID, callback){
     this._connection.query('select idProjeto, nome from projeto where idUsuario = ?', userID, callback);    
 }
 
-ProjetoDAO.prototype.getIntegrarProjeto = function(idProjeto, callback){    
+ProjetoDAO.prototype.getIntegrarProjeto = function(id, callback){        
     this._connection.query(
-        'select r.nome, r.valor, r.tipoCobranca, pr.qtdeRecurso,' +
-        '(r.valor * pr.qtdeRecurso) as valorParcialvalor' +
-        'from proj_recursos as pr inner join projeto as p' +
-        'on p.idProjeto = pr.idProjeto' +
-        'inner join recursos as r on r.idRecurso = pr.idRecurso;' +
-        'where idProjeto = ?', idProjeto, callback);    
+    'select r.nome, FORMAT(r.valor, 2,"pt_BR") as valor, r.tipoCobranca, pr.qtdeRecurso, FORMAT((r.valor * pr.qtdeRecurso),2,"PT_BR") as valorParcialvalor from proj_recursos as pr inner join projeto as p on p.idProjeto = pr.idProjeto inner join recursos as r on r.idRecurso = pr.idRecurso where pr.idProjeto = ' + id, callback);    
+}
+
+ProjetoDAO.prototype.getIntegrarProjTotal = function (id, callback) {
+    this._connection.query(
+    'select FORMAT(sum(r.valor * pr.qtdeRecurso), 2, "pt_BR") as valorTotalProjeto from proj_recursos as pr inner join projeto as p on p.idProjeto = pr.idProjeto inner join recursos as r on r.idRecurso = pr.idRecurso where pr.idProjeto = ' + id, callback);    
 }
 
 ProjetoDAO.prototype.getExibirProjRecursos = function(recProj, callback) {          
@@ -68,7 +71,7 @@ ProjetoDAO.prototype.getExibirProjRecursos = function(recProj, callback) {
 }
 
 ProjetoDAO.prototype.getEditarProjRecursos = function(id, callback) {
-    console.log('id proj_recursos', id);
+    
     this._connection.query('select * from proj_recursos where idProj_recursos = ?', id, callback);              
 }
 

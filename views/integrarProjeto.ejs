@@ -8,22 +8,12 @@
         <p class="title titleIntegrar">Integrar Projeto</p>
     </div>
 
-    <div class="row">
+    <div class="inline">
         <form action="/integrarProjeto" method="GET">
 
-            <div class="col-md-4 height-1 padding-left-0">
+            <div class="inline width-40">
 
-                <span>Projeto Selecionado:</span>
-                <div class="divNameProjeto">
-                    <% if (nomeProjeto) { %>
-                    <% for(var i=0; i < nomeProjeto.length; i++) { %>
-                    <span id="nameProjeto">
-                        <%= nomeProjeto[i].nome %> </span>
-                    <% } %>
-                    <% } %>
-                </div>
-
-                <select name="idProjeto" class="form-control">
+                <select name="idProjeto" class="form-control spaceRight-3">
                     <option>Selecione um Projeto</option>
                     <% 
                         for(var i = 0; i < selectP.length; i++) { 
@@ -34,25 +24,31 @@
                     </option>
                     <% } %>
                 </select>
-            </div>
-
-            <div class="col-md-1 height-3">
-                <button class="btn btn-light">Exibir</button>
+                <button class="btn btn-light spaceRight-2">Exibir</button>
             </div>
         </form>
 
-        <div class="height-3">
-            <a class="btn btn-light link" id="btnNovoRecurso" href="/novoProjRecurso">Adicionar Recurso</a>
+        <div>
+            <a class="btn btn-light link spaceRight-2" id="btnNovoRecurso" href="/novoProjRecurso">Adicionar Recurso</a>
         </div>
 
-        <div class="height-3">
-            <a class="btn btn-light link" id="btnNovoRecurso" href="/integrarProjetoRelatorio">Integrar Projeto</a>
+        <div>
+            <% if (nomeProjeto) { %>
+                <% for(var i=0; i < nomeProjeto.length; i++) { %>
+                <a class="btn btn-light link spaceRight-2" target="_blank" href="/integrarProjetoRelatorio?idProjeto=<%= nomeProjeto[i].idProjeto %>">Integrar</a>
+                <span>Projeto Selecionado:</span>
+                <span id="nameProjeto">
+                    <%= nomeProjeto[i].nome %>
+                </span>                
+                <% } %>
+            <% } %>
         </div>
 
     </div>
 
-    <div class="row height-2">
 
+
+    <div class="row height-1">
         <% if (dados) { %>
         <div class="container padding-left-0">
             <!-- Mostrar quadro com os recursos do projeto -->

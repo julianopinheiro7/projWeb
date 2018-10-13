@@ -187,8 +187,18 @@ body {
     border-radius: 2px;
 }
 
+
+
 .spaceRight-1 {
     margin-right: 1rem;
+}
+
+.spaceRight-2 {
+    margin-right: 2rem;
+}
+
+.spaceRight-3 {
+    margin-right: 3rem;
 }
 
 .spaceRight-5 {
@@ -272,9 +282,17 @@ body {
     padding: 1rem;
 }
 
+.margin-right-5 {
+    margin-right: 5rem;
+}
+
 .numberIndicadores {
     color: #059a95;
     font-size: 22px;
+    font-weight: bold;
+}
+
+.bold {
     font-weight: bold;
 }
 
@@ -313,7 +331,18 @@ body {
 }
 
 .divNameProjeto {
-    display: inline-flex;
+    display: inline-flex;    
+    width: 100%;
+    margin-left: -15px;    
+}
+
+.width-40 {
+    width: 40rem;
+}
+
+.marginLateral {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
 }
 
 .img-task {
@@ -324,7 +353,47 @@ body {
     padding-left: 2rem !important;
 }
 
+.fundoRelatorio {
+    background: #f4f5f7;
+}
+
+.barraRelatorio {
+    border-bottom: 1px solid #ccc;
+}
+
+.tableProjRec {    
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
 /*Elementos ID*/
+
+#custoTotalDesc {
+    margin-right: 4.5rem;
+    font-weight: bold;
+}
+
+#custoTotal {
+    float: right;
+    margin-right: 13rem;
+    font-size: 22px;
+    font-weight: bold;
+    color: #36c6cb;
+    bottom: 0.5rem;
+    position: relative;
+}
+
+#projIntegName {
+    margin-top: 15px;
+    margin-right: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#logoRelat {
+    width: 15%;
+}
 
 #div-card-apps {
     width: 50%;
@@ -353,13 +422,6 @@ body {
     width: 100%;
     border: 1px solid #ccc;
     padding: 0.5rem;
-}
-
-#tableProjRec {
-    height: 45rem;    
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 1rem;
 }
 
 #theadProjRec {
@@ -746,6 +808,10 @@ body {
     font-size: 12px;
 }
 
+.font-13 {
+    font-size: 13px;
+}
+
 .title {
     font-size: 16px;
     font-family: robotolight, roboto, sans-serif;
@@ -1073,6 +1139,14 @@ ul {
     padding-left: 30px;
     padding-right: 30px;
     width: 70%;
+}
+
+.containerList {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-right: 30px;  
+    width: 80%;  
 }
 
 .flex {
