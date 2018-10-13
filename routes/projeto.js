@@ -28,11 +28,13 @@ module.exports = function (application) {
         application.app.controllers.projeto.novoProjetoRecurso(application, req, res);
     })
 
-    application.post('/addRecProj', (req, res) => {
-        console.log('rota de incluir novo recurso no projeto');
+    application.post('/addRecProj', (req, res) => {        
         application.app.controllers.projeto.adiconarRecursoProj(application, req, res);
     });
 
+    application.get('/integrarProjetoRelatorio', (req, res) => {
+        application.app.controllers.projeto.integrarProjetoSelecionado(application, req, res);
+    });
 
 
 }

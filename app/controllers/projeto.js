@@ -161,18 +161,20 @@ module.exports.excluirProjRec = function (application, req, res) {
     let id = req.query.idProj_recursos;
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
+    console.log('id para deletar', id);
 
     if (id != undefined) {
 
-        projetoModel.getProjetoRec(id, (err, result1) => {
-            projetoModel.deleteProjRecurso(id, (err, result) => {
-                console.log('retorno result1', result1[0]);
+        projetoModel.getProjetoR(id, (err, result1) => {
+            console.log('o que ta vindo', result1[0].idProjeto);
+            projetoModel.deleteProjRecurso(id, (err, result) => { 
+                
                 if (err != null) {
                     console.log(err);
                 }
-                else {
-                    let idProjeto = result1[0].idProjeto;
-                    res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProjeto);
+                else { 
+                    let idProj = result1[0].idProjeto;                
+                    res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProj);
                 }
             })
         })
@@ -248,6 +250,14 @@ module.exports.integrarProjeto = function (application, req, res) {
             });
         });
     }
+}
+
+module.exports.integrarProjetoSelecionado = function (application, req, res) {
+
+    res.render('integrarProjetoRelatorio', {
+        
+    });
+
 }
 
 module.exports.novoProjetoRecurso = function (application, req, res) {

@@ -14,9 +14,9 @@ ProjetoDAO.prototype.getProjeto = function(dados, callback){
     this._connection.query('select * from projeto where idProjeto = ? and idUsuario = ?', [dados.idProj, dados.idUser], callback);    
 }
 
-ProjetoDAO.prototype.getProjetoRec = function(id, callback) {
-    //ajustar esse select para trazer corretamente o id do Projeto.
-    this._connection.query('select * from projeto where idProjeto = ?', id, callback);
+ProjetoDAO.prototype.getProjetoR = function(id, callback) {   
+    console.log('o que ta passando para o select', id);
+    this._connection.query('select idProjeto from proj_recursos where idProj_recursos = ' + id, callback);
 }
 
 ProjetoDAO.prototype.getListarProjeto = function(userID, callback){    

@@ -83,7 +83,7 @@
       else {
         document.getElementById('incluirNovoRecurso').style.display = 'block';
       }
-    } 
+    }
 
   </script>
 
@@ -123,41 +123,21 @@
               <div class="dropdown-content">
 
                 <div class="div-user center">
-                  <div class="iconeUser">
+                  <div class="iconeUser" id="iconUserCod">
                     <img src="../img/user.png" alt="User ProjWeb" id="userIcon">
                     <div class="divUserID"> Id. Usuário: <b>
                         <%= user %></b> </div>
                   </div>
-                  <div class="iconeUser">
-                    <p class="name-user">
-                      Usuário Logado:
-                    </p>
-                    <p id="nameUserLogado">
-                      <%= nomeUsuario %>
-                    </p>
-                  </div>
-                </div>
 
-                <div id="div-card-apps">
-                  <div class="btn-menuLateral">
-                    <a class="btnLateral" href="/cadastrarRecurso"><img src="/img/recursos.png" class="img-responsive center-block"
-                        alt="Recursos">
-                      <p class="descOptions">Novo Recurso</p>
-                    </a>
-                  </div>
-
-                  <div class="btn-menuLateral">
-                    <a class="btnLateral" href="/cadastrarProjeto"><img src="/img/proj.png" class="img-responsive center-block"
-                        alt="Recursos">
-                      <p class="descOptions">Novo Projeto</p>
-                    </a>
-                  </div>
-
-                  <div class="btn-menuLateral">
-                    <a class="btnLateral" href="/apontarTarefa"><img src="/img/apontarTarefa.png" class="img-responsive center-block"
-                        alt="Tarefas">
-                      <p class="descOptions">Apontar Tarefa</p>
-                    </a>
+                  <div id="div-card-apps">
+                    <div class="iconeUserName" >
+                      <p class="name-user">
+                        Usuário Logado:
+                      </p>
+                      <p id="nameUserLogado">
+                        <%= nomeUsuario %>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,7 +148,7 @@
         <ul class="nav-ul nav-ul-right nav-ul-top">
           <li>
             <div class="inline">
-              <img src="../img/user.png" alt="User ProjWeb" id="userIcon">
+              <img src="../img/user.png" alt="User ProjWeb" id="userIconHead">
               <p id="nameUserLogado">
                 <%= nomeUsuario %>
               </p>
