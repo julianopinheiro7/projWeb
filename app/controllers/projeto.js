@@ -337,8 +337,7 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
             });
         });
     }
-    else {
-        console.log('goku else');
+    else {        
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
@@ -357,11 +356,9 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
             });
         });
     }
-
-
 }
 
-module.exports.adiconarRecursoProj = function (application, req, res) {
+module.exports.adicionarRecursoProj = function (application, req, res) {
 
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
@@ -369,16 +366,32 @@ module.exports.adiconarRecursoProj = function (application, req, res) {
     let id = req.body.idProjeto
     console.log('id pego do body', id);
 
-    projetoModel.postProjRecursos(projRecurso, (err, result) => {
+    if (id == '') {
+        delete projRecurso.idProj_recursos;
+        projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
-        if (err) {
-            console.log(err);
-            res.redirect('/novoProjRecurso?msg=F');
-        }
-        else {
-            res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + id);
-        }
-    });
+            if (err) {
+                console.log(err);
+                res.redirect('/novoProjRecurso?msg=F');
+            }
+            else {
+                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + id);
+            }
+        });
+    }
+    else {
+        console.log('Entrei no else correto', projRecurso);
+        projetoModel.putProjRecursos(projRecurso, (err, result) => {
+            if (err != null) {
+                console.log(err);
+                res.redirect('/novoProjRecurso?msg=F');
+            }
+            else {
+                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + id);
+            }
+        });
+    }
+    
 
 }
 

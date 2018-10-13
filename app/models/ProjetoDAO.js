@@ -36,6 +36,13 @@ ProjetoDAO.prototype.putProjeto = function(projeto, callback){
     this._connection.query('update projeto set ? where idProjeto = ?', [projeto, idProjeto], callback);
 }
 
+ProjetoDAO.prototype.putProjRecursos = function(projRecurso, callback) {
+    console.log('Objeto que ta chegando para atualizar',projRecurso);
+    let idProj_recursos = projRecurso.idProj_recursos;
+    delete projRecurso.idProj_recursos;
+    this._connection.query('update proj_recursos set ? where idProj_recursos = ?', [projRecurso, idProj_recursos], callback);
+}
+
 ProjetoDAO.prototype.deleteProjeto = function(idProjeto, callback){
     this._connection.query('delete from projeto where idProjeto = ?', idProjeto, callback);
 }

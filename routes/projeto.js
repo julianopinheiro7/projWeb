@@ -29,7 +29,7 @@ module.exports = function (application) {
     })
 
     application.post('/addRecProj', (req, res) => {        
-        application.app.controllers.projeto.adiconarRecursoProj(application, req, res);
+        application.app.controllers.projeto.adicionarRecursoProj(application, req, res);
     });
 
     application.get('/integrarProjetoRelatorio', (req, res) => {
