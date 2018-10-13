@@ -11,15 +11,17 @@
 
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <span>Selecione o Projeto:</span>
-                <div class="divNameProjeto">
-                    <% if (nomeProjeto) { %>
+                <div class="inline">
+                    <span>Selecione o Projeto:</span>
+                    <div>
+                        <% if (nomeProjeto) { %>
                         <% for(var i=0; i < nomeProjeto.length; i++) { %>
                         <span id="nameProjeto">
                             <%= nomeProjeto[i].nome %> </span>
-                    <% } %>
-                    <% } %>
-                </div>                
+                        <% } %>
+                        <% } %>
+                    </div>
+                </div>
                 <select name="idProjeto" class="form-control">
                     <option value="">Selecione</option>
                     <% 
@@ -39,26 +41,32 @@
             </div>
         </div>
     </form>
-   
+
 
     <% if (dados) { %>
     <% for(var i=0; i < dados.length; i++) { %>
 
-    <div id="divExibirTarefas">        
+    <div id="divExibirTarefas">
 
         <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
 
-        <div >
+        <div>
             <div class="linhaTarefas">
                 <label class="lblTituloTarefas" for="tarefa">Tarefa:</label>
-                <span class="spaceRight-5 backTask" id="tarefa"><%= i+1 %></span> 
+                <span class="spaceRight-5 backTask" id="tarefa">
+                    <%= i+1 %></span>
                 <label class="lblTituloTarefas" for="data_inicial">Data Inicial:</label>
-                <span class="spaceRight-5 backTask" id="data_inicial"><%= dados[i].data_inicial %></span>                
+                <span class="spaceRight-5 backTask" id="data_inicial">
+                    <%= dados[i].data_inicial %></span>
                 <label class="lblTituloTarefas" for="data_final">Data Final:</label>
-                <span class="spaceRight-5 backTask" id="data_final"><%= dados[i].data_final %></span> 
-                <label class="lblTituloTarefas" for="descricao">Descrição:</label>
-                <span class="spaceRight-5 backTask" id="descricao"><%= dados[i].descricao %></span> 
+                <span class="spaceRight-5 backTask" id="data_final">
+                    <%= dados[i].data_final %></span>
                 
+                <label class="lblTituloTarefas" for="descricao">Descrição:</label>
+                <span class="spaceRight-5 backTask" id="descricao">
+                    <%= dados[i].descricao %></span>
+                
+
                 <div class="col-md-1" id="divOptionsTask">
                     <div class="options">
                         <ul>
@@ -85,10 +93,10 @@
                     </div>
                 </div>
 
-            </div>            
+            </div>
         </div>
 
-  <!--       <div id="titleTarefas" class="col-md-2">
+        <!--       <div id="titleTarefas" class="col-md-2">
             <span>Tarefa:</span>
             <span>Data Inicial:</span>
             <span>Hora Inicial:</span>
