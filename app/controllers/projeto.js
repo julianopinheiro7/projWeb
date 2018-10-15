@@ -25,9 +25,7 @@ module.exports.cadastrarProjeto = function (application, req, res) {
             idProj: id,
             idUser: userId
         }
-
-        console.log('Entrei no id != undefined para editar');
-
+        
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjeto(dados, (err, result) => {
 
@@ -161,12 +159,10 @@ module.exports.excluirProjRec = function (application, req, res) {
     let id = req.query.idProj_recursos;
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
-    console.log('id para deletar', id);
-
     if (id != undefined) {
 
         projetoModel.getProjetoR(id, (err, result1) => {
-            console.log('o que ta vindo', result1[0].idProjeto);
+            
             projetoModel.deleteProjRecurso(id, (err, result) => {
 
                 if (err != null) {
@@ -228,8 +224,7 @@ module.exports.integrarProjeto = function (application, req, res) {
             });
         });
     }
-    else {
-        console.log('Goku');
+    else {        
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
                 projetoModel.getExibirProjRecursos(recProj, (err3, result3) => {
@@ -273,7 +268,7 @@ module.exports.integrarProjetoSelecionado = function (application, req, res) {
             projetoModel.getListarProjetoList(id, (err2, result2) => {
                 projetoModel.getIntegrarProjeto(id, (err3, result3) => {
                     projetoModel.getIntegrarProjTotal(id, (err4, result4) => {
-                        console.log('Result4.......', result4);
+                        
                         if (err) {
                             console.log(err);
                         }
@@ -363,10 +358,10 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
     const projetoModel = new application.app.models.ProjetoDAO(global.db);
 
     let projRecurso = req.body;
-    let id = req.body.idProjeto
-    console.log('id pego do body', id);
+    let idProjeto = req.body.idProjeto;
+    let id = req.body.idProj_recurso;    
 
-    if (id == '') {
+    if (id == undefined) {        
         delete projRecurso.idProj_recursos;
         projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
@@ -375,24 +370,21 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
                 res.redirect('/novoProjRecurso?msg=F');
             }
             else {
-                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + id);
+                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProjeto);
             }
         });
     }
-    else {
-        console.log('Entrei no else correto', projRecurso);
+    else {        
         projetoModel.putProjRecursos(projRecurso, (err, result) => {
             if (err != null) {
                 console.log(err);
                 res.redirect('/novoProjRecurso?msg=F');
             }
             else {
-                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + id);
+                res.redirect('http://localhost:8080/integrarProjeto?idProjeto=' + idProjeto);
             }
         });
     }
-    
-
 }
 
 
