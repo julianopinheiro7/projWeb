@@ -27,7 +27,7 @@ module.exports.apontarTarefa = function (application, req, res) {
         }
 
         tarefaModel.getUsuario(userId, (err2, result2) => {
-            projetoModel.getProjetoSelect((err3, result3) => {
+            projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 tarefaModel.getTarefa(dados, (err, result) => {
 
                     if (err3) {
@@ -42,14 +42,14 @@ module.exports.apontarTarefa = function (application, req, res) {
                             selectProjeto: result3
                         });
                     }
-                })
-            })
+                });
+            });
         });
     }
     else {
         tarefaModel.getUsuario(userId, (err2, result2) => {
-            projetoModel.getProjetoSelect((err3, result3) => {
-
+            projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
+                
                 if (err2) {
                     console.log(err2);
                 }
@@ -187,7 +187,7 @@ module.exports.consultarTarefa = function (application, req, res) {
     }
 
 
-};
+}
 
 module.exports.excluirTarefa = function (application, req, res) {
 
