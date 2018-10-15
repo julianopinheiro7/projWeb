@@ -6,7 +6,6 @@
 
     <div id="recursobox" style=" margin-top:50px" class="mainbox col-md-10 col-sm-10 col-md-offset-1">
 
-
         <div class="panel panel-light">
             <div class="panel-heading">
                 <div class="panel-title text-center tituloPainel">Novo Recurso</div>
@@ -15,7 +14,7 @@
 
                 <%if(message == 'T') {%>
                 <div class="card-panel red center">
-                        Dados gravados com sucesso!                    
+                    Dados gravados com sucesso!
                 </div>
                 <% } %>
                 <%if(message == 'F') {%>
@@ -35,16 +34,19 @@
                     <div class="form-group">
                         <label for="valor" class="col-md-3 control-label">Valor</label>
                         <div class="col-md-3">
-                            <input type="text" id="valor" value="<%=dados.valor%>" class="form-control" name="valor" placeholder="Valor">
+                            <input type="text" id="valor" value="<%=dados.valor%>" class="form-control" name="valor"
+                                placeholder="Valor">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="horas_previstas" value="<%=dados.tipoCobranca%>" class="col-md-3 control-label">Tipo de Cobrança</label>
+                        <label for="horas_previstas" value="<%=dados.tipoCobranca%>" class="col-md-3 control-label">Tipo
+                            de Cobrança</label>
                         <div class="col-md-3">
                             <select name="tipoCobranca" id="status" class="select">
                                 <option value="Dia">Dia</option>
-                                <option value="Hora">Hora</option>                                
-                                <option value="Mensal">Mensal</option>    
+                                <option value="Hora">Hora</option>
+                                <option value="Mensal">Mensal</option>
+                                <option value="Unica">Unica</option>
                             </select>
                         </div>
                     </div>

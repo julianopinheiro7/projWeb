@@ -2,10 +2,14 @@
 
 <%- include header %>
 
-<div class="container height-2">
+<div class="container height-4">
     <div class="row">
 
-        <div class="divListar">Projetos</div>
+        <div class="divListar">Projetos
+            <a class="btnLateral link-new-item align-item linkInlineFlex" href="/cadastrarProjeto">
+                <p class="descNewItem">Novo Projeto</p>
+            </a>
+        </div>
 
         <table class="table table-sm">
             <thead class="size-14">
@@ -52,7 +56,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/excluirProjeto?idProjeto=<%= data[i].idProjeto %>" onclick="updateConfirm();" >
+                                                <a href="/excluirProjeto?idProjeto=<%= data[i].idProjeto %>" onclick="updateConfirm();">
                                                     <img src="../img/delete.png" alt="Delete" title="Deletar Projeto">
                                                 </a>
                                             </li>
@@ -61,7 +65,7 @@
                                 </li>
                             </ul>
                         </div>
-                       
+
                     </td>
                 </tr>
                 <% } %>

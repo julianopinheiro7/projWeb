@@ -2,10 +2,15 @@
 
 <%- include header %>
 
-<div class="container height-2">
+<div class="container height-4">
+
     <div class="row">
 
-        <div class="divListar">Recursos</div>
+        <div class="divListar">Recursos
+            <a class="btnLateral link-new-item align-item linkInlineFlex" href="/cadastrarRecurso">                                
+                <p class="descNewItem">Novo Recurso</p>
+            </a>
+        </div>
 
         <table class="table table-sm">
             <thead class="size-14">
@@ -13,7 +18,7 @@
                     <th scope="col">Num. Recurso</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Valor</th>
-                    <th scope="col">Forma de Cobrança</th>                    
+                    <th scope="col">Forma de Cobrança</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -28,11 +33,13 @@
                         <%= data[i].nome %>
                     </td>
                     <td>
-                        <div class="moeda"><%= data[i].valor %></div> 
+                        <div class="moeda">
+                            <%= data[i].valor %>
+                        </div>
                     </td>
                     <td>
                         <%= data[i].tipoCobranca %>
-                    </td>                    
+                    </td>
                     <td class="actions center">
                         <div class="options">
                             <ul>
@@ -48,7 +55,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/excluirRecurso?idRecurso=<%= data[i].idRecurso %>" onclick="updateConfirm();" >
+                                                <a href="/excluirRecurso?idRecurso=<%= data[i].idRecurso %>" onclick="updateConfirm();">
                                                     <img src="../img/delete.png" alt="Delete" title="Deletar Recurso">
                                                 </a>
                                             </li>
@@ -56,7 +63,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </div>                       
+                        </div>
                     </td>
                 </tr>
                 <% } %>

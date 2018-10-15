@@ -14,6 +14,10 @@
     margin-top: 10rem;
 }
 
+.height-8 {
+    margin-top: 8rem;
+}
+
 .height-6 {
     margin-top: 6rem;
 }
@@ -36,6 +40,10 @@
 
 .height-meio {
     margin-top: 0.5rem;
+}
+
+.robotoLight {
+    font-family: robotolight;
 }
 
 .btn-light {
@@ -187,7 +195,9 @@ body {
     border-radius: 2px;
 }
 
-
+.spaceLeft-1 {
+    margin-left: 1rem;
+}
 
 .spaceRight-1 {
     margin-right: 1rem;
@@ -326,7 +336,7 @@ body {
 
 .backTask {
     background: #f4f5f7;
-    padding-left: 30px;
+    padding-left: 5px;
     padding-right: 30px;
 }
 
@@ -382,7 +392,41 @@ body {
     border: 0;
 }
 
+.img-new-item {
+    top: 4px;
+    width: 25px;
+    height: 20px !important;
+    position: relative;    
+}
+
+.align-item {
+    float: right;
+    bottom: 10px;
+    position: relative;
+}
+
+.descNewItem {
+    margin: 0 10px;
+    padding: 0.5rem 0;
+}
+
+.link-new-item {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 13px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.linkInlineFlex {
+    display: inline-flex;
+}
+
 /*Elementos ID*/
+
+#marginTask {
+    margin: 0 0 0 12rem;
+}
 
 #nameProjInteg {
     width: 10px;
@@ -478,18 +522,23 @@ body {
 
 #divExibirTarefas {    
     margin-bottom: 1rem;
-    border: 1px solid #dedede;
     border-radius: 5px;
-    margin: 0 0 1rem 12rem;
-    width: 80%;
+    margin: 0px 0 2rem 18rem;
+    width: 70%;
     display: inline-block;
-}    
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}   
+
+#divApontarTarefa {
+    margin-right: 16rem;
+}
 
 #divOptionsTask {
     float: right;
-    position: relative;    
-    right: 30px;        
-    height: 29px;    
+    position: relative;
+    right: 170px;
+    height: 29px;
     border-radius: 5px;
     width: 75px;
 }
