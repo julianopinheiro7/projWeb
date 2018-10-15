@@ -33,8 +33,7 @@ module.exports.apontarTarefa = function (application, req, res) {
                     if (err3) {
                         res.json(err);
                     }
-                    else {
-                        console.log(result);
+                    else {                        
                         res.render('apontarTarefa', {
                             message: msg,
                             user: userId,
@@ -88,7 +87,7 @@ module.exports.cadastrar = function (application, req, res) {
 
 
     if (tarefa.idTarefa == '') {
-
+        console.log('Entrei no post');
         delete tarefa.idTarefa;
         tarefaModel.postTarefa(tarefa, (err, result) => {
 
@@ -101,8 +100,9 @@ module.exports.cadastrar = function (application, req, res) {
             }
         });
     } else {
+        console.log('Entrei no put', tarefa);
         tarefaModel.putTarefa(tarefa, (err, result) => {            
-
+            
             if (err != null) {
                 res.redirect('/apontarTarefa?msg=F');
             }

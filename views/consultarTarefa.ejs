@@ -2,133 +2,111 @@
 
 <%- include header %>
 
-<% if(select) {%>
+    <% if(select) {%>
 
-<div class="container height-4">
+        <div class="container height-4">
 
-    <form action="/consultarTarefa" method="GET">
-        <div class="row">
+            <form action="/consultarTarefa" method="GET">
+                <div class="row">
 
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="inline">
-                    <span>Selecione o Projeto:</span>
-                    <div>
-                        <% if (nomeProjeto) { %>
-                        <% for(var i=0; i < nomeProjeto.length; i++) { %>
-                        <span id="nameProjeto">
-                            <%= nomeProjeto[i].nome %> </span>
-                        <% } %>
-                        <% } %>
-                    </div>
-                </div>
-                <select name="idProjeto" class="form-control">
-                    <option value="">Selecione</option>
-                    <% 
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="inline">
+                            <span>Selecione o Projeto:</span>
+                            <div>
+                                <% if (nomeProjeto) { %>
+                                    <% for(var i=0; i < nomeProjeto.length; i++) { %>
+                                        <span id="nameProjeto">
+                                            <%= nomeProjeto[i].nome %> </span>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+                        </div>
+                        <select name="idProjeto" class="form-control">
+                            <option value="">Selecione</option>
+                            <% 
                             for(var i = 0; i < select.length; i++) { 
                                 let selected = ( select.idProjeto == select[i].idProjeto ) ? "selected" : "";
                             %>
-                    <option value="<%=select[i].idProjeto%>" <%=selected %> >
-                        <%=select[i].nome%>
-                    </option>
-                    <% } %>
-                </select>
-            </div>
-        </div>
-        <div class="row height-2">
-            <div class="col-md-12 center">
-                <button class="btn btn-light">Exibir Tarefas</button>
-            </div>
-        </div>
-    </form>
-
-
-    <% if (dados) { %>
-    <% for(var i=0; i < dados.length; i++) { %>
-
-    <div id="divExibirTarefas">
-
-        <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
-
-        <div>
-            <div class="linhaTarefas">
-                <label class="lblTituloTarefas" for="tarefa">Tarefa:</label>
-                <span class="spaceRight-5 backTask" id="tarefa">
-                    <%= i+1 %></span>
-                <label class="lblTituloTarefas" for="data_inicial">Data Inicial:</label>
-                <span class="spaceRight-5 backTask" id="data_inicial">
-                    <%= dados[i].data_inicial %></span>
-                <label class="lblTituloTarefas" for="data_final">Data Final:</label>
-                <span class="spaceRight-5 backTask" id="data_final">
-                    <%= dados[i].data_final %></span>
-                
-                <label class="lblTituloTarefas" for="descricao">Descrição:</label>
-                <span class="spaceRight-5 backTask" id="descricao">
-                    <%= dados[i].descricao %></span>
-                
-
-                <div class="col-md-1" id="divOptionsTask">
-                    <div class="options">
-                        <ul>
-                            <li>
-                                <a href="#" class="linkOptionRec">
-                                    <img class="iconActions" src="../img/actions.png" alt="">
-                                </a>
-                                <ul>
-                                    <div class="inline div-actions" id="actionTask">
-                                        <li class="li-div-actions">
-                                            <a href="/apontarTarefa?idTarefa=<%= dados[i].idTarefa %>">
-                                                <img src="../img/edit.png" class="img-task" alt="Editar" title="Editar Tarefa">
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/excluirTarefa?idTarefa=<%= dados[i].idTarefa %>" onclick="updateConfirm();">
-                                                <img src="../img/delete.png" class="img-task" alt="Delete" title="Deletar Tarefa">
-                                            </a>
-                                        </li>
-                                    </div>
-                                </ul>
-                            </li>
-                        </ul>
+                                <option value="<%=select[i].idProjeto%>" <%=selected %> >
+                                    <%=select[i].nome%>
+                                </option>
+                                <% } %>
+                        </select>
                     </div>
                 </div>
+                <div class="row height-2">
+                    <div class="col-md-12 center">
+                        <button class="btn btn-light">Exibir Tarefas</button>
+                    </div>
+                </div>
+            </form>
 
-            </div>
+
+            <% if (dados) { %>
+                <% for(var i=0; i < dados.length; i++) { %>
+
+                    <div id="divExibirTarefas">
+
+                        <input type="hidden" name="idProjeto" value="<%=dados.idProjeto%>">
+
+                        <div>
+                            <div class="linhaTarefas">
+                                <div>
+                                    <label class="lblTituloTarefas" for="tarefa">Tarefa:</label>
+                                    <span class="spaceRight-5 backTask" id="tarefa">
+                                        <%= i+1 %></span>
+                                    <label class="lblTituloTarefas" for="data_inicial">Hora Inicial:</label>
+                                    <span class="spaceRight-5 backTask" id="data_inicial">
+                                        <%= dados[i].hora_inicial %></span>
+                                    <label class="lblTituloTarefas" for="data_final">Hora Final:</label>
+                                    <span class="spaceRight-5 backTask" id="data_final">
+                                        <%= dados[i].hora_final %></span>
+                                </div>
+
+                                <div>
+                                    <label class="lblTituloTarefas" for="descricao">Descrição:</label>
+                                    <span class="spaceRight-5 backTask" id="descricao">
+                                        <%= dados[i].descricao %></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="divOptionsTask">
+                        <div class="options">
+                            <ul>
+                                <li>
+                                    <a href="#" class="linkOptionRec">
+                                        <img class="iconActions" src="../img/actions.png" alt="">
+                                    </a>
+                                    <ul>
+                                        <div class="inline div-actions" id="actionTask">
+                                            <li class="li-div-actions">
+                                                <a href="/apontarTarefa?idTarefa=<%= dados[i].idTarefa %>">
+                                                    <img src="../img/edit.png" class="img-task" alt="Editar" title="Editar Tarefa">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/excluirTarefa?idTarefa=<%= dados[i].idTarefa %>" onclick="updateConfirm();">
+                                                    <img src="../img/delete.png" class="img-task" alt="Delete" title="Deletar Tarefa">
+                                                </a>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <% } %>
+                        <% } %>
+
         </div>
 
-        <!--       <div id="titleTarefas" class="col-md-2">
-            <span>Tarefa:</span>
-            <span>Data Inicial:</span>
-            <span>Hora Inicial:</span>
-            <span>Hora Final:</span>
-            <span>Descrição:</span>
-        </div>
-
-        <div id="bodyTarefas" class="col-md-4">
-            <span class="spaceRight-5">
-                <%= i+1 %> </span>
-            <span class="spaceRight-5">
-                <%= dados[i].data_inicial %> </span>
-            <span class="spaceRight-5">
-                <%= dados[i].hora_inicial %> </span>
-
-            <label class="spaceRight-5" id="labelTask">
-                <%= dados[i].hora_final %> </label>
-
-            <div>
-                <span class="spaceRight-5">
-                    <%= dados[i].descricao %> </span>                    
-            </div>
-        </div> -->
-
-    </div>
-    <% } %>
-    <% } %>
-
-</div>
-
-<% } %>
+        <% } %>
 
 
 
-<%- include footer %>
+            <%- include footer %>

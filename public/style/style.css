@@ -405,7 +405,7 @@ body {
 }
 
 #actionTask {
-    background: #f4f5f7;
+    background: #fff;
 }
 
 #nameProjeto {    
@@ -451,20 +451,19 @@ body {
 #divExibirTarefas {    
     margin-bottom: 1rem;
     border: 1px solid #dedede;
-    border-radius: 5px;    
-    margin: 0 0 1rem;
+    border-radius: 5px;
+    margin: 0 0 1rem 12rem;
+    width: 80%;
+    display: inline-block;
 }    
 
 #divOptionsTask {
     float: right;
-    position: relative;
-    bottom: 5px;
-    right: 30px;
-    left: 15px;
-    background: #f4f5f7;
-    height: 29px;
-    top: -3px;
+    position: relative;    
+    right: 30px;        
+    height: 29px;    
     border-radius: 5px;
+    width: 75px;
 }
 
 #divEditarTarefa {
@@ -1034,7 +1033,7 @@ a.tooltip2:hover span {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 5px;
+    padding-left: 10px;
     padding-right: 5px;
     cursor: pointer;
 }
@@ -1083,7 +1082,7 @@ ul {
 }
 
 .li-div-actions {
-    margin-right: 4rem;
+    margin-right: 3rem;
 }
 
 .divListar {        
