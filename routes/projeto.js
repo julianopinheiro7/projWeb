@@ -36,5 +36,9 @@ module.exports = function (application) {
         application.app.controllers.projeto.integrarProjetoSelecionado(application, req, res);
     });
 
+    application.get('/consultarProjInteg', (req, res) => {
+        application.app.controllers.projeto.consultarProjetosIntegrados(application, req, res);
+    });
+
 
 }

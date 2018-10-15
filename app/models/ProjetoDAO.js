@@ -86,6 +86,10 @@ ProjetoDAO.prototype.getProjetoRecurso = function(idProjeto, callback) {
     this._connection.query('select idProjeto from proj_recursos where idProjeto = ' + idProjeto, callback);
 }
 
+ProjetoDAO.prototype.getProjetoTar = function(id, callback){    
+    this._connection.query('select idProjeto, nome from projeto where idProjeto = ?', id, callback);
+}
+
 module.exports = function(){
     return ProjetoDAO;
 }

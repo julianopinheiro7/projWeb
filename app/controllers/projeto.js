@@ -25,7 +25,7 @@ module.exports.cadastrarProjeto = function (application, req, res) {
             idProj: id,
             idUser: userId
         }
-        
+
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjeto(dados, (err, result) => {
 
@@ -162,7 +162,7 @@ module.exports.excluirProjRec = function (application, req, res) {
     if (id != undefined) {
 
         projetoModel.getProjetoR(id, (err, result1) => {
-            
+
             projetoModel.deleteProjRecurso(id, (err, result) => {
 
                 if (err != null) {
@@ -224,7 +224,7 @@ module.exports.integrarProjeto = function (application, req, res) {
             });
         });
     }
-    else {        
+    else {
         projetoModel.getUsuario(userId, (err, result) => {
             projetoModel.getProjetoSelectUser(userId, (err2, result2) => {
                 projetoModel.getExibirProjRecursos(recProj, (err3, result3) => {
@@ -268,7 +268,7 @@ module.exports.integrarProjetoSelecionado = function (application, req, res) {
             projetoModel.getListarProjetoList(id, (err2, result2) => {
                 projetoModel.getIntegrarProjeto(id, (err3, result3) => {
                     projetoModel.getIntegrarProjTotal(id, (err4, result4) => {
-                        
+
                         if (err) {
                             console.log(err);
                         }
@@ -332,7 +332,7 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
             });
         });
     }
-    else {        
+    else {
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
                 recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
@@ -359,9 +359,9 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
 
     let projRecurso = req.body;
     let idProjeto = req.body.idProjeto;
-    let id = req.body.idProj_recurso;    
+    let id = req.body.idProj_recurso;
 
-    if (id == undefined) {        
+    if (id == undefined) {
         delete projRecurso.idProj_recursos;
         projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
@@ -374,7 +374,7 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
             }
         });
     }
-    else {        
+    else {
         projetoModel.putProjRecursos(projRecurso, (err, result) => {
             if (err != null) {
                 console.log(err);
@@ -385,6 +385,43 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
             }
         });
     }
+}
+
+module.exports.consultarProjetosIntegrados = function (application, req, res) {
+
+    let msg = ''
+    let id = req.query.idProjeto;
+
+    if (req.query.msg != '') {
+        msg = req.query.msg;
+    }
+
+    var user = req.session.user,
+        userId = req.session.userId;
+    console.log('ddd=' + userId);
+    if (userId == null) {
+        res.redirect("/login");
+        return;
+    }
+
+    const projetoModel = new application.app.models.ProjetoDAO(global.db);
+
+    projetoModel.getUsuario(userId, (err, result) => {
+        projetoModel.getProjetoSelectUser(userId, (err1, result1) => {
+            projetoModel.getProjetoTar(id, (err4, result4) => {                
+                if (err) {
+                    res.json(err);
+                }
+                res.render('consultarProjInteg', {
+                    message: msg,
+                    user: userId,
+                    nomeUsuario: result[0].first_name,
+                    select: result1,
+                    nomeProjeto: result4
+                });
+            });
+        });
+    });
 }
 
 
