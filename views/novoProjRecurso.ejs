@@ -24,7 +24,7 @@
                     <% } %>
                     
                     <form class="form-horizontal" role="form" method="post" action="/addRecProj" onSubmit="return checkblank(this);">
-                        <input type="hidden" name="idProj_recursos" value="<%=dados.idProj_recursos%>">
+                        <input class="disabled" name="idProj_recursos" value="<%=dados.idProj_recursos%>">
                         <div class="form-group">
                             <span>Selecione o Projeto:</span>
                             <select name="idProjeto" class="form-control">

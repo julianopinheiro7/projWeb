@@ -314,8 +314,8 @@ module.exports.novoProjetoRecurso = function (application, req, res) {
 
         projetoModel.getUsuario(userId, (err2, result2) => {
             projetoModel.getProjetoSelectUser(userId, (err3, result3) => {
-                recursoModel.getRecursoSelectUser(userId, (err3, result4) => {
-                    projetoModel.getEditarProjRecursos(id, (err3, result5) => {
+                recursoModel.getRecursoSelectUser(userId, (err4, result4) => {
+                    projetoModel.getEditarProjRecursos(id, (err5, result5) => {
                         if (err2) {
                             res.json(err2);
                         }
@@ -359,9 +359,12 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
 
     let projRecurso = req.body;
     let idProjeto = req.body.idProjeto;
-    let id = req.body.idProj_recurso;
+    let id = projRecurso.idProj_recursos;   
 
-    if (id == undefined) {
+    console.log('variavel id', projRecurso);
+
+    if (id == undefined) {    
+        console.log('Entrei para incluir com o objeto:', projRecurso);
         delete projRecurso.idProj_recursos;
         projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
@@ -375,6 +378,7 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
         });
     }
     else {
+        console.log('Entrei no else para atualizar');
         projetoModel.putProjRecursos(projRecurso, (err, result) => {
             if (err != null) {
                 console.log(err);
