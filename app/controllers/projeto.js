@@ -363,7 +363,7 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
 
     console.log('variavel id', projRecurso);
 
-    if (id == undefined) {    
+    if (id == '') {    
         console.log('Entrei para incluir com o objeto:', projRecurso);
         delete projRecurso.idProj_recursos;
         projetoModel.postProjRecursos(projRecurso, (err, result) => {
