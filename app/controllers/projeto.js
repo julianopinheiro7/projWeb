@@ -359,12 +359,10 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
 
     let projRecurso = req.body;
     let idProjeto = req.body.idProjeto;
-    let id = projRecurso.idProj_recursos;   
-
-    console.log('variavel id', projRecurso);
+    let id = projRecurso.idProj_recursos;       
 
     if (id == '') {    
-        console.log('Entrei para incluir com o objeto:', projRecurso);
+        
         delete projRecurso.idProj_recursos;
         projetoModel.postProjRecursos(projRecurso, (err, result) => {
 
@@ -378,7 +376,7 @@ module.exports.adicionarRecursoProj = function (application, req, res) {
         });
     }
     else {
-        console.log('Entrei no else para atualizar');
+        
         projetoModel.putProjRecursos(projRecurso, (err, result) => {
             if (err != null) {
                 console.log(err);

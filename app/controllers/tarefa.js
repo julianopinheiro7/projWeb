@@ -87,7 +87,7 @@ module.exports.cadastrar = function (application, req, res) {
 
 
     if (tarefa.idTarefa == '') {
-        console.log('Entrei no post');
+        
         delete tarefa.idTarefa;
         tarefaModel.postTarefa(tarefa, (err, result) => {
 
@@ -100,7 +100,7 @@ module.exports.cadastrar = function (application, req, res) {
             }
         });
     } else {
-        console.log('Entrei no put', tarefa);
+        
         tarefaModel.putTarefa(tarefa, (err, result) => {            
             
             if (err != null) {
@@ -209,7 +209,7 @@ module.exports.excluirTarefa = function (application, req, res) {
             });
         });
     } else {
-        console.log('Else');
+        
     }
 }
 

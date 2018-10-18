@@ -148,8 +148,6 @@ module.exports.excluirRecurso = function (application, req, res) {
                 res.redirect('http://localhost:8080/listarRecursos');
             }
         });
-    } else {
-        console.log('To pulando pro else mesmo!');        
-    }
+    }    
 }
 
