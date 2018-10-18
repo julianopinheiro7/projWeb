@@ -325,7 +325,7 @@ body {
 }
 
 .linhaTarefas {
-    padding: 4.5px 1.5rem;
+    padding: 0.5rem;
 }
 
 .lblTituloTarefas {
@@ -423,6 +423,10 @@ body {
 }
 
 /*Elementos ID*/
+
+#novaTask {
+    margin-left: 18rem;
+}
 
 #marginTask {
     margin: 0 0 0 12rem;
@@ -523,12 +527,10 @@ body {
 #divExibirTarefas {    
     margin-bottom: 1rem;
     border-radius: 5px;
-    margin: 0px 0 2rem 18rem;
-    width: 70%;
-    display: inline-block;
-    border-radius: 10px;
+    width: 100%;    
     border: 1px solid #ccc;
-}   
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
 
 #divApontarTarefa {
     margin-right: 16rem;
@@ -537,10 +539,9 @@ body {
 #divOptionsTask {
     float: right;
     position: relative;
-    right: 170px;
-    height: 29px;
-    border-radius: 5px;
-    width: 75px;
+    bottom: 0.5rem;
+    right: 1rem;
+}
 }
 
 #divEditarTarefa {
@@ -635,8 +636,7 @@ body {
     padding-left: 4rem !important;
 }
 
-#descricao {    
-    height: 36px;
+#descricao {        
     width: 100%;
 }
 
@@ -929,6 +929,10 @@ body {
     margin-left: 1rem;
 }
 
+.margin-left-2 {
+    margin-left: 2rem;
+}
+
 .padding-left-0 {
     padding-left: 0 !important;
 }
@@ -968,6 +972,10 @@ body {
 
 .inline {
     display: inline-flex;
+}
+
+.block {
+    display: block;
 }
 
 .quadro2 {
@@ -1120,9 +1128,7 @@ ul {
 }
 
 .options {
-    position: relative;
-    bottom: 8px;
-    right: 25px;
+    position: relative;    
 }
 
 .options li {
@@ -1145,7 +1151,7 @@ ul {
     background: #fff;    
     text-align: center;
     border-radius: 10px;
-    right: 22px;
+    right: 40px;
     top: 2px;
 }
 
